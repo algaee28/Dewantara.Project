@@ -1,7 +1,5 @@
 // src/components/pages/Home.tsx
 
-import React from "react";
-
 const Home = () => {
   return (
     <div className="text-white min-h-screen p-10 flex flex-col justify-center items-center">

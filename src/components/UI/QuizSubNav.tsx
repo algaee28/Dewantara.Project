@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Menentukan tipe data untuk props
 interface QuizSubNavProps {
   activeTest: string;
