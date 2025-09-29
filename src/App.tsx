@@ -1,6 +1,6 @@
 import { useState, useEffect, FC, lazy, Suspense } from "react";
 import questionBank from "./data/questionBank/index";
-import quotes from "./components/pages/quoteData";
+import quotes from "./pages/quoteData"; // Perbarui path ini
 
 // Tipe Global
 export interface Question {
@@ -74,15 +74,15 @@ const App: FC = () => {
       const questionMap: Record<string, any[]> = {
         ...questionBank,
         campuran: [
-            ...questionBank.verbal, ...questionBank.logical, ...questionBank.figural, 
+            ...(questionBank.verbal || []), ...questionBank.logical, ...questionBank.figural, 
             ...questionBank.numerik, ...questionBank.digitsymbol
         ],
         tpd_simulasi: [
-            ...questionBank.verbal, ...questionBank.logical, ...questionBank.figural, 
+            ...(questionBank.verbal || []), ...questionBank.logical, ...questionBank.figural, 
             ...questionBank.numerik, ...questionBank.digitsymbol
         ],
         english_simulasi: [
-            ...questionBank.grammar, ...questionBank.reading, ...questionBank.vocab
+            ...(questionBank.grammar || []), ...questionBank.reading, ...questionBank.vocab
         ],
         ekonomi_simulasi: questionBank.ekonomi,
         akuntansi_simulasi: questionBank.akuntansi,

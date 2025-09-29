@@ -1,6 +1,7 @@
 // src/pages/HomePage.tsx
 import { FC } from 'react';
-import { NavMenu } from '../App'; // Kita akan ekspor NavMenu dari App.tsx nanti
+import NavMenu from '../../components/UI/NavMenu';
+import { Mode } from '../../App';
 
 interface Quote {
   header: string;
@@ -9,14 +10,14 @@ interface Quote {
 }
 
 interface HomePageProps {
-  activeMenu: any;
-  setMode: (mode: any) => void;
-  setActiveMenu: (menu: any) => void;
+  activeMenu: Mode;
+  setMode: (mode: Mode) => void;
+  setActiveMenu: (menu: Mode) => void;
   randomQuote: Quote;
 }
 
 const HomePage: FC<HomePageProps> = ({ activeMenu, setMode, setActiveMenu, randomQuote }) => (
-    <div
+  <div
     className="relative min-h-screen flex flex-col items-center justify-between p-4 sm:p-10 bg-cover bg-center text-white"
     style={{ backgroundImage: "url('/assets/background1.jpeg')" }}
   >
