@@ -1,10 +1,10 @@
-interface QuizCardProps {
+interface QuizCardsProps {
   activeTest: string;
   startQuiz: (count: number, type: string, time: number | null) => void;
   setShowAlert: (showAlert: boolean) => void;
 }
 
-const QuizCard: React.FC<QuizCardProps> = ({ activeTest, startQuiz }) => {
+const QuizCards: React.FC<QuizCardsProps> = ({ activeTest, startQuiz }) => {
   const allCards: Record<string, { type: string; title: string; desc: string; gradient: string }[]> = {
     fundamental: [
       {
