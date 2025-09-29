@@ -18,7 +18,7 @@ const questionGenerators = {
       { op: (a: number, b: number) => (a + b) * 2, name: "Kombinasi", explanation: "Pola: (Elemen 1 + Elemen 2) × 2." },
     ];
 
-    let pattern = baseOperations[0]; // Inisialisasi
+    let pattern = baseOperations[0];
     const orientation = Math.random() > 0.5 ? "row" : "column";
     let matrix: (number | string)[][] = [];
     let answer = 0;

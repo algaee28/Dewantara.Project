@@ -1,6 +1,15 @@
 // src/components/UI/Card.tsx
 
-const Card = ({ children, title, imageUrl, onClick }) => {
+import { FC, ReactNode } from "react";
+
+interface CardProps {
+  children: ReactNode;
+  title: string;
+  imageUrl: string;
+  onClick: () => void;
+}
+
+const Card: FC<CardProps> = ({ children, title, imageUrl, onClick }) => {
   return (
     <button
       onClick={onClick}
@@ -16,6 +25,7 @@ const Card = ({ children, title, imageUrl, onClick }) => {
           {title}
         </span>
       </div>
+      {children}
     </button>
   );
 };
