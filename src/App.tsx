@@ -1,6 +1,6 @@
 import { useState, useEffect, FC, lazy, Suspense } from "react";
 import questionBank from "./data/questionBank/index";
-import quotes from "./pages/quoteData"; // Perbarui path ini
+import quotes from "./components/pages/quoteData"; // Perbarui path ini
 
 // Tipe Global
 export interface Question {
