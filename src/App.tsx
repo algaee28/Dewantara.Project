@@ -26,7 +26,7 @@ interface Question {
   question: string;
   imageUrl?: string;
   matrixData?: (string | number)[][];
-  options: Record<string, string | number>;
+  options: Record<string, any>;
   correct: string;
   explanation?: string;
   explanationUrl?: string;
@@ -1423,8 +1423,8 @@ const App = () => {
     }, [mode, quizCompleted, timeLimit, timeRemaining]);
   
     const generateQuestions = (count: number, quizType: string): Question[] => {
-      let sourceQuestions: Question[] = [];
-      const questionBankMapping: Record<string, Question[]> = {
+      let sourceQuestions: any[] = [];
+      const questionBankMapping: Record<string, any[]> = {
         verbal: questionBank.verbal || [],
         logika: questionBank.logical || [],
         figural: questionBank.figural || [],
@@ -1471,7 +1471,7 @@ const App = () => {
         () => Math.random() - 0.5
       );
   
-      const selectedQuestions = [];
+      const selectedQuestions: Question[] = [];
       for (let i = 0; i < count; i++) {
         selectedQuestions.push(shuffledQuestions[i % shuffledQuestions.length]);
       }
@@ -1568,8 +1568,8 @@ const App = () => {
             startQuiz={startQuiz}
             showAlert={showAlert}
             setShowAlert={setShowAlert}
-          />
-        );
+        />
+      );
       case "quizInProgress":
         return (
           <QuizInProgressPage
