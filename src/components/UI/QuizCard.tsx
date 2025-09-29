@@ -1,10 +1,10 @@
-interface QuizCardsProps {
+interface QuizCardProps {
   activeTest: string;
   startQuiz: (count: number, type: string, time: number | null) => void;
   setShowAlert: (showAlert: boolean) => void;
 }
 
-const QuizCards: React.FC<QuizCardsProps> = ({ activeTest, startQuiz }) => {
+const QuizCard: React.FC<QuizCardProps> = ({ activeTest, startQuiz }) => {
   const allCards: Record<string, { type: string; title: string; desc: string; gradient: string }[]> = {
     fundamental: [
       {
@@ -108,4 +108,4 @@ const QuizCards: React.FC<QuizCardsProps> = ({ activeTest, startQuiz }) => {
   );
 };
 
-export default QuizCards;
+export default QuizCard;
