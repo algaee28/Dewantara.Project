@@ -8,8 +8,8 @@ import {
   RefreshCw,
   Info,
 } from "lucide-react";
-import questionBank from "./data/questionBank/index.ts";
-import quotes from "./components/pages/quoteData.ts";
+import questionBank from "./data/questionBank/index";
+import quotes from "./components/pages/quoteData";
 
 // =====================================
 // DEFINISI TIPE (TYPE DEFINITIONS)
@@ -26,7 +26,7 @@ interface Question {
   question: string;
   imageUrl?: string;
   matrixData?: (string | number)[][];
-  options: Record<string, string>;
+  options: Record<string, string | number>;
   correct: string;
   explanation?: string;
   explanationUrl?: string;
@@ -39,7 +39,6 @@ type ActiveTest = "fundamental" | "ekonomi" | "english";
 // KOMPONEN-KOMPONEN TERPISAH
 // =====================================
 
-// Tipe Props untuk NavMenu
 interface NavMenuProps {
   activeMenu: Mode;
   setMode: (mode: Mode) => void;
@@ -54,12 +53,12 @@ const NavMenu: FC<NavMenuProps> = ({ activeMenu, setMode, setActiveMenu }) => (
       backdropFilter: "blur(5px)",
     }}
   >
-    {["home", "quiz", "simulasi", "tips"].map((item) => (
+    {(["home", "quiz", "simulasi", "tips"] as const).map((item) => (
       <button
         key={item}
         onClick={() => {
-          setMode(item as Mode);
-          setActiveMenu(item as Mode);
+          setMode(item);
+          setActiveMenu(item);
         }}
         className={`px-3 py-2 text-sm sm:px-6 sm:py-2 mx-1 rounded-xl sm:text-lg transition-all duration-300 ${
           activeMenu === item
@@ -73,7 +72,6 @@ const NavMenu: FC<NavMenuProps> = ({ activeMenu, setMode, setActiveMenu }) => (
   </nav>
 );
 
-// Tipe Props untuk QuizSubNav
 interface QuizSubNavProps {
   activeTest: ActiveTest;
   setActiveTest: (test: ActiveTest) => void;
@@ -87,10 +85,10 @@ const QuizSubNav: FC<QuizSubNavProps> = ({ activeTest, setActiveTest }) => (
       backdropFilter: "blur(10px)",
     }}
   >
-    {["fundamental", "ekonomi", "english"].map((test) => (
+    {(["fundamental", "ekonomi", "english"] as const).map((test) => (
       <button
         key={test}
-        onClick={() => setActiveTest(test as ActiveTest)}
+        onClick={() => setActiveTest(test)}
         className={`px-4 py-2 text-sm sm:px-6 sm:py-3 mx-1 rounded-xl sm:text-lg transition-all duration-300 ${
           activeTest === test
             ? "font-bold"
@@ -103,7 +101,6 @@ const QuizSubNav: FC<QuizSubNavProps> = ({ activeTest, setActiveTest }) => (
   </div>
 );
 
-// Tipe Props untuk QuizCard
 interface QuizCardProps {
   title: string;
   gradient?: string;
@@ -139,7 +136,6 @@ const QuizCard: FC<QuizCardProps> = ({ title, gradient, desc, onClick }) => (
   </button>
 );
 
-// Tipe Props untuk ComingSoonAlert
 interface ComingSoonAlertProps {
   onClose: () => void;
 }
@@ -171,7 +167,6 @@ const ComingSoonAlert: FC<ComingSoonAlertProps> = ({ onClose }) => (
   </div>
 );
 
-// Tipe Props untuk GlassmorphismModal
 interface GlassmorphismModalProps {
   title: string;
   content: string;
@@ -179,34 +174,34 @@ interface GlassmorphismModalProps {
 }
 
 const GlassmorphismModal: FC<GlassmorphismModalProps> = ({ title, content, onClose }) => (
-  <div
-    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-    onClick={onClose}
-  >
     <div
-      className="p-6 sm:p-8 rounded-2xl border border-white border-opacity-30 shadow-lg w-full max-w-2xl mx-auto text-white"
-      style={{
-        background: "rgba(255, 255, 255, 0.1)",
-        backdropFilter: "blur(10px)",
-      }}
-      onClick={(e) => e.stopPropagation()}
+        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+        onClick={onClose}
     >
-      <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-center">
-        {title}
-      </h2>
-      <p className="text-sm sm:text-base leading-relaxed opacity-90">
-        {content}
-      </p>
-      <div className="flex justify-center mt-6">
-        <button
-          onClick={onClose}
-          className="px-6 py-2 rounded-full font-semibold bg-gray-700 bg-opacity-50 hover:bg-opacity-70 transition-colors duration-200"
+        <div
+            className="p-6 sm:p-8 rounded-2xl border border-white border-opacity-30 shadow-lg w-full max-w-2xl mx-auto text-white"
+            style={{
+                background: "rgba(255, 255, 255, 0.1)",
+                backdropFilter: "blur(10px)",
+            }}
+            onClick={(e) => e.stopPropagation()}
         >
-          Tutup
-        </button>
-      </div>
+            <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-center">
+                {title}
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed opacity-90 whitespace-pre-wrap">
+                {content}
+            </p>
+            <div className="flex justify-center mt-6">
+                <button
+                    onClick={onClose}
+                    className="px-6 py-2 rounded-full font-semibold bg-gray-700 bg-opacity-50 hover:bg-opacity-70 transition-colors duration-200"
+                >
+                    Tutup
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
 );
 
 // =====================================
@@ -237,22 +232,22 @@ const HomePage: FC<HomePageProps> = ({ activeMenu, setMode, setActiveMenu, rando
         className="text-4xl sm:text-6xl font-bold mb-4 text-white"
         style={{
           fontFamily: "'Playfair Display', serif",
-          lineHeight: "1",
+          lineHeight: "1.2",
         }}
       >
         {randomQuote.header}
       </h1>
       <p
-        className="text-md sm:text-xl font-regular mb-4 text-white opacity-90"
+        className="text-md sm:text-xl font-regular mb-8 text-white opacity-90"
         style={{
           fontFamily: "'Playfair Display', serif",
-          lineHeight: "1.3",
+          lineHeight: "1.5",
         }}
       >
         {randomQuote.subHeader}
       </p>
       <p
-        className="text-sm sm:text-xl font-regular italic text-white opacity-70"
+        className="text-lg sm:text-2xl font-semibold italic text-white opacity-80"
         style={{ fontFamily: "'Playfair Display', serif" }}
       >
         {randomQuote.bottomText}
@@ -282,42 +277,37 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({
   showAlert,
   setShowAlert,
 }) => {
-  const allCards = {
+  const allCards: Record<ActiveTest, { type: string; title: string; desc: string; gradient: string }[]> = {
     fundamental: [
       {
         type: "logika",
         title: "Logic",
         desc: "Analitis & Silogisme",
-        gradient:
-          "radial-gradient(circle at 30% 30%, rgba(255,150,100,0.7), transparent 70%), linear-gradient(135deg, #0d0d0f, #2b0a0a)",
+        gradient: "radial-gradient(circle at 30% 30%, rgba(255,150,100,0.7), transparent 70%), linear-gradient(135deg, #0d0d0f, #2b0a0a)",
       },
       {
         type: "verbal",
         title: "Verbal",
         desc: "Sinonim & Antonim",
-        gradient:
-          "radial-gradient(circle at 70% 40%, rgba(255,220,180,0.6), transparent 70%), linear-gradient(135deg, #0a0f0f, #1a1f2e)",
+        gradient: "radial-gradient(circle at 70% 40%, rgba(255,220,180,0.6), transparent 70%), linear-gradient(135deg, #0a0f0f, #1a1f2e)",
       },
       {
         type: "figural",
         title: "Figural",
         desc: "Pola Gambar & Rotasi",
-        gradient:
-          "radial-gradient(circle at 40% 60%, rgba(134,239,172,0.6), transparent 65%), linear-gradient(135deg, #0a0f0d, #1a3325)",
+        gradient: "radial-gradient(circle at 40% 60%, rgba(134,239,172,0.6), transparent 65%), linear-gradient(135deg, #0a0f0d, #1a3325)",
       },
       {
         type: "numerik",
         title: "Numeric",
         desc: "Matriks",
-        gradient:
-          "radial-gradient(circle at 60% 30%, rgba(248,232,166,0.6), transparent 70%), linear-gradient(135deg, #0d0a0a, #2e291a)",
+        gradient: "radial-gradient(circle at 60% 30%, rgba(248,232,166,0.6), transparent 70%), linear-gradient(135deg, #0d0a0a, #2e291a)",
       },
       {
         type: "digitsymbol",
         title: "Digit Symbol",
         desc: "Coding Cepat Simbol-Angka",
-        gradient:
-          "radial-gradient(circle at 40% 70%, rgba(180,240,230,0.5), transparent 70%), linear-gradient(135deg, #0f0a0a, #1a1f2e)",
+        gradient: "radial-gradient(circle at 40% 70%, rgba(180,240,230,0.5), transparent 70%), linear-gradient(135deg, #0f0a0a, #1a1f2e)",
       },
     ],
     ekonomi: [
@@ -325,22 +315,19 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({
         type: "ekonomi",
         title: "Economy",
         desc: "Teori & Kebijakan Umum",
-        gradient:
-          "radial-gradient(circle at 40% 30%, rgba(196,181,253,0.6), transparent 70%), linear-gradient(135deg, #0a0a1a, #201c2e)",
+        gradient: "radial-gradient(circle at 40% 30%, rgba(196,181,253,0.6), transparent 70%), linear-gradient(135deg, #0a0a1a, #201c2e)",
       },
       {
         type: "bank",
         title: "Banking",
         desc: "Prinsip Dasar Perbankan",
-        gradient:
-          "radial-gradient(circle at 70% 50%, rgba(255,107,107,0.6), transparent 70%), linear-gradient(135deg, #0a0a0a, #1f1c2b)",
+        gradient: "radial-gradient(circle at 70% 50%, rgba(255,107,107,0.6), transparent 70%), linear-gradient(135deg, #0a0a0a, #1f1c2b)",
       },
       {
         type: "akuntansi",
         title: "Accounting",
-        desc: "Basic - adnvance accounting",
-        gradient:
-          "radial-gradient(circle at 50% 60%, rgba(255,200,200,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2a1f1f)",
+        desc: "Basic - advance accounting",
+        gradient: "radial-gradient(circle at 50% 60%, rgba(255,200,200,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2a1f1f)",
       },
     ],
     english: [
@@ -348,22 +335,19 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({
         type: "grammar",
         title: "Grammar",
         desc: "Tenses & Struktur Kalimat",
-        gradient:
-          "radial-gradient(circle at 60% 30%, rgba(107,176,255,0.6), transparent 70%), linear-gradient(135deg, #0a0a1a, #1a2333)",
+        gradient: "radial-gradient(circle at 60% 30%, rgba(107,176,255,0.6), transparent 70%), linear-gradient(135deg, #0a0a1a, #1a2333)",
       },
       {
         type: "reading",
         title: "Reading",
         desc: "Pemahaman Teks & Inferensi",
-        gradient:
-          "radial-gradient(circle at 40% 70%, rgba(255,218,185,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2b1f1a)",
+        gradient: "radial-gradient(circle at 40% 70%, rgba(255,218,185,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2b1f1a)",
       },
       {
         type: "vocab",
         title: "Vocabulary",
         desc: "Kosakata & Idiom",
-        gradient:
-          "radial-gradient(circle at 70% 40%, rgba(255,107,107,0.6), transparent 65%), linear-gradient(135deg, #0a0a0f, #2a1a1a)",
+        gradient: "radial-gradient(circle at 70% 40%, rgba(255,107,107,0.6), transparent 65%), linear-gradient(135deg, #0a0a0f, #2a1a1a)",
       },
     ],
   };
@@ -411,12 +395,12 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({
 };
 
 interface SimulationPageProps {
-    activeMenu: Mode;
-    setMode: (mode: Mode) => void;
-    setActiveMenu: (menu: Mode) => void;
-    startQuiz: (count: number, type: string, time: number | null) => void;
-    showAlert: boolean;
-    setShowAlert: (show: boolean) => void;
+  activeMenu: Mode;
+  setMode: (mode: Mode) => void;
+  setActiveMenu: (menu: Mode) => void;
+  startQuiz: (count: number, type: string, time: number | null) => void;
+  showAlert: boolean;
+  setShowAlert: (show: boolean) => void;
 }
 
 const SimulationPage: FC<SimulationPageProps> = ({
@@ -432,46 +416,41 @@ const SimulationPage: FC<SimulationPageProps> = ({
       type: "tpd_simulasi",
       title: "Fundament",
       desc: "50 Soal / 30 Menit",
-      gradient:
-        "radial-gradient(circle at 40% 70%, rgba(255,120,120,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2b1f1a)",
+      gradient: "radial-gradient(circle at 40% 70%, rgba(255,120,120,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2b1f1a)",
       time: 30 * 60,
       count: 50,
     },
     {
-      type: "ekonomi_simulasi",
-      title: "Economy",
-      desc: "50 Soal / 45 Menit",
-      gradient:
-        "radial-gradient(circle at 40% 70%, rgba(180,240,230,0.5), transparent 70%), linear-gradient(135deg, #0f0a0a, #1a1f2e)",
-      time: 45 * 60,
-      count: 50,
+        type: "ekonomi_simulasi",
+        title: "Economy",
+        desc: "50 Soal / 45 Menit",
+        gradient: "radial-gradient(circle at 40% 70%, rgba(180,240,230,0.5), transparent 70%), linear-gradient(135deg, #0f0a0a, #1a1f2e)",
+        time: 45 * 60,
+        count: 50,
     },
     {
-      type: "bank_simulasi",
-      title: "Banking",
-      desc: "50 Soal / 45 Menit",
-      gradient:
-        "radial-gradient(circle at 40% 70%, rgba(255,210,180,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #1e293b)",
-      time: 45 * 60,
-      count: 50,
+        type: "bank_simulasi",
+        title: "Banking",
+        desc: "50 Soal / 45 Menit",
+        gradient: "radial-gradient(circle at 40% 70%, rgba(255,210,180,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #1e293b)",
+        time: 45 * 60,
+        count: 50,
     },
     {
-      type: "akuntansi_simulasi",
-      title: "Accounting",
-      desc: "50 Soal / 45 Menit",
-      gradient:
-        "radial-gradient(circle at 40% 70%, rgba(196,181,253,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2a1f3d)",
-      time: 45 * 60,
-      count: 50,
+        type: "akuntansi_simulasi",
+        title: "Accounting",
+        desc: "50 Soal / 45 Menit",
+        gradient: "radial-gradient(circle at 40% 70%, rgba(196,181,253,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2a1f3d)",
+        time: 45 * 60,
+        count: 50,
     },
     {
-      type: "english_simulasi",
-      title: "English",
-      desc: "40 Soal / 30 Menit",
-      gradient:
-        "radial-gradient(circle at 40% 70%, rgba(147,197,253,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #1f2937)",
-      time: 30 * 60,
-      count: 40,
+        type: "english_simulasi",
+        title: "English",
+        desc: "40 Soal / 30 Menit",
+        gradient: "radial-gradient(circle at 40% 70%, rgba(147,197,253,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #1f2937)",
+        time: 30 * 60,
+        count: 40,
     },
   ];
 
@@ -529,7 +508,6 @@ interface QuizInProgressPageProps {
   setMode: (mode: Mode) => void;
   setActiveMenu: (menu: Mode) => void;
 }
-
 
 const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
   questions,
@@ -746,8 +724,7 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
             }}
           >
             <h2
-              className="font-regular mb-4 text-white text-md sm:text-lg"
-              style={{ whiteSpace: "pre-wrap" }}
+              className="font-regular mb-4 text-white text-md sm:text-lg whitespace-pre-wrap"
             >
               {currentQ.question}
             </h2>
@@ -792,7 +769,7 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
                     className="max-w-full h-auto rounded-lg shadow-md"
                   />
                 ) : (
-                  <p className="font-regular italic text-white opacity-90 leading-relaxed text-sm sm:text-base">
+                  <p className="font-regular italic text-white opacity-90 leading-relaxed text-sm sm:text-base whitespace-pre-wrap">
                     {currentQ.explanation}
                   </p>
                 )}
@@ -818,6 +795,7 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
   );
 };
 
+
 interface QuizResultsPageProps {
   score: number;
   questions: Question[];
@@ -830,6 +808,7 @@ interface QuizResultsPageProps {
   setMode: (mode: Mode) => void;
   setActiveMenu: (menu: Mode) => void;
 }
+
 
 const QuizResultsPage: FC<QuizResultsPageProps> = ({
   score,
@@ -844,7 +823,7 @@ const QuizResultsPage: FC<QuizResultsPageProps> = ({
   setActiveMenu,
 }) => {
   const getScoreCategory = (s: number, total: number) => {
-    const percentage = (s / total) * 100;
+    const percentage = total > 0 ? (s / total) * 100 : 0;
     if (percentage >= 80)
       return { category: "Sangat Baik", color: "text-green-600", icon: "🏆" };
     if (percentage >= 65)
@@ -876,25 +855,25 @@ const QuizResultsPage: FC<QuizResultsPageProps> = ({
 
   const getQuizTypeDisplay = () => {
     const typeMap: Record<string, string> = {
-      logika: "Fundamental - Logic",
-      verbal: "Fundamental - Verbal",
-      figural: "Fundamental - Figural",
-      numerik: "Fundamental - Numeric",
-      digitsymbol: "Fundamental - Digit Symbol",
-      grammar: "English - Grammar",
-      reading: "English - Reading",
-      vocab: "English - Vocabulary",
-      ekonomi: "Ekonomi - General",
-      bank: "Perbankan",
-      akuntansi: "Akuntansi",
-      campuran: "TPD - Latihan Campuran",
-      tpd_simulasi: "TPD - Simulasi",
-      english_simulasi: "English - Simulasi",
-      ekonomi_simulasi: "Ekonomi - Simulasi",
-      akuntansi_simulasi: "Akuntansi - Simulasi",
-      bank_simulasi: "Bank - Simulasi",
-    };
-    return typeMap[currentQuizType] || "Quiz";
+        logika: "Fundamental - Logic",
+        verbal: "Fundamental - Verbal",
+        figural: "Fundamental - Figural",
+        numerik: "Fundamental - Numeric",
+        digitsymbol: "Fundamental - Digit Symbol",
+        grammar: "English - Grammar",
+        reading: "English - Reading",
+        vocab: "English - Vocabulary",
+        ekonomi: "Ekonomi - General",
+        bank: "Perbankan",
+        akuntansi: "Akuntansi",
+        campuran: "TPD - Latihan Campuran",
+        tpd_simulasi: "TPD - Simulasi",
+        english_simulasi: "English - Simulasi",
+        ekonomi_simulasi: "Ekonomi - Simulasi",
+        akuntansi_simulasi: "Akuntansi - Simulasi",
+        bank_simulasi: "Bank - Simulasi",
+      };
+      return typeMap[currentQuizType] || "Quiz";
   };
 
   const { category, icon } = getScoreCategory(score, questions.length);
@@ -913,7 +892,7 @@ const QuizResultsPage: FC<QuizResultsPageProps> = ({
     summaryData = typeMap[currentQuizType]
       .map((type) => {
         const { correct, total } = calculateTypeScore((qType) =>
-          qType.includes(type)
+          qType.toLowerCase().includes(type)
         );
         return {
           type: type.charAt(0).toUpperCase() + type.slice(1),
@@ -971,7 +950,7 @@ const QuizResultsPage: FC<QuizResultsPageProps> = ({
                 {score}/{questions.length}
               </p>
               <p className="text-xs sm:text-sm text-white opacity-80">
-                {Math.round((score / questions.length) * 100)}% benar
+                {questions.length > 0 ? Math.round((score / questions.length) * 100) : 0}% benar
               </p>
             </div>
 
@@ -1027,6 +1006,8 @@ const QuizResultsPage: FC<QuizResultsPageProps> = ({
                 className={`grid gap-4 ${
                   summaryData.length === 3
                     ? "grid-cols-3"
+                    : summaryData.length === 5
+                    ? "grid-cols-2 md:grid-cols-5"
                     : summaryData.length === 4
                     ? "grid-cols-2 md:grid-cols-4"
                     : "grid-cols-2"
@@ -1106,12 +1087,12 @@ const QuizResultsPage: FC<QuizResultsPageProps> = ({
   );
 };
 
+
 interface TipsPageProps {
   activeMenu: Mode;
   setMode: (mode: Mode) => void;
   setActiveMenu: (menu: Mode) => void;
 }
-
 
 const TipsPage: FC<TipsPageProps> = ({ activeMenu, setMode, setActiveMenu }) => {
   const tipsData: Record<string, string> = {
@@ -1163,8 +1144,7 @@ const TipsPage: FC<TipsPageProps> = ({ activeMenu, setMode, setActiveMenu }) => 
       text: "Tips umum untuk mengelola waktu dan pola pikir.",
       contentKey: "Panduan & Strategi",
       style: {
-        background:
-          "linear-gradient(135deg, rgba(255,107,107,0.8), rgba(248,232,166,0.8))",
+        background: "linear-gradient(135deg, rgba(255,107,107,0.8), rgba(248,232,166,0.8))",
       },
       isExternal: false,
     },
@@ -1173,48 +1153,43 @@ const TipsPage: FC<TipsPageProps> = ({ activeMenu, setMode, setActiveMenu }) => 
       text: "Asah kemampuan analogi dan sinonim.",
       contentKey: "Tips Verbal",
       style: {
-        background:
-          "linear-gradient(135deg, rgba(178,240,231,0.8), rgba(107,176,255,0.8))",
+        background: "linear-gradient(135deg, rgba(178,240,231,0.8), rgba(107,176,255,0.8))",
       },
-       isExternal: false,
+      isExternal: false,
     },
     {
       title: "Tips Numerik",
       text: "Pahami deret angka dan pola matriks.",
       contentKey: "Tips Numerik",
       style: {
-        background:
-          "linear-gradient(135deg, rgba(255,182,193,0.8), rgba(161,161,230,0.8))",
+        background: "linear-gradient(135deg, rgba(255,182,193,0.8), rgba(161,161,230,0.8))",
       },
-       isExternal: false,
+      isExternal: false,
     },
     {
       title: "Tips Figural",
       text: "Latih mata untuk rotasi dan cerminan.",
       contentKey: "Tips Figural",
       style: {
-        background:
-          "linear-gradient(135deg, rgba(255,218,185,0.8), rgba(255,176,176,0.8))",
+        background: "linear-gradient(135deg, rgba(255,218,185,0.8), rgba(255,176,176,0.8))",
       },
-       isExternal: false,
+      isExternal: false,
     },
     {
       title: "Tips Logic",
       text: "Asah kemampuan penalaran dan silogisme.",
       contentKey: "Tips Logic",
       style: {
-        background:
-          "linear-gradient(135deg, rgba(186,230,253,0.8), rgba(147,197,253,0.8))",
+        background: "linear-gradient(135deg, rgba(186,230,253,0.8), rgba(147,197,253,0.8))",
       },
-       isExternal: false,
+      isExternal: false,
     },
     {
       title: "Manifesto",
       text: "Archetype in notion.",
       contentKey: "Catatan & Panduan",
       style: {
-        background:
-          "linear-gradient(135deg, rgba(196,181,253,0.8), rgba(167,139,250,0.8))",
+        background: "linear-gradient(135deg, rgba(196,181,253,0.8), rgba(167,139,250,0.8))",
       },
       isExternal: true,
       link: "https://www.notion.so/Manifesto-24d039cd78ea80ab9417ceb7ee4d5bfe",
@@ -1224,8 +1199,7 @@ const TipsPage: FC<TipsPageProps> = ({ activeMenu, setMode, setActiveMenu }) => 
       text: "Download buku referensi dari Drive.",
       contentKey: "Koleksi Buku",
       style: {
-        background:
-          "linear-gradient(135deg, rgba(134,239,172,0.8), rgba(74,222,128,0.8))",
+        background: "linear-gradient(135deg, rgba(134,239,172,0.8), rgba(74,222,128,0.8))",
       },
       isExternal: true,
       link: "LINK_KE_GOOGLE_DRIVE_ANDA",
@@ -1235,8 +1209,7 @@ const TipsPage: FC<TipsPageProps> = ({ activeMenu, setMode, setActiveMenu }) => 
       text: "Tanya konsep sulit ke Gemini AI.",
       contentKey: "AI Assistant",
       style: {
-        background:
-          "linear-gradient(135deg, rgba(254,215,170,0.8), rgba(251,191,36,0.8))",
+        background: "linear-gradient(135deg, rgba(254,215,170,0.8), rgba(251,191,36,0.8))",
       },
       isExternal: true,
       link: "https://gemini.google.com/",
@@ -1402,7 +1375,6 @@ const TipsPage: FC<TipsPageProps> = ({ activeMenu, setMode, setActiveMenu }) => 
     </div>
   );
 };
-
 
 // =====================================
 // KOMPONEN UTAMA APP.tsx
