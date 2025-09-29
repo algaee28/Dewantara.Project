@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import {
   Clock,
   CheckCircle,
@@ -12,11 +12,41 @@ import questionBank from "./data/questionBank/index.ts";
 import quotes from "./components/pages/quoteData.ts";
 
 // =====================================
+// DEFINISI TIPE (TYPE DEFINITIONS)
+// =====================================
+
+interface Quote {
+  header: string;
+  subHeader: string;
+  bottomText: string;
+}
+
+interface Question {
+  type: string;
+  question: string;
+  imageUrl?: string;
+  matrixData?: (string | number)[][];
+  options: Record<string, string>;
+  correct: string;
+  explanation?: string;
+  explanationUrl?: string;
+}
+
+type Mode = "home" | "quiz" | "simulasi" | "tips" | "quizInProgress" | "quizResults";
+type ActiveTest = "fundamental" | "ekonomi" | "english";
+
+// =====================================
 // KOMPONEN-KOMPONEN TERPISAH
 // =====================================
 
-// Navigasi Utama
-const NavMenu = ({ activeMenu, setMode, setActiveMenu }) => (
+// Tipe Props untuk NavMenu
+interface NavMenuProps {
+  activeMenu: Mode;
+  setMode: (mode: Mode) => void;
+  setActiveMenu: (menu: Mode) => void;
+}
+
+const NavMenu: FC<NavMenuProps> = ({ activeMenu, setMode, setActiveMenu }) => (
   <nav
     className="px-1 py-1 rounded-2xl border border-white border-opacity-15 shadow-lg text-white"
     style={{
@@ -28,8 +58,8 @@ const NavMenu = ({ activeMenu, setMode, setActiveMenu }) => (
       <button
         key={item}
         onClick={() => {
-          setMode(item);
-          setActiveMenu(item);
+          setMode(item as Mode);
+          setActiveMenu(item as Mode);
         }}
         className={`px-3 py-2 text-sm sm:px-6 sm:py-2 mx-1 rounded-xl sm:text-lg transition-all duration-300 ${
           activeMenu === item
@@ -43,8 +73,13 @@ const NavMenu = ({ activeMenu, setMode, setActiveMenu }) => (
   </nav>
 );
 
-// Pilihan Sub-Navigasi Quiz
-const QuizSubNav = ({ activeTest, setActiveTest }) => (
+// Tipe Props untuk QuizSubNav
+interface QuizSubNavProps {
+  activeTest: ActiveTest;
+  setActiveTest: (test: ActiveTest) => void;
+}
+
+const QuizSubNav: FC<QuizSubNavProps> = ({ activeTest, setActiveTest }) => (
   <div
     className="px-2 py-2 rounded-2xl border border-white border-opacity-30 shadow-lg text-white mb-8 flex flex-wrap justify-center gap-2"
     style={{
@@ -55,7 +90,7 @@ const QuizSubNav = ({ activeTest, setActiveTest }) => (
     {["fundamental", "ekonomi", "english"].map((test) => (
       <button
         key={test}
-        onClick={() => setActiveTest(test)}
+        onClick={() => setActiveTest(test as ActiveTest)}
         className={`px-4 py-2 text-sm sm:px-6 sm:py-3 mx-1 rounded-xl sm:text-lg transition-all duration-300 ${
           activeTest === test
             ? "font-bold"
@@ -68,34 +103,34 @@ const QuizSubNav = ({ activeTest, setActiveTest }) => (
   </div>
 );
 
-// Komponen Kartu Kuis/Simulasi
-const QuizCard = ({ title, gradient, desc, onClick }) => (
+// Tipe Props untuk QuizCard
+interface QuizCardProps {
+  title: string;
+  gradient?: string;
+  desc: string;
+  onClick: () => void;
+}
+
+const QuizCard: FC<QuizCardProps> = ({ title, gradient, desc, onClick }) => (
   <button
     onClick={onClick}
     className="transition-transform hover:scale-105 w-36 sm:w-46 xl:w-56 flex-shrink-0"
   >
     <div
-      // Padding dikurangi lagi: p-3 -> p-2
       className="w-full h-auto aspect-[3/4] rounded-2xl overflow-hidden relative shadow-2xl flex flex-col justify-end p-3 sm:p-5"
       style={{
         background: gradient || "rgba(255, 255, 255, 0.1)",
         backdropFilter: "blur(5px)",
       }}
     >
-      {/* Tambahkan Overlay Glassmorphism untuk Teks */}
       <div
         className="absolute inset-0 bg-black bg-opacity-10"
         style={{ backdropFilter: "blur(5px)" }}
       ></div>
-
-      {/* Konten Teks */}
       <div className="relative z-8 text-left">
-        {/* JUDUL: text-base di HP, sm:text-2xl di Layar Sedang/Besar (Dikecilkan) */}
         <h3 className="text-base sm:text-xl font-semibold mb-0.5 leading-tight">
           {title}
         </h3>
-
-        {/* DESKRIPSI: text-xs di HP, sm:text-sm di Layar Sedang/Besar */}
         <p className="text-xs sm:text-sm font-light opacity-90 leading-tight">
           {desc}
         </p>
@@ -104,8 +139,12 @@ const QuizCard = ({ title, gradient, desc, onClick }) => (
   </button>
 );
 
-// Komponen Alert "Segera Hadir"
-const ComingSoonAlert = ({ onClose }) => (
+// Tipe Props untuk ComingSoonAlert
+interface ComingSoonAlertProps {
+  onClose: () => void;
+}
+
+const ComingSoonAlert: FC<ComingSoonAlertProps> = ({ onClose }) => (
   <div
     className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
     onClick={onClose}
@@ -132,8 +171,14 @@ const ComingSoonAlert = ({ onClose }) => (
   </div>
 );
 
-// Komponen Modal Glassmorphism
-const GlassmorphismModal = ({ title, content, onClose }) => (
+// Tipe Props untuk GlassmorphismModal
+interface GlassmorphismModalProps {
+  title: string;
+  content: string;
+  onClose: () => void;
+}
+
+const GlassmorphismModal: FC<GlassmorphismModalProps> = ({ title, content, onClose }) => (
   <div
     className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
     onClick={onClose}
@@ -168,7 +213,14 @@ const GlassmorphismModal = ({ title, content, onClose }) => (
 // HALAMAN-HALAMAN APLIKASI
 // =====================================
 
-const HomePage = ({ activeMenu, setMode, setActiveMenu, randomQuote }) => (
+interface HomePageProps {
+  activeMenu: Mode;
+  setMode: (mode: Mode) => void;
+  setActiveMenu: (menu: Mode) => void;
+  randomQuote: Quote;
+}
+
+const HomePage: FC<HomePageProps> = ({ activeMenu, setMode, setActiveMenu, randomQuote }) => (
   <div
     className="relative min-h-screen flex flex-col items-center justify-between p-4 sm:p-10 bg-cover bg-center text-white"
     style={{ backgroundImage: "url('/assets/background1.jpeg')" }}
@@ -209,9 +261,18 @@ const HomePage = ({ activeMenu, setMode, setActiveMenu, randomQuote }) => (
   </div>
 );
 
-// Di dalam QuizSelectPage (App.tsx)
+interface QuizSelectPageProps {
+  activeMenu: Mode;
+  setMode: (mode: Mode) => void;
+  setActiveMenu: (menu: Mode) => void;
+  activeSubMenu: ActiveTest;
+  setActiveSubMenu: (submenu: ActiveTest) => void;
+  startQuiz: (count: number, type: string, time: number | null) => void;
+  showAlert: boolean;
+  setShowAlert: (show: boolean) => void;
+}
 
-const QuizSelectPage = ({
+const QuizSelectPage: FC<QuizSelectPageProps> = ({
   activeMenu,
   setMode,
   setActiveMenu,
@@ -349,7 +410,16 @@ const QuizSelectPage = ({
   );
 };
 
-const SimulationPage = ({
+interface SimulationPageProps {
+    activeMenu: Mode;
+    setMode: (mode: Mode) => void;
+    setActiveMenu: (menu: Mode) => void;
+    startQuiz: (count: number, type: string, time: number | null) => void;
+    showAlert: boolean;
+    setShowAlert: (show: boolean) => void;
+}
+
+const SimulationPage: FC<SimulationPageProps> = ({
   activeMenu,
   setMode,
   setActiveMenu,
@@ -361,6 +431,7 @@ const SimulationPage = ({
     {
       type: "tpd_simulasi",
       title: "Fundament",
+      desc: "50 Soal / 30 Menit",
       gradient:
         "radial-gradient(circle at 40% 70%, rgba(255,120,120,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2b1f1a)",
       time: 30 * 60,
@@ -369,6 +440,7 @@ const SimulationPage = ({
     {
       type: "ekonomi_simulasi",
       title: "Economy",
+      desc: "50 Soal / 45 Menit",
       gradient:
         "radial-gradient(circle at 40% 70%, rgba(180,240,230,0.5), transparent 70%), linear-gradient(135deg, #0f0a0a, #1a1f2e)",
       time: 45 * 60,
@@ -377,6 +449,7 @@ const SimulationPage = ({
     {
       type: "bank_simulasi",
       title: "Banking",
+      desc: "50 Soal / 45 Menit",
       gradient:
         "radial-gradient(circle at 40% 70%, rgba(255,210,180,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #1e293b)",
       time: 45 * 60,
@@ -385,6 +458,7 @@ const SimulationPage = ({
     {
       type: "akuntansi_simulasi",
       title: "Accounting",
+      desc: "50 Soal / 45 Menit",
       gradient:
         "radial-gradient(circle at 40% 70%, rgba(196,181,253,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2a1f3d)",
       time: 45 * 60,
@@ -393,6 +467,7 @@ const SimulationPage = ({
     {
       type: "english_simulasi",
       title: "English",
+      desc: "40 Soal / 30 Menit",
       gradient:
         "radial-gradient(circle at 40% 70%, rgba(147,197,253,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #1f2937)",
       time: 30 * 60,
@@ -420,7 +495,6 @@ const SimulationPage = ({
             backdropFilter: "blur(5px)",
           }}
         >
-          {/* Menggunakan flex dan justify-center untuk menempatkan kartu di tengah */}
           <div className="flex flex-wrap gap-4 sm:gap-6 justify-center w-full">
             {simulationCards.map((card) => (
               <QuizCard
@@ -439,7 +513,25 @@ const SimulationPage = ({
   );
 };
 
-const QuizInProgressPage = ({
+
+interface QuizInProgressPageProps {
+  questions: Question[];
+  currentQuestion: number;
+  selectedAnswer: string;
+  showExplanation: boolean;
+  timeLimit: number | null;
+  timeRemaining: number | null;
+  elapsedTime: number;
+  currentQuizType: string;
+  handleSubmitAnswer: () => void;
+  handleNextQuestion: () => void;
+  handleAnswerSelect: (answer: string) => void;
+  setMode: (mode: Mode) => void;
+  setActiveMenu: (menu: Mode) => void;
+}
+
+
+const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
   questions,
   currentQuestion,
   selectedAnswer,
@@ -458,7 +550,7 @@ const QuizInProgressPage = ({
   if (!currentQ) return <div>Loading...</div>;
 
   const getQuizTypeDisplay = () => {
-    const typeMap = {
+    const typeMap: Record<string, string> = {
       logika: "Fundamental - Logic",
       verbal: "Fundamental - Verbal",
       figural: "Fundamental - Figural",
@@ -480,13 +572,13 @@ const QuizInProgressPage = ({
     return typeMap[currentQuizType] || "Quiz";
   };
 
-  const formatTime = (seconds) => {
+  const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
 
-  const renderVisuals = (question) => {
+  const renderVisuals = (question: Question) => {
     if (question.matrixData) {
       return (
         <div className="my-6 flex justify-center">
@@ -521,7 +613,7 @@ const QuizInProgressPage = ({
     return null;
   };
 
-  const renderOptions = (currentQ) => {
+  const renderOptions = (currentQ: Question) => {
     return (
       <div className="space-y-3">
         {Object.entries(currentQ.options).map(([key, value]) => (
@@ -614,7 +706,7 @@ const QuizInProgressPage = ({
             }}
           >
             <Clock className="w-4 h-4" />
-            {timeLimit ? formatTime(timeRemaining) : formatTime(elapsedTime)}
+            {timeLimit ? formatTime(timeRemaining || 0) : formatTime(elapsedTime)}
           </div>
         </div>
       </div>
@@ -655,9 +747,9 @@ const QuizInProgressPage = ({
           >
             <h2
               className="font-regular mb-4 text-white text-md sm:text-lg"
-              style={{ whiteSpace: "pre-wrap" }} // <-- TAMBAHKAN INI
+              style={{ whiteSpace: "pre-wrap" }}
             >
-              {currentQ.question} {/* <-- Teks dikembalikan ke mode biasa */}
+              {currentQ.question}
             </h2>
             {renderVisuals(currentQ)}
             <div className="mb-4 sm:mb-6">{renderOptions(currentQ)}</div>
@@ -691,7 +783,7 @@ const QuizInProgressPage = ({
                 }}
               >
                 <h3 className="font-semibold text-white mb-2 sm:mb-3 text-md sm:text-lg">
-                  💡 Pembahasan:
+                  Pembahasan:
                 </h3>
                 {currentQ.explanationUrl ? (
                   <img
@@ -726,7 +818,20 @@ const QuizInProgressPage = ({
   );
 };
 
-const QuizResultsPage = ({
+interface QuizResultsPageProps {
+  score: number;
+  questions: Question[];
+  totalTime: number;
+  timeLimit: number | null;
+  timeRemaining: number | null;
+  currentQuizType: string;
+  userAnswers: Record<number, string>;
+  startQuiz: (count: number, type: string, time: number | null) => void;
+  setMode: (mode: Mode) => void;
+  setActiveMenu: (menu: Mode) => void;
+}
+
+const QuizResultsPage: FC<QuizResultsPageProps> = ({
   score,
   questions,
   totalTime,
@@ -738,24 +843,24 @@ const QuizResultsPage = ({
   setMode,
   setActiveMenu,
 }) => {
-  const getScoreCategory = (s, total) => {
+  const getScoreCategory = (s: number, total: number) => {
     const percentage = (s / total) * 100;
     if (percentage >= 80)
       return { category: "Sangat Baik", color: "text-green-600", icon: "🏆" };
     if (percentage >= 65)
       return { category: "Baik", color: "text-blue-600", icon: "👍" };
     if (percentage >= 50)
-      return { category: "Cukup", color: "text-yellow-600", icon: "👌" };
-    return { category: "Perlu Latihan", color: "text-red-600", icon: "🕮" };
+      return { category: "Cukup", color: "text-yellow-600", icon: "😐" };
+    return { category: "Perlu Latihan", color: "text-red-600", icon: "📚" };
   };
 
-  const formatTime = (seconds) => {
+  const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
 
-  const calculateTypeScore = (typeFilter) => {
+  const calculateTypeScore = (typeFilter: (type: string) => boolean) => {
     let correct = 0;
     let total = 0;
     questions.forEach((q, questionIndex) => {
@@ -770,7 +875,7 @@ const QuizResultsPage = ({
   };
 
   const getQuizTypeDisplay = () => {
-    const typeMap = {
+    const typeMap: Record<string, string> = {
       logika: "Fundamental - Logic",
       verbal: "Fundamental - Verbal",
       figural: "Fundamental - Figural",
@@ -794,8 +899,8 @@ const QuizResultsPage = ({
 
   const { category, icon } = getScoreCategory(score, questions.length);
 
-  let summaryData = [];
-  const typeMap = {
+  let summaryData: { type: string; correct: number; total: number }[] = [];
+  const typeMap: Record<string, string[]> = {
     tpd_simulasi: ["verbal", "numerik", "logika", "figural", "digitsymbol"],
     campuran: ["verbal", "numerik", "logika", "figural", "digitsymbol"],
     english_simulasi: ["grammar", "reading", "vocab"],
@@ -1001,8 +1106,15 @@ const QuizResultsPage = ({
   );
 };
 
-const TipsPage = ({ activeMenu, setMode, setActiveMenu }) => {
-  const tipsData = {
+interface TipsPageProps {
+  activeMenu: Mode;
+  setMode: (mode: Mode) => void;
+  setActiveMenu: (menu: Mode) => void;
+}
+
+
+const TipsPage: FC<TipsPageProps> = ({ activeMenu, setMode, setActiveMenu }) => {
+  const tipsData: Record<string, string> = {
     "Panduan & Strategi": `
       Manajemen Waktu: Selama tes, usahakan tidak terjebak pada satu soal. Alokasikan waktu per soal, dan jika terlalu sulit, lewati dulu dan kembali lagi nanti. Ini akan memaksimalkan jumlah soal yang bisa Anda jawab.
       
@@ -1041,7 +1153,7 @@ const TipsPage = ({ activeMenu, setMode, setActiveMenu }) => {
     `,
   };
 
-  const [modalContent, setModalContent] = useState(null);
+  const [modalContent, setModalContent] = useState<{title: string, content: string} | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -1054,6 +1166,7 @@ const TipsPage = ({ activeMenu, setMode, setActiveMenu }) => {
         background:
           "linear-gradient(135deg, rgba(255,107,107,0.8), rgba(248,232,166,0.8))",
       },
+      isExternal: false,
     },
     {
       title: "Tips Verbal",
@@ -1063,6 +1176,7 @@ const TipsPage = ({ activeMenu, setMode, setActiveMenu }) => {
         background:
           "linear-gradient(135deg, rgba(178,240,231,0.8), rgba(107,176,255,0.8))",
       },
+       isExternal: false,
     },
     {
       title: "Tips Numerik",
@@ -1072,6 +1186,7 @@ const TipsPage = ({ activeMenu, setMode, setActiveMenu }) => {
         background:
           "linear-gradient(135deg, rgba(255,182,193,0.8), rgba(161,161,230,0.8))",
       },
+       isExternal: false,
     },
     {
       title: "Tips Figural",
@@ -1081,6 +1196,7 @@ const TipsPage = ({ activeMenu, setMode, setActiveMenu }) => {
         background:
           "linear-gradient(135deg, rgba(255,218,185,0.8), rgba(255,176,176,0.8))",
       },
+       isExternal: false,
     },
     {
       title: "Tips Logic",
@@ -1090,6 +1206,7 @@ const TipsPage = ({ activeMenu, setMode, setActiveMenu }) => {
         background:
           "linear-gradient(135deg, rgba(186,230,253,0.8), rgba(147,197,253,0.8))",
       },
+       isExternal: false,
     },
     {
       title: "Manifesto",
@@ -1134,9 +1251,8 @@ const TipsPage = ({ activeMenu, setMode, setActiveMenu }) => {
     setCurrentIndex((prev) => (prev - 1 + allCards.length) % allCards.length);
   };
 
-  const getCardStyle = (index) => {
+  const getCardStyle = (index: number) => {
     const diff = index - currentIndex;
-    const absIndex = Math.abs(diff);
     const totalCards = allCards.length;
     const maxDiff = Math.floor(totalCards / 2);
 
@@ -1167,15 +1283,12 @@ const TipsPage = ({ activeMenu, setMode, setActiveMenu }) => {
     return baseStyle;
   };
 
-  const handleCardClick = (card) => {
-    if (card.isExternal) {
+  const handleCardClick = (card: typeof allCards[0]) => {
+    if (card.isExternal && card.link) {
       window.open(card.link, "_blank");
     } else {
-      setModalContent({
-        title: card.title,
-        content: tipsData[card.contentKey],
-      });
-      setShowModal(true);
+        setModalContent({title: card.title, content: tipsData[card.contentKey]});
+        setShowModal(true);
     }
   };
 
@@ -1279,7 +1392,7 @@ const TipsPage = ({ activeMenu, setMode, setActiveMenu }) => {
         </div>
       </div>
 
-      {showModal && (
+      {showModal && modalContent && (
         <GlassmorphismModal
           title={modalContent.title}
           content={modalContent.content}
@@ -1290,244 +1403,245 @@ const TipsPage = ({ activeMenu, setMode, setActiveMenu }) => {
   );
 };
 
+
 // =====================================
 // KOMPONEN UTAMA APP.tsx
 // =====================================
 
 const App = () => {
-  const [mode, setMode] = useState("home");
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState("");
-  const [showExplanation, setShowExplanation] = useState(false);
-  const [userAnswers, setUserAnswers] = useState({});
-  const [quizCompleted, setQuizCompleted] = useState(false);
-  const [startTime, setStartTime] = useState(null);
-  const [questions, setQuestions] = useState([]);
-  const [timeLimit, setTimeLimit] = useState(null);
-  const [timeRemaining, setTimeRemaining] = useState(null);
-  const [elapsedTime, setElapsedTime] = useState(0);
-  const [randomQuote, setRandomQuote] = useState({});
-  const [activeMenu, setActiveMenu] = useState("home");
-  const [activeSubMenu, setActiveSubMenu] = useState("fundamental");
-  const [currentQuizType, setCurrentQuizType] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
-
-  useEffect(() => {
-    const quote = quotes[Math.floor(Math.random() * quotes.length)];
-    setRandomQuote(quote);
-
-    let timer;
-    if (mode === "quizInProgress" && !quizCompleted) {
-      timer = setInterval(() => {
-        setElapsedTime((prev) => prev + 1);
-        if (timeLimit && timeRemaining > 0) {
-          setTimeRemaining((prev) => {
-            if (prev <= 1) {
-              setMode("quizResults");
-              setQuizCompleted(true);
-              return 0;
-            }
-            return prev - 1;
-          });
-        }
-      }, 1000);
-    }
-
-    return () => clearInterval(timer);
-  }, [mode, quizCompleted, timeLimit, timeRemaining]);
-
-  const generateQuestions = (count, quizType) => {
-    let sourceQuestions = [];
-    const questionBankMapping = {
-      verbal: questionBank.verbal || [],
-      logika: questionBank.logical || [],
-      figural: questionBank.figural || [],
-      numerik: questionBank.numerik || [],
-      digitsymbol: questionBank.digitsymbol || [],
-      grammar: questionBank.grammar || [],
-      reading: questionBank.reading || [],
-      vocab: questionBank.vocab || [],
-      ekonomi: questionBank.ekonomi || [],
-      bank: questionBank.bank || [],
-      akuntansi: questionBank.akuntansi || [],
-      campuran: [
-        ...(questionBank.verbal || []),
-        ...(questionBank.logical || []),
-        ...(questionBank.figural || []),
-        ...(questionBank.numerik || []),
-        ...(questionBank.digitsymbol || []),
-      ],
-      tpd_simulasi: [
-        ...(questionBank.verbal || []),
-        ...(questionBank.logical || []),
-        ...(questionBank.figural || []),
-        ...(questionBank.numerik || []),
-        ...(questionBank.digitsymbol || []),
-      ],
-      english_simulasi: [
-        ...(questionBank.grammar || []),
-        ...(questionBank.reading || []),
-        ...(questionBank.vocab || []),
-      ],
-      ekonomi_simulasi: questionBank.ekonomi || [],
-      akuntansi_simulasi: questionBank.akuntansi || [],
-      bank_simulasi: questionBank.bank || [],
+    const [mode, setMode] = useState<Mode>("home");
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [selectedAnswer, setSelectedAnswer] = useState("");
+    const [showExplanation, setShowExplanation] = useState(false);
+    const [userAnswers, setUserAnswers] = useState<Record<number, string>>({});
+    const [quizCompleted, setQuizCompleted] = useState(false);
+    const [startTime, setStartTime] = useState<number | null>(null);
+    const [questions, setQuestions] = useState<Question[]>([]);
+    const [timeLimit, setTimeLimit] = useState<number | null>(null);
+    const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
+    const [elapsedTime, setElapsedTime] = useState(0);
+    const [randomQuote, setRandomQuote] = useState<Quote>({ header: '', subHeader: '', bottomText: '' });
+    const [activeMenu, setActiveMenu] = useState<Mode>("home");
+    const [activeSubMenu, setActiveSubMenu] = useState<ActiveTest>("fundamental");
+    const [currentQuizType, setCurrentQuizType] = useState("");
+    const [showAlert, setShowAlert] = useState(false);
+  
+    useEffect(() => {
+      const quote = quotes[Math.floor(Math.random() * quotes.length)];
+      setRandomQuote(quote);
+  
+      let timer: NodeJS.Timeout;
+      if (mode === "quizInProgress" && !quizCompleted) {
+        timer = setInterval(() => {
+          setElapsedTime((prev) => prev + 1);
+          if (timeLimit && timeRemaining !== null && timeRemaining > 0) {
+            setTimeRemaining((prev) => {
+              if (prev !== null && prev <= 1) {
+                setMode("quizResults");
+                setQuizCompleted(true);
+                return 0;
+              }
+              return prev !== null ? prev - 1 : 0;
+            });
+          }
+        }, 1000);
+      }
+  
+      return () => clearInterval(timer);
+    }, [mode, quizCompleted, timeLimit, timeRemaining]);
+  
+    const generateQuestions = (count: number, quizType: string): Question[] => {
+      let sourceQuestions: Question[] = [];
+      const questionBankMapping: Record<string, Question[]> = {
+        verbal: questionBank.verbal || [],
+        logika: questionBank.logical || [],
+        figural: questionBank.figural || [],
+        numerik: questionBank.numerik || [],
+        digitsymbol: questionBank.digitsymbol || [],
+        grammar: questionBank.grammar || [],
+        reading: questionBank.reading || [],
+        vocab: questionBank.vocab || [],
+        ekonomi: questionBank.ekonomi || [],
+        bank: questionBank.bank || [],
+        akuntansi: questionBank.akuntansi || [],
+        campuran: [
+          ...(questionBank.verbal || []),
+          ...(questionBank.logical || []),
+          ...(questionBank.figural || []),
+          ...(questionBank.numerik || []),
+          ...(questionBank.digitsymbol || []),
+        ],
+        tpd_simulasi: [
+          ...(questionBank.verbal || []),
+          ...(questionBank.logical || []),
+          ...(questionBank.figural || []),
+          ...(questionBank.numerik || []),
+          ...(questionBank.digitsymbol || []),
+        ],
+        english_simulasi: [
+          ...(questionBank.grammar || []),
+          ...(questionBank.reading || []),
+          ...(questionBank.vocab || []),
+        ],
+        ekonomi_simulasi: questionBank.ekonomi || [],
+        akuntansi_simulasi: questionBank.akuntansi || [],
+        bank_simulasi: questionBank.bank || [],
+      };
+  
+      sourceQuestions = questionBankMapping[quizType] || [];
+  
+      if (sourceQuestions.length === 0) {
+        console.error("Tipe kuis tidak dikenal atau bank soal kosong:", quizType);
+        return [];
+      }
+  
+      const shuffledQuestions = [...sourceQuestions].sort(
+        () => Math.random() - 0.5
+      );
+  
+      const selectedQuestions = [];
+      for (let i = 0; i < count; i++) {
+        selectedQuestions.push(shuffledQuestions[i % shuffledQuestions.length]);
+      }
+  
+      return selectedQuestions;
     };
-
-    sourceQuestions = questionBankMapping[quizType] || [];
-
-    if (sourceQuestions.length === 0) {
-      console.error("Tipe kuis tidak dikenal atau bank soal kosong:", quizType);
-      return [];
-    }
-
-    const shuffledQuestions = [...sourceQuestions].sort(
-      () => Math.random() - 0.5
-    );
-
-    const selectedQuestions = [];
-    for (let i = 0; i < count; i++) {
-      selectedQuestions.push(shuffledQuestions[i % shuffledQuestions.length]);
-    }
-
-    return selectedQuestions;
-  };
-
-  const startQuiz = (count, quizType, time) => {
-    const newQuestions = generateQuestions(count, quizType);
-    setQuestions(newQuestions);
-    setMode("quizInProgress");
-    setStartTime(Date.now());
-    setTimeLimit(time);
-    setTimeRemaining(time);
-    setElapsedTime(0);
-    setCurrentQuizType(quizType);
-    resetQuizState();
-  };
-
-  const resetQuizState = () => {
-    setCurrentQuestion(0);
-    setSelectedAnswer("");
-    setShowExplanation(false);
-    setUserAnswers({});
-    setQuizCompleted(false);
-  };
-
-  const handleAnswerSelect = (answer) => {
-    setSelectedAnswer(answer);
-  };
-
-  const handleSubmitAnswer = () => {
-    if (!selectedAnswer) return;
-    setUserAnswers((prev) => ({
-      ...prev,
-      [currentQuestion]: selectedAnswer,
-    }));
-    setShowExplanation(true);
-  };
-
-  const handleNextQuestion = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion((prev) => prev + 1);
+  
+    const startQuiz = (count: number, quizType: string, time: number | null) => {
+      const newQuestions = generateQuestions(count, quizType);
+      setQuestions(newQuestions);
+      setMode("quizInProgress");
+      setStartTime(Date.now());
+      setTimeLimit(time);
+      setTimeRemaining(time);
+      setElapsedTime(0);
+      setCurrentQuizType(quizType);
+      resetQuizState();
+    };
+  
+    const resetQuizState = () => {
+      setCurrentQuestion(0);
       setSelectedAnswer("");
       setShowExplanation(false);
-    } else {
-      setQuizCompleted(true);
-      setMode("quizResults");
+      setUserAnswers({});
+      setQuizCompleted(false);
+    };
+  
+    const handleAnswerSelect = (answer: string) => {
+      setSelectedAnswer(answer);
+    };
+  
+    const handleSubmitAnswer = () => {
+      if (!selectedAnswer) return;
+      setUserAnswers((prev) => ({
+        ...prev,
+        [currentQuestion]: selectedAnswer,
+      }));
+      setShowExplanation(true);
+    };
+  
+    const handleNextQuestion = () => {
+      if (currentQuestion < questions.length - 1) {
+        setCurrentQuestion((prev) => prev + 1);
+        setSelectedAnswer("");
+        setShowExplanation(false);
+      } else {
+        setQuizCompleted(true);
+        setMode("quizResults");
+      }
+    };
+  
+    const calculateScore = () => {
+      let correct = 0;
+      questions.forEach((q, index) => {
+        if (userAnswers[index] === q.correct) {
+          correct++;
+        }
+      });
+      return correct;
+    };
+  
+    const totalScore = calculateScore();
+    const totalTime = startTime ? Date.now() - startTime : 0;
+  
+    switch (mode) {
+      case "home":
+        return (
+          <HomePage
+            activeMenu={activeMenu}
+            setMode={setMode}
+            setActiveMenu={setActiveMenu}
+            randomQuote={randomQuote}
+          />
+        );
+      case "quiz":
+        return (
+          <QuizSelectPage
+            activeMenu={activeMenu}
+            setMode={setMode}
+            setActiveMenu={setActiveMenu}
+            activeSubMenu={activeSubMenu}
+            setActiveSubMenu={setActiveSubMenu}
+            startQuiz={startQuiz}
+            showAlert={showAlert}
+            setShowAlert={setShowAlert}
+          />
+        );
+      case "simulasi":
+        return (
+          <SimulationPage
+            activeMenu={activeMenu}
+            setMode={setMode}
+            setActiveMenu={setActiveMenu}
+            startQuiz={startQuiz}
+            showAlert={showAlert}
+            setShowAlert={setShowAlert}
+          />
+        );
+      case "quizInProgress":
+        return (
+          <QuizInProgressPage
+            questions={questions}
+            currentQuestion={currentQuestion}
+            selectedAnswer={selectedAnswer}
+            showExplanation={showExplanation}
+            timeLimit={timeLimit}
+            timeRemaining={timeRemaining}
+            elapsedTime={elapsedTime}
+            currentQuizType={currentQuizType}
+            handleSubmitAnswer={handleSubmitAnswer}
+            handleNextQuestion={handleNextQuestion}
+            handleAnswerSelect={handleAnswerSelect}
+            setMode={setMode}
+            setActiveMenu={setActiveMenu}
+          />
+        );
+      case "quizResults":
+        return (
+          <QuizResultsPage
+            score={totalScore}
+            questions={questions}
+            totalTime={totalTime}
+            timeLimit={timeLimit}
+            timeRemaining={timeRemaining}
+            currentQuizType={currentQuizType}
+            userAnswers={userAnswers}
+            startQuiz={startQuiz}
+            setMode={setMode}
+            setActiveMenu={setActiveMenu}
+          />
+        );
+      case "tips":
+        return (
+          <TipsPage
+            activeMenu={activeMenu}
+            setMode={setMode}
+            setActiveMenu={setActiveMenu}
+          />
+        );
+      default:
+        return <div>Mode tidak dikenal.</div>;
     }
   };
-
-  const calculateScore = () => {
-    let correct = 0;
-    questions.forEach((q, index) => {
-      if (userAnswers[index] === q.correct) {
-        correct++;
-      }
-    });
-    return correct;
-  };
-
-  const totalScore = calculateScore();
-  const totalTime = startTime ? Date.now() - startTime : 0;
-
-  switch (mode) {
-    case "home":
-      return (
-        <HomePage
-          activeMenu={activeMenu}
-          setMode={setMode}
-          setActiveMenu={setActiveMenu}
-          randomQuote={randomQuote}
-        />
-      );
-    case "quiz":
-      return (
-        <QuizSelectPage
-          activeMenu={activeMenu}
-          setMode={setMode}
-          setActiveMenu={setActiveMenu}
-          activeSubMenu={activeSubMenu}
-          setActiveSubMenu={setActiveSubMenu}
-          startQuiz={startQuiz}
-          showAlert={showAlert}
-          setShowAlert={setShowAlert}
-        />
-      );
-    case "simulasi":
-      return (
-        <SimulationPage
-          activeMenu={activeMenu}
-          setMode={setMode}
-          setActiveMenu={setActiveMenu}
-          startQuiz={startQuiz}
-          showAlert={showAlert}
-          setShowAlert={setShowAlert}
-        />
-      );
-    case "quizInProgress":
-      return (
-        <QuizInProgressPage
-          questions={questions}
-          currentQuestion={currentQuestion}
-          selectedAnswer={selectedAnswer}
-          showExplanation={showExplanation}
-          timeLimit={timeLimit}
-          timeRemaining={timeRemaining}
-          elapsedTime={elapsedTime}
-          currentQuizType={currentQuizType}
-          handleSubmitAnswer={handleSubmitAnswer}
-          handleNextQuestion={handleNextQuestion}
-          handleAnswerSelect={handleAnswerSelect}
-          setMode={setMode}
-          setActiveMenu={setActiveMenu}
-        />
-      );
-    case "quizResults":
-      return (
-        <QuizResultsPage
-          score={totalScore}
-          questions={questions}
-          totalTime={totalTime}
-          timeLimit={timeLimit}
-          timeRemaining={timeRemaining}
-          currentQuizType={currentQuizType}
-          userAnswers={userAnswers}
-          startQuiz={startQuiz}
-          setMode={setMode}
-          setActiveMenu={setActiveMenu}
-        />
-      );
-    case "tips":
-      return (
-        <TipsPage
-          activeMenu={activeMenu}
-          setMode={setMode}
-          setActiveMenu={setActiveMenu}
-        />
-      );
-    default:
-      return <div>Mode tidak dikenal.</div>;
-  }
-};
-
-export default App;
+  
+  export default App;

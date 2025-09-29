@@ -1,7 +1,5 @@
 // src/components/UI/GlassmorphismCard.tsx
 
-import React from "react";
-
 const GlassmorphismCard = ({ children, className }) => {
   return (
     <div

@@ -1,7 +1,5 @@
 // src/components/UI/Card.tsx
 
-import React from "react";
-
 const Card = ({ children, title, imageUrl, onClick }) => {
   return (
     <button

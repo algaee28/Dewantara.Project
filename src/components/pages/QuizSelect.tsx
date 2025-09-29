@@ -1,6 +1,6 @@
 import React from "react";
 import QuizSubNav from "../QuizSubNav";
-import QuizCards from "../QuizCards";
+import QuizCards from "../QuizCard";
 
 const QuizSelect = ({
   activeSubMenu,
