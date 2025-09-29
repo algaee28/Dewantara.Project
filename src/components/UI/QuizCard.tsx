@@ -1,40 +1,38 @@
-// src/components/UI/QuizCard.tsx
-
-import { FC } from "react";
+import { FC } from 'react';
 
 interface QuizCardProps {
   title: string;
-  imageUrl: string;
+  gradient?: string;
+  desc: string;
   onClick: () => void;
-  isActive: boolean;
 }
 
-const QuizCard: FC<QuizCardProps> = ({ title, imageUrl, onClick, isActive }) => {
-  return (
+const QuizCard: FC<QuizCardProps> = ({ title, gradient, desc, onClick }) => (
+  <button
+    onClick={onClick}
+    className="transition-transform hover:scale-105 w-36 sm:w-46 xl:w-56 flex-shrink-0"
+  >
     <div
-      onClick={onClick}
-      className={`
-        relative w-64 h-96 rounded-3xl overflow-hidden shadow-2xl transform transition-transform duration-300
-        ${isActive ? "scale-105" : "hover:scale-105"}
-      `}
+      className="w-full h-auto aspect-[3/4] rounded-2xl overflow-hidden relative shadow-2xl flex flex-col justify-end p-3 sm:p-5"
+      style={{
+        background: gradient || "rgba(255, 255, 255, 0.1)",
+        backdropFilter: "blur(5px)",
+      }}
     >
-      <img
-        src={imageUrl}
-        alt={title}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
       <div
-        className={`
-        absolute inset-0 flex items-end justify-start p-6
-        ${isActive ? "bg-black bg-opacity-50" : "bg-black bg-opacity-30"}
-      `}
-      >
-        <span className="text-white font-bold text-3xl text-left drop-shadow-lg">
+        className="absolute inset-0 bg-black bg-opacity-10"
+        style={{ backdropFilter: "blur(5px)" }}
+      ></div>
+      <div className="relative z-10 text-left">
+        <h3 className="text-base sm:text-xl font-semibold mb-0.5 leading-tight text-white">
           {title}
-        </span>
+        </h3>
+        <p className="text-xs sm:text-sm font-light opacity-90 leading-tight text-white">
+          {desc}
+        </p>
       </div>
     </div>
-  );
-};
+  </button>
+);
 
 export default QuizCard;
