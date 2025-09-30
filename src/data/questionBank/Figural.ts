@@ -4,7 +4,7 @@ const figuralQuestions = [
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_1.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_1.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -13,12 +13,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "B",
-    explanationUrl: "/assets/Pembahasan_Figural_1.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_1.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_2.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_2.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -27,12 +27,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "E",
-    explanationUrl: "/assets/Pembahasan_Figural_2.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_2.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_3.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_3.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -41,12 +41,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "E",
-    explanationUrl: "/assets/Pembahasan_Figural_3.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_3.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_4.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_4.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -55,12 +55,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "A",
-    explanationUrl: "/assets/Pembahasan_Figural_4.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_4.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_5.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_5.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -69,12 +69,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "D",
-    explanationUrl: "/assets/Pembahasan_Figural_5.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_5.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_6.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_6.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -83,12 +83,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "B",
-    explanationUrl: "/assets/Pembahasan_Figural_6.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_6.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_7.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_7.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -97,12 +97,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "C",
-    explanationUrl: "/assets/Pembahasan_Figural_7.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_7.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_8.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_8.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -111,12 +111,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "B",
-    explanationUrl: "/assets/Pembahasan_Figural_8.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_8.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_9.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_9.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -125,12 +125,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "A",
-    explanationUrl: "/assets/Pembahasan_Figural_9.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_9.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_10.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_10.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -139,12 +139,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "C",
-    explanationUrl: "/assets/Pembahasan_Figural_10.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_10.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_11.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_11.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -153,12 +153,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "A",
-    explanationUrl: "/assets/Pembahasan_Figural_11.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_11.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_12.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_12.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -167,12 +167,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "B",
-    explanationUrl: "/assets/Pembahasan_Figural_12.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_12.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_13.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_13.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -181,12 +181,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "C",
-    explanationUrl: "/assets/Pembahasan_Figural_13.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_13.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_14.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_14.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -195,12 +195,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "A",
-    explanationUrl: "/assets/Pembahasan_Figural_14.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_14.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_15.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_15.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -209,12 +209,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "A",
-    explanationUrl: "/assets/Pembahasan_Figural_15.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_15.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_16.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_16.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -223,12 +223,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "A",
-    explanationUrl: "/assets/Pembahasan_Figural_16.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_16.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_17.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_17.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -237,12 +237,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "A",
-    explanationUrl: "/assets/Pembahasan_Figural_17.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_17.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_18.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_18.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -251,12 +251,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "A",
-    explanationUrl: "/assets/Pembahasan_Figural_18.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_18.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_19.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_19.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -265,12 +265,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "D",
-    explanationUrl: "/assets/Pembahasan_Figural_19.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_19.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_20.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_20.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -279,12 +279,12 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "A",
-    explanationUrl: "/assets/Pembahasan_Figural_20.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_20.jpeg",
   },
   {
     type: "Figural - Pola",
     question: "Tentukan gambar yang benar dari pola berikut:",
-    imageUrl: "/assets/Soal_Figural_21.jpeg",
+    imageUrl: "/assets/soal/figural-general/Soal_Figural_21.jpeg",
     options: {
       A: "Gambar A",
       B: "Gambar B",
@@ -293,7 +293,7 @@ const figuralQuestions = [
       E: "Gambar E",
     },
     correct: "B",
-    explanationUrl: "/assets/Pembahasan_Figural_21.jpeg",
+    explanationUrl: "/assets/pembahasan/figural-general/Pembahasan_Figural_21.jpeg",
   },
 ];
 
