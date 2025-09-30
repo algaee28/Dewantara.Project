@@ -1,5 +1,3 @@
-// src/data/quizData/quoteData.ts
-
 const quotes = [
   {
     header: "Fear Comes From Inexperience, Not Incapability.",
