@@ -20,7 +20,7 @@ export type ActiveTest = "fundamental" | "ekonomi" | "english";
 // Dynamic Imports untuk Code-Splitting
 const HomePage = lazy(() => import('./pages/HomePage'));
 const QuizSelectPage = lazy(() => import('./pages/QuizSelectPage'));
-const SimulationPage = lazy(() => import('./pages/SimulationPage'));
+const SimulationPage = lazy(() => import('./pages/SimulationPage')); // Diperbaiki dari error terakhir
 const TipsPage = lazy(() => import('./pages/TipsPage'));
 const QuizInProgressPage = lazy(() => import('./pages/QuizInProgressPage'));
 const QuizResultsPage = lazy(() => import('./pages/QuizResultsPage'));
