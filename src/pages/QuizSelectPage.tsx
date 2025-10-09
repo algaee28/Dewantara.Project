@@ -3,7 +3,8 @@ import { FC } from 'react';
 import { Info } from 'lucide-react';
 import NavMenu from '../components/UI/NavMenu';
 import QuizCard from '../components/UI/QuizCard';
-import { Mode, ActiveTest } from '../App';
+// IMPORT ActiveTest yang sudah diperbarui dari App.tsx (perlu dipastikan ActiveTest di App.tsx sudah ditambah "perbankan")
+import { Mode, ActiveTest } from '../App'; 
 
 // Definisikan komponen yang relevan di sini jika belum diimpor
 const ComingSoonAlert: FC<{ onClose: () => void }> = ({ onClose }) => (
@@ -16,9 +17,10 @@ const ComingSoonAlert: FC<{ onClose: () => void }> = ({ onClose }) => (
   </div>
 );
 
+// Diperbarui agar mencakup kategori 'perbankan'
 const QuizSubNav: FC<{ activeTest: ActiveTest, setActiveTest: (test: ActiveTest) => void }> = ({ activeTest, setActiveTest }) => (
     <div className="px-2 py-2 rounded-2xl border border-white border-opacity-30 shadow-lg text-white mb-8 flex flex-wrap justify-center gap-2" style={{ background: "rgba(0, 0, 0, 0.2)", backdropFilter: "blur(10px)" }}>
-        {(["fundamental", "ekonomi", "english"] as const).map((test) => (
+        {(["fundamental", "ekonomi", "english", "perbankan"] as const).map((test) => ( // DITAMBAHKAN "perbankan"
             <button key={test} onClick={() => setActiveTest(test)} className={`px-4 py-2 text-sm sm:px-6 sm:py-3 mx-1 rounded-xl sm:text-lg transition-all duration-300 ${activeTest === test ? "font-bold" : "font-normal hover:bg-white hover:bg-opacity-5"}`}>
                 {test.charAt(0).toUpperCase() + test.slice(1)}
             </button>
@@ -38,6 +40,11 @@ interface QuizSelectPageProps {
 }
 
 const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiveMenu, activeSubMenu, setActiveSubMenu, startQuiz, showAlert, setShowAlert }) => {
+    
+    // Gradient yang digunakan (contoh)
+    const deepBlueGradient = "radial-gradient(circle at 70% 50%, rgba(29, 78, 216, 0.6), transparent 70%), linear-gradient(135deg, #0a0a1a, #201c2e)";
+    const lightBlueGradient = "radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.7), transparent 60%), linear-gradient(135deg, #0f0a0a, #1a2333)";
+
     const allCards: Record<ActiveTest, { type: string; title: string; desc: string; gradient: string }[]> = {
         fundamental: [
           { type: "logika", title: "Logic", desc: "Analitis & Silogisme", gradient: "radial-gradient(circle at 30% 30%, rgba(255,150,100,0.7), transparent 70%), linear-gradient(135deg, #0d0d0f, #2b0a0a)" },
@@ -56,6 +63,15 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiv
           { type: "reading", title: "Reading", desc: "Pemahaman Teks & Inferensi", gradient: "radial-gradient(circle at 40% 70%, rgba(255,218,185,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2b1f1a)" },
           { type: "vocab", title: "Vocabulary", desc: "Kosakata & Idiom", gradient: "radial-gradient(circle at 70% 40%, rgba(255,107,107,0.6), transparent 65%), linear-gradient(135deg, #0a0a0f, #2a1a1a)" },
         ],
+        perbankan: [
+            { type: "Modul1", title: "Modul 1", desc: "Dasar & Kerangka Hukum BI", gradient: deepBlueGradient },
+            { type: "Modul2", title: "Modul 2", desc: "Kebijakan Moneter, Inflasi, & Nilai Tukar", gradient: deepBlueGradient },
+            { type: "Modul3", title: "Modul 3", desc: "Stabilitas Sistem Keuangan & Makroprudensial", gradient: deepBlueGradient },
+            { type: "Modul4", title: "Modul 4", desc: "Sistem Pembayaran & Pengelolaan Uang Rupiah", gradient: deepBlueGradient },
+            { type: "Modul5", title: "Modul 5", desc: "Blueprint & Program Strategis BI", gradient: lightBlueGradient },
+            { type: "Modul6", title: "Modul 6", desc: "Hubungan Internasional & Isu Global", gradient: lightBlueGradient },
+            { type: "Modul7", title: "Modul 7", desc: "Studi Kasus & Aplikasi Strategis BI", gradient: lightBlueGradient },
+        ]
     };
     const cardsToRender = allCards[activeSubMenu] || [];
 

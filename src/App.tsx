@@ -15,7 +15,7 @@ export interface Question {
 }
 
 export type Mode = "home" | "quiz" | "simulasi" | "tips" | "quizInProgress" | "quizResults";
-export type ActiveTest = "fundamental" | "ekonomi" | "english";
+export type ActiveTest = "fundamental" | "ekonomi" | "english" | "perbankan";
 
 // Dynamic Imports untuk Code-Splitting
 const HomePage = lazy(() => import('./pages/HomePage'));

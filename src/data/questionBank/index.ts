@@ -11,6 +11,13 @@ import akuntansi from "./Akuntansi";
 import grammar from "./Grammar";
 import reading from "./Reading";
 import vocab from "./Vocab";
+import Modul1 from "./Modul1";
+import Modul2 from "./Modul2";
+import Modul3 from "./Modul3";
+import Modul4 from "./Modul4";
+import Modul5 from "./Modul5";
+import Modul6 from "./Modul6";
+import Modul7 from "./Modul7";
 
 const questionBank = {
   verbal,
@@ -24,6 +31,13 @@ const questionBank = {
   grammar,
   reading,
   vocab,
+  Modul1,
+  Modul2,
+  Modul3,
+  Modul4,
+  Modul5,
+  Modul6,
+  Modul7,
 };
 
 export default questionBank;
