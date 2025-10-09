@@ -1,9 +1,8 @@
 // src/pages/QuizSelectPage.tsx
-import { FC } from 'react';
+import { FC, useState } from 'react'; // Impor useState
 import { Info } from 'lucide-react';
 import NavMenu from '../components/UI/NavMenu';
 import QuizCard from '../components/UI/QuizCard';
-// IMPORT ActiveTest yang sudah diperbarui dari App.tsx (perlu dipastikan ActiveTest di App.tsx sudah ditambah "perbankan")
 import { Mode, ActiveTest } from '../App'; 
 
 // Definisikan komponen yang relevan di sini jika belum diimpor
@@ -17,10 +16,9 @@ const ComingSoonAlert: FC<{ onClose: () => void }> = ({ onClose }) => (
   </div>
 );
 
-// Diperbarui agar mencakup kategori 'perbankan'
 const QuizSubNav: FC<{ activeTest: ActiveTest, setActiveTest: (test: ActiveTest) => void }> = ({ activeTest, setActiveTest }) => (
     <div className="px-2 py-2 rounded-2xl border border-white border-opacity-30 shadow-lg text-white mb-8 flex flex-wrap justify-center gap-2" style={{ background: "rgba(0, 0, 0, 0.2)", backdropFilter: "blur(10px)" }}>
-        {(["fundamental", "ekonomi", "english", "perbankan"] as const).map((test) => ( // DITAMBAHKAN "perbankan"
+        {(["fundamental", "ekonomi", "english", "perbankan"] as const).map((test) => (
             <button key={test} onClick={() => setActiveTest(test)} className={`px-4 py-2 text-sm sm:px-6 sm:py-3 mx-1 rounded-xl sm:text-lg transition-all duration-300 ${activeTest === test ? "font-bold" : "font-normal hover:bg-white hover:bg-opacity-5"}`}>
                 {test.charAt(0).toUpperCase() + test.slice(1)}
             </button>
@@ -41,9 +39,20 @@ interface QuizSelectPageProps {
 
 const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiveMenu, activeSubMenu, setActiveSubMenu, startQuiz, showAlert, setShowAlert }) => {
     
+    // STATE BARU: Untuk menyimpan pilihan user
+    const [selectedCount, setSelectedCount] = useState(20);
+    const [selectedTime, setSelectedTime] = useState(15); // dalam menit (0 = Tanpa Batas)
+
+    // OPSI PILIHAN
+    const questionOptions = [10, 20, 30, 50, 100];
+    const timeOptions = [0, 10, 15, 30, 45, 60]; // 0 untuk Tanpa Batas Waktu
+
     // Gradient yang digunakan (contoh)
     const deepBlueGradient = "radial-gradient(circle at 70% 50%, rgba(29, 78, 216, 0.6), transparent 70%), linear-gradient(135deg, #0a0a1a, #201c2e)";
     const lightBlueGradient = "radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.7), transparent 60%), linear-gradient(135deg, #0f0a0a, #1a2333)";
+    const lightEnglishGradient = "radial-gradient(circle at 70% 40%, rgba(255,218,185,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2b1f1a)";
+    const deepEnglishGradient = "radial-gradient(circle at 60% 30%, rgba(107,176,255,0.6), transparent 70%), linear-gradient(135deg, #0a0a1a, #1a2333)";
+
 
     const allCards: Record<ActiveTest, { type: string; title: string; desc: string; gradient: string }[]> = {
         fundamental: [
@@ -59,11 +68,11 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiv
           { type: "akuntansi", title: "Accounting", desc: "Basic - advance accounting", gradient: "radial-gradient(circle at 50% 60%, rgba(255,200,200,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2a1f1f)" },
         ],
         english: [
-          { type: "grammar", title: "Grammar", desc: "Tenses & Struktur Kalimat", gradient: "radial-gradient(circle at 60% 30%, rgba(107,176,255,0.6), transparent 70%), linear-gradient(135deg, #0a0a1a, #1a2333)" },
-          { type: "reading", title: "Reading", desc: "Pemahaman Teks & Inferensi", gradient: "radial-gradient(circle at 40% 70%, rgba(255,218,185,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2b1f1a)" },
-          { type: "vocab", title: "Vocabulary", desc: "Kosakata & Idiom", gradient: "radial-gradient(circle at 70% 40%, rgba(255,107,107,0.6), transparent 65%), linear-gradient(135deg, #0a0a0f, #2a1a1a)" },
-          { type: "structure", title: "Structure", desc: "Tes Tepat Tata Bahasa", gradient: "radial-gradient(circle at 50% 50%, rgba(150,200,255,0.6), transparent 70%), linear-gradient(135deg, #1a0a1a, #2a1f2e)" },
-          { type: "expression", title: "Expression", desc: "Pemahaman Ekspresi Idiomatik", gradient: "radial-gradient(circle at 80% 60%, rgba(255,150,255,0.6), transparent 70%), linear-gradient(135deg, #1a0a1a, #2e1a2e)" },
+          { type: "grammar", title: "Grammar", desc: "Tenses & Struktur Kalimat", gradient: deepEnglishGradient },
+          { type: "structure", title: "Structure", desc: "Struktur Kalimat & Frasa", gradient: deepEnglishGradient },
+          { type: "expression", title: "Expression", desc: "Idiom & Penggunaan Bahasa", gradient: lightEnglishGradient },
+          { type: "reading", title: "Reading", desc: "Pemahaman Teks & Inferensi", gradient: lightEnglishGradient }, 
+          { type: "vocab", title: "Vocabulary", desc: "Kosakata & Idiom", gradient: lightEnglishGradient },
         ],
         perbankan: [
             { type: "Modul1", title: "Modul 1", desc: "Dasar & Kerangka Hukum BI", gradient: deepBlueGradient },
@@ -83,10 +92,56 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiv
                 <NavMenu activeMenu={activeMenu} setMode={setMode} setActiveMenu={setActiveMenu} />
             </div>
             <div className="p-4 sm:p-8 rounded-3xl border border-white border-opacity-30 shadow-lg w-full max-w-6xl mx-auto my-6 flex flex-col items-center" style={{ background: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(5px)" }}>
+                
                 <QuizSubNav activeTest={activeSubMenu} setActiveTest={setActiveSubMenu} />
+                
+                {/* INPUT PILIHAN SOAL DAN WAKTU */}
+                <div className="flex flex-wrap justify-center gap-4 text-white w-full max-w-lg mx-auto mb-8">
+                    <div className="flex flex-col">
+                        <label className="text-sm mb-1 text-gray-300 font-semibold">Jumlah Soal</label>
+                        <select 
+                            value={selectedCount} 
+                            onChange={(e) => setSelectedCount(Number(e.target.value))}
+                            className="px-4 py-2 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-150 text-base appearance-none"
+                            style={{ minWidth: '150px' }}
+                        >
+                            {questionOptions.map(count => (
+                                <option key={count} value={count} className="bg-[#100c28] text-white">{count} Soal</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="flex flex-col">
+                        <label className="text-sm mb-1 text-gray-300 font-semibold">Batas Waktu</label>
+                        <select 
+                            value={selectedTime} 
+                            onChange={(e) => setSelectedTime(Number(e.target.value))}
+                            className="px-4 py-2 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-150 text-base appearance-none"
+                            style={{ minWidth: '150px' }}
+                        >
+                            {timeOptions.map(time => (
+                                <option key={time} value={time} className="bg-[#100c28] text-white">
+                                    {time === 0 ? 'Tanpa Batas' : `${time} Menit`}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+                {/* AKHIR INPUT PILIHAN */}
+
                 <div className="flex flex-wrap gap-4 sm:gap-6 justify-center w-full">
                     {cardsToRender.map((card) => (
-                        <QuizCard key={card.type} title={card.title} gradient={card.gradient} desc={card.desc} onClick={() => startQuiz(20, card.type, null)} />
+                        <QuizCard 
+                            key={card.type} 
+                            title={card.title} 
+                            gradient={card.gradient} 
+                            desc={card.desc} 
+                            // PERUBAHAN UTAMA: Menggunakan state yang dipilih
+                            onClick={() => startQuiz(
+                                selectedCount, 
+                                card.type, 
+                                selectedTime > 0 ? selectedTime * 60 : null // 60 detik per menit, atau null jika Tanpa Batas (0)
+                            )} 
+                        />
                     ))}
                 </div>
             </div>
