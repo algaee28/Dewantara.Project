@@ -131,9 +131,24 @@ const App: FC = () => {
         return questions.reduce((acc, q, index) => 
             userAnswers[index] === q.correct ? acc + 1 : acc, 0);
     };
+    
+    // FIX: Tambahkan fungsi ini untuk memenuhi QuizResultsPageProps
+    const getScoreCategory = (score: number, total: number) => {
+      const percentage = total > 0 ? (score / total) : 0;
+      if (percentage >= 0.85) {
+          return { category: "Excellent", icon: "🚀" };
+      } else if (percentage >= 0.65) {
+          return { category: "Good", icon: "⭐" };
+      } else if (percentage >= 0.5) {
+          return { category: "Fair", icon: "✅" };
+      } else {
+          return { category: "Needs Practice", icon: "⚠️" };
+      }
+    };
 
-    const totalScore = calculateScore();
-    const totalTime = startTime ? Date.now() - startTime : 0;
+    // FIX: Hapus variabel yang tidak digunakan
+    // const totalScore = calculateScore();
+    // const totalTime = startTime ? Date.now() - startTime : 0;
   
     const pageProps = {
         activeMenu, setMode, setActiveMenu,
@@ -146,12 +161,14 @@ const App: FC = () => {
         case "quiz":
           return <QuizSelectPage {...pageProps} activeSubMenu={activeSubMenu} setActiveSubMenu={setActiveSubMenu} startQuiz={startQuiz} showAlert={showAlert} setShowAlert={setShowAlert} />;
         case "simulasi":
-          return <SimulationPage {...pageProps} startQuiz={startQuiz} showAlert={showAlert} setShowAlert={setShowAlert} />;
+          // FIX: Hapus props showAlert dan setShowAlert yang tidak didefinisikan di SimulationPage
+          return <SimulationPage {...pageProps} startQuiz={startQuiz} />;
         case "tips":
           return <TipsPage {...pageProps} />;
         case "quizInProgress":
           return <QuizInProgressPage questions={questions} currentQuestion={currentQuestion} selectedAnswer={selectedAnswer} showExplanation={showExplanation} timeLimit={timeLimit} timeRemaining={timeRemaining} elapsedTime={elapsedTime} currentQuizType={currentQuizType} handleSubmitAnswer={handleSubmitAnswer} handleNextQuestion={handleNextQuestion} handleAnswerSelect={handleAnswerSelect} setMode={setMode} setActiveMenu={setActiveMenu} />;
         case "quizResults":
+          // FIX: Kirim fungsi getScoreCategory
           return <QuizResultsPage 
               questions={questions} 
               timeLimit={timeLimit} 
@@ -161,9 +178,10 @@ const App: FC = () => {
               startQuiz={startQuiz} 
               setMode={setMode} 
               setActiveMenu={setActiveMenu} 
-              // Perbaikan di sini: Kirim fungsi dan state mentah
+              // Kirim fungsi dan state mentah
               calculateScore={calculateScore} 
-              startTime={startTime} 
+              startTime={startTime}
+              getScoreCategory={getScoreCategory} // <-- ADDED
           />;
         default:
           return <HomePage {...pageProps} randomQuote={randomQuote} />;

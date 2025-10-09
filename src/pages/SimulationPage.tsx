@@ -8,7 +8,6 @@ interface SimulationPageProps {
   setMode: (mode: Mode) => void;
   setActiveMenu: (menu: Mode) => void;
   startQuiz: (questionCount: number, quizType: string, timeLimit: number | null) => void;
-  // Hapus showAlert dan setShowAlert dari props jika tidak diperlukan
 }
 
 const SimulationPage: FC<SimulationPageProps> = ({ 
@@ -16,7 +15,6 @@ const SimulationPage: FC<SimulationPageProps> = ({
     setMode, 
     setActiveMenu, 
     startQuiz,
-    // Hapus showAlert, setShowAlert
 }) => {
     
     // Data Simulasi
@@ -111,9 +109,6 @@ const SimulationPage: FC<SimulationPageProps> = ({
                     </div>
                 </div>
             </div>
-            
-            {/* Hapus baris alert yang error */}
-            {/* {showAlert && <ComingSoonAlert onClose={() => setShowAlert(false)} />} */}
         </div>
     );
 };
