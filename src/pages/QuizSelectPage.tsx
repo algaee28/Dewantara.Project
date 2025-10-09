@@ -1,5 +1,5 @@
 // src/pages/QuizSelectPage.tsx
-import { FC, useState } from 'react'; // Impor useState
+import { FC, useState } from 'react'; // IMPORT 'useState' telah ditambahkan
 import { Info } from 'lucide-react';
 import NavMenu from '../components/UI/NavMenu';
 import QuizCard from '../components/UI/QuizCard';
@@ -18,6 +18,7 @@ const ComingSoonAlert: FC<{ onClose: () => void }> = ({ onClose }) => (
 
 const QuizSubNav: FC<{ activeTest: ActiveTest, setActiveTest: (test: ActiveTest) => void }> = ({ activeTest, setActiveTest }) => (
     <div className="px-2 py-2 rounded-2xl border border-white border-opacity-30 shadow-lg text-white mb-8 flex flex-wrap justify-center gap-2" style={{ background: "rgba(0, 0, 0, 0.2)", backdropFilter: "blur(10px)" }}>
+        {/* DITAMBAHKAN 'perbankan' */}
         {(["fundamental", "ekonomi", "english", "perbankan"] as const).map((test) => (
             <button key={test} onClick={() => setActiveTest(test)} className={`px-4 py-2 text-sm sm:px-6 sm:py-3 mx-1 rounded-xl sm:text-lg transition-all duration-300 ${activeTest === test ? "font-bold" : "font-normal hover:bg-white hover:bg-opacity-5"}`}>
                 {test.charAt(0).toUpperCase() + test.slice(1)}
@@ -69,11 +70,12 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiv
         ],
         english: [
           { type: "grammar", title: "Grammar", desc: "Tenses & Struktur Kalimat", gradient: deepEnglishGradient },
-          { type: "structure", title: "Structure", desc: "Struktur Kalimat & Frasa", gradient: deepEnglishGradient },
-          { type: "expression", title: "Expression", desc: "Idiom & Penggunaan Bahasa", gradient: lightEnglishGradient },
+          { type: "structure", title: "Structure", desc: "Struktur Kalimat & Frasa", gradient: deepEnglishGradient }, // KUIS BARU
+          { type: "expression", title: "Expression", desc: "Idiom & Penggunaan Bahasa", gradient: lightEnglishGradient }, // KUIS BARU
           { type: "reading", title: "Reading", desc: "Pemahaman Teks & Inferensi", gradient: lightEnglishGradient }, 
           { type: "vocab", title: "Vocabulary", desc: "Kosakata & Idiom", gradient: lightEnglishGradient },
         ],
+        // KATEGORI PERBANKAN BARU
         perbankan: [
             { type: "Modul1", title: "Modul 1", desc: "Dasar & Kerangka Hukum BI", gradient: deepBlueGradient },
             { type: "Modul2", title: "Modul 2", desc: "Kebijakan Moneter, Inflasi, & Nilai Tukar", gradient: deepBlueGradient },
@@ -95,7 +97,7 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiv
                 
                 <QuizSubNav activeTest={activeSubMenu} setActiveTest={setActiveSubMenu} />
                 
-                {/* INPUT PILIHAN SOAL DAN WAKTU */}
+                {/* INPUT PILIHAN SOAL DAN WAKTU (INI ADALAH FITUR YANG DICARI) */}
                 <div className="flex flex-wrap justify-center gap-4 text-white w-full max-w-lg mx-auto mb-8">
                     <div className="flex flex-col">
                         <label className="text-sm mb-1 text-gray-300 font-semibold">Jumlah Soal</label>
@@ -135,11 +137,11 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiv
                             title={card.title} 
                             gradient={card.gradient} 
                             desc={card.desc} 
-                            // PERUBAHAN UTAMA: Menggunakan state yang dipilih
+                            // LOGIKA BARU: Menggunakan state yang dipilih
                             onClick={() => startQuiz(
                                 selectedCount, 
                                 card.type, 
-                                selectedTime > 0 ? selectedTime * 60 : null // 60 detik per menit, atau null jika Tanpa Batas (0)
+                                selectedTime > 0 ? selectedTime * 60 : null // Konversi menit ke detik, atau null
                             )} 
                         />
                     ))}
