@@ -141,7 +141,7 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
             <NavMenu activeMenu={"quiz"} setMode={setMode} setActiveMenu={setActiveMenu} />
         </div>
         
-        <div className="p-4 sm:p-8 rounded-3xl border border-white border-opacity-30 shadow-lg w-full max-w-4xl mx-auto my-6 flex flex-col items-center" style={{ background: "rgba(208, 6, 137, 0.53)", backdropFilter: "blur(10px)" }}>
+        <div className="p-4 sm:p-8 rounded-3xl border border-white border-opacity-30 shadow-lg w-full max-w-4xl mx-auto my-6 flex flex-col items-center" style={{ background: "#be5369", backdropFilter: "blur(10px)" }}>
             
             {/* Header / Progress Bar */}
             <div className="w-full mb-6">
