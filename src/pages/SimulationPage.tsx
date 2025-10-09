@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import NavMenu from '../components/UI/NavMenu'; 
 import { Mode } from '../App'; 
+import { Clock, BookOpen } from 'lucide-react'; // Import ikon untuk elemen kartu
 
 // Interface Props yang disederhanakan
 interface SimulationPageProps {
@@ -17,47 +18,48 @@ const SimulationPage: FC<SimulationPageProps> = ({
     startQuiz,
 }) => {
     
-    // Data Simulasi
+    // Helper untuk memformat waktu
+    const formatTimeLimit = (seconds: number) => {
+        const minutes = seconds / 60;
+        return `${minutes} Menit`;
+    };
+
+    // Data Simulasi dengan properti gradient baru
     const simulations = [
         {
             title: "TPD - Fundamental",
             quizType: "tpd_simulasi",
             questionCount: 50,
             timeLimit: 30 * 60, // 30 menit
-            imgSrc: "/typetest/TPD.png",
-            alt: "TPD Simulasi",
+            gradient: "linear-gradient(145deg, #4F46E5 0%, #1E3A8A 100%)", // Deep Indigo/Violet
         },
         {
             title: "Ekonomi",
             quizType: "ekonomi_simulasi",
             questionCount: 50,
             timeLimit: 45 * 60, // 45 menit
-            imgSrc: "/typetest/Ekonomi.png",
-            alt: "Ekonomi Simulasi",
+            gradient: "linear-gradient(145deg, #059669 0%, #064E3B 100%)", // Deep Emerald/Green
         },
         {
             title: "Perbankan",
             quizType: "bank_simulasi",
             questionCount: 50,
             timeLimit: 45 * 60, // 45 menit
-            imgSrc: "/typetest/Bank.png",
-            alt: "Perbankan Simulasi",
+            gradient: "linear-gradient(145deg, #1D4ED8 0%, #1E3A8A 100%)", // Royal Blue/Navy
         },
         {
             title: "Akuntansi",
             quizType: "akuntansi_simulasi",
             questionCount: 50,
             timeLimit: 45 * 60, // 45 menit
-            imgSrc: "/typetest/Akuntansi.png",
-            alt: "Akuntansi Simulasi",
+            gradient: "linear-gradient(145deg, #9D174D 0%, #4C0519 100%)", // Deep Crimson/Burgundy
         },
         {
             title: "English",
             quizType: "english_simulasi",
             questionCount: 40,
             timeLimit: 30 * 60, // 30 menit
-            imgSrc: "/typetest/English.png",
-            alt: "English Simulasi",
+            gradient: "linear-gradient(145deg, #F59E0B 0%, #92400E 100%)", // Warm Gold/Amber
         },
     ];
 
@@ -68,12 +70,28 @@ const SimulationPage: FC<SimulationPageProps> = ({
             className="transition-transform hover:scale-105"
             aria-label={`Mulai Simulasi ${sim.title}`}
         >
-            <div className="w-44 h-58 rounded-3xl overflow-hidden relative shadow-2xl border border-white border-opacity-30">
-                <img
-                    src={sim.imgSrc}
-                    alt={sim.alt}
-                    className="w-full h-full object-cover"
-                />
+            <div 
+                className="w-44 h-58 rounded-3xl overflow-hidden relative shadow-2xl border border-white border-opacity-30 p-5 flex flex-col justify-between"
+                style={{ background: sim.gradient }} // Gunakan gradient sebagai background
+            >
+                {/* Judul dan Soal */}
+                <div className='relative z-10'>
+                    <h3 className="text-xl font-bold mb-2 text-white leading-tight">
+                        {sim.title}
+                    </h3>
+                    <div className="flex items-center text-white/90 text-sm">
+                         <BookOpen className='w-4 h-4 mr-1'/>
+                         {sim.questionCount} Soal
+                    </div>
+                </div>
+                
+                {/* Waktu */}
+                <div className='relative z-10 mt-auto pt-3 border-t border-white/30'>
+                    <div className="flex items-center font-semibold text-lg text-white">
+                        <Clock className='w-5 h-5 mr-2'/>
+                        {formatTimeLimit(sim.timeLimit)}
+                    </div>
+                </div>
             </div>
         </button>
     );
