@@ -33,7 +33,8 @@ const shuffleQuestions = (questions: Question[]): Question[] => {
     let newCorrectKey: string = '';
     const optionKeys = ['A', 'B', 'C', 'D', 'E'];
     
-    shuffledOptionsArray.forEach(([originalKey, value], index) => {
+    // PERBAIKAN: Ganti originalKey menjadi _originalKey
+    shuffledOptionsArray.forEach(([_originalKey, value], index) => { 
       const newKey = optionKeys[index];
       newOptions[newKey] = value;
       // Cek apakah nilai ini adalah jawaban yang benar
