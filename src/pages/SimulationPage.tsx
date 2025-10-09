@@ -19,8 +19,8 @@ const QuizSettingsModal: FC<QuizSettingsModalProps> = ({ quizToStart, onClose, s
     if (!quizToStart) return null;
 
     // Opsi yang lebih cocok untuk simulasi penuh
-    const questionOptions = [40, 50, 60, 80, 100];
-    const timeOptions = [30, 45, 60, 90, 120]; 
+    const questionOptions = [40, 50, 60, 70, 80, 100];
+    const timeOptions = [15, 30, 40, 60,]; 
 
     const handleStart = () => {
         const timeInSeconds = selectedTime * 60; // Simulasi umumnya memiliki batas waktu
@@ -132,14 +132,14 @@ const SimulationPage: FC<SimulationPageProps> = ({
             title: "Ekonomi",
             quizType: "ekonomi_simulasi",
             questionCount: 50,
-            timeLimit: 45 * 60, // 45 menit
+            timeLimit: 30 * 60, // 45 menit
             gradient: "linear-gradient(145deg, #059669 0%, #064E3B 100%)", // Deep Emerald/Green
         },
         {
             title: "Perbankan",
             quizType: "bank_simulasi",
-            questionCount: 50,
-            timeLimit: 45 * 60, // 45 menit
+            questionCount: 70,
+            timeLimit: 40 * 60, // 45 menit
             gradient: "linear-gradient(145deg, #1D4ED8 0%, #1E3A8A 100%)", // Royal Blue/Navy
         },
         {
@@ -159,8 +159,8 @@ const SimulationPage: FC<SimulationPageProps> = ({
         {
             title: "Central Bank",
             quizType: "central_bank", 
-            questionCount: 40,
-            timeLimit: 30 * 60,
+            questionCount: 70,
+            timeLimit: 40 * 60,
             gradient: "radial-gradient(circle at 70% 50%, rgba(50,200,150,0.6), transparent 70%), linear-gradient(135deg, #0a1a0a, #1c2e20)",
         },
     ];

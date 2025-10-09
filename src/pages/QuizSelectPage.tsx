@@ -15,12 +15,12 @@ interface QuizSettingsModalProps {
 const QuizSettingsModal: FC<QuizSettingsModalProps> = ({ quizToStart, onClose, startQuiz }) => {
     // State default untuk kuis modul
     const [selectedCount, setSelectedCount] = useState(20);
-    const [selectedTime, setSelectedTime] = useState(15); // dalam menit
+    const [selectedTime, setSelectedTime] = useState(15); 
     
     if (!quizToStart) return null;
 
     const questionOptions = [10, 20, 30, 50, 100];
-    const timeOptions = [0, 10, 15, 30, 45, 60]; // 0 untuk Tanpa Batas Waktu
+    const timeOptions = [0, 10, 15, 20, 30, 45, 60];
 
     const handleStart = () => {
         const timeInSeconds = selectedTime > 0 ? selectedTime * 60 : null;
