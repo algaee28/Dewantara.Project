@@ -1,9 +1,8 @@
 import { FC, useEffect } from 'react';
 import { Question, Mode } from '../App';
-import NavMenu from '../components/UI/NavMenu';
-import { Loader2 } from 'lucide-react'; // Import untuk spinner loading
+import { Loader2, Home, Clock } from 'lucide-react'; 
 
-// Props harus sesuai dengan apa yang diteruskan dari App.tsx
+// Props interface harus sesuai dengan yang dilewatkan dari App.tsx
 interface QuizInProgressPageProps {
   questions: Question[];
   currentQuestion: number;
@@ -27,9 +26,7 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
   showExplanation,
   timeLimit,
   timeRemaining,
-  // @ts-ignore
   elapsedTime, 
-  // @ts-ignore
   currentQuizType,
   handleSubmitAnswer,
   handleNextQuestion,
@@ -38,13 +35,14 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
   setActiveMenu,
 }) => {
   const currentQ = questions[currentQuestion];
+  
   if (!currentQ) return <div className="text-white text-center p-10">Soal tidak ditemukan.</div>;
   
-  // Dapatkan kunci opsi yang sebenarnya (misalnya: ['a', 'b', 'c', 'd', 'e'] atau ['A', 'B', 'C', 'D', 'E'])
+  // Dapatkan kunci opsi untuk logika keyboard
   const optionsKeys = Object.keys(currentQ.options);
   const isAnswerSelected = !!selectedAnswer;
 
-  // --- LOGIKA KEYBOARD INPUT (REVISI UNTUK CASE SENSITIVITY) ---
+  // --- LOGIKA KEYBOARD INPUT (PRESERVED) ---
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       // Abaikan jika tombol ditekan terus-menerus
@@ -53,14 +51,11 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
       const key = event.key; // Key asli (misalnya 'a' atau 'A' atau 'Enter')
 
       // Mencari kunci opsi yang cocok (A/B/C/D/E atau a/b/c/d/e)
-      // Menggunakan toUpperCase() untuk membandingkan input keyboard dengan kunci opsi secara case-insensitive
       const inputKey = optionsKeys.find(k => k.toUpperCase() === key.toUpperCase());
 
       // 1. Pilih Jawaban (Tombol A, B, C, D, E)
       if (inputKey && !showExplanation) {
-        // Mencegah default action (misalnya scrolling)
         event.preventDefault(); 
-        // Lakukan pemilihan jawaban menggunakan key yang sesuai case-nya (inputKey)
         handleAnswerSelect(inputKey); 
         return; 
       }
@@ -70,164 +65,302 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
         event.preventDefault(); 
         
         if (showExplanation) {
-          // Jika penjelasan sudah tampil, maka pindah ke soal berikutnya
           handleNextQuestion();
         } else if (isAnswerSelected) {
-          // Jika jawaban sudah dipilih tapi belum disubmit, maka submit
           handleSubmitAnswer();
         }
       }
     };
 
-    // Tambahkan event listener saat komponen mount
     window.addEventListener('keydown', handleKeyDown);
 
-    // Hapus event listener saat komponen unmount
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [optionsKeys, showExplanation, isAnswerSelected, handleAnswerSelect, handleSubmitAnswer, handleNextQuestion]);
   // --- AKHIR LOGIKA KEYBOARD INPUT ---
 
-  // Fungsi untuk merender opsi jawaban
-  const renderOptions = () => {
-    return optionsKeys.map((key) => {
-      // Pastikan huruf opsi untuk tampilan (misalnya A. B. C.) adalah huruf besar
-      const displayKey = key.toUpperCase(); 
-
-      const isCorrect = showExplanation && key === currentQ.correct;
-      const isIncorrect = showExplanation && key === selectedAnswer && key !== currentQ.correct;
-      const isSelected = key === selectedAnswer;
-
-      let className = "p-4 rounded-xl border border-white border-opacity-30 mb-3 text-left transition-all duration-300 cursor-pointer";
-      
-      if (showExplanation) {
-        if (isCorrect) {
-          className += " bg-green-700 bg-opacity-70 border-green-500 text-white font-bold";
-        } else if (isIncorrect) {
-          className += " bg-red-700 bg-opacity-70 border-red-500 text-white font-bold line-through";
-        } else {
-          className += " opacity-50";
-        }
-      } else {
-        className += isSelected 
-          ? " bg-secondary-accent border-yellow-500 text-primary-brand font-bold" 
-          : " hover:bg-white hover:bg-opacity-10";
-      }
-
-      return (
-        <button
-          key={key}
-          onClick={() => handleAnswerSelect(key)}
-          className={className}
-          disabled={showExplanation}
-        >
-          {/* Menampilkan huruf opsi (A, B, C, D, E) */}
-          <span className="font-bold mr-2">{displayKey}.</span> {currentQ.options[key]}
-        </button>
-      );
-    });
-  };
-
-  const formatTime = (seconds: number) => {
+  // Helper untuk memformat waktu
+  const formatTime = (seconds: number | null) => {
+    if (seconds === null) return <Loader2 className="animate-spin w-4 h-4 inline" />;
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
-
-  return (
-    <div className="relative min-h-screen flex flex-col items-center p-4 sm:p-10 bg-cover bg-center text-white" style={{ backgroundImage: "url('/assets/background1.jpeg')" }}>
-        <div className="w-full flex justify-center py-4 sm:py-8">
-            <NavMenu activeMenu={"quiz"} setMode={setMode} setActiveMenu={setActiveMenu} />
-        </div>
-        
-        <div className="p-4 sm:p-8 rounded-3xl border border-white border-opacity-30 shadow-lg w-full max-w-4xl mx-auto my-6 flex flex-col items-center" style={{ background: "#be5369", backdropFilter: "blur(10px)" }}>
-            
-            {/* Header / Progress Bar */}
-            <div className="w-full mb-6">
-                <div className="flex justify-between items-center text-lg font-semibold mb-2">
-                    <p>Soal {currentQuestion + 1} dari {questions.length}</p>
-                    {timeLimit !== null && (
-                        <p className={timeRemaining !== null && timeRemaining <= 60 ? "text-red-400 animate-pulse" : ""}>
-                            Waktu: {timeRemaining !== null ? formatTime(timeRemaining) : <Loader2 className="animate-spin h-5 w-5 inline" />}
-                        </p>
-                    )}
-                </div>
-                <div className="w-full h-2 bg-gray-600 rounded-full overflow-hidden">
-                    <div
-                        className="h-full bg-secondary-accent transition-all duration-500"
-                        style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
-                    ></div>
-                </div>
-            </div>
-
-            {/* Konten Soal */}
-            <div className="w-full bg-black bg-opacity-20 p-5 rounded-xl mb-6">
-                <h3 className="text-xl font-bold mb-4">{currentQ.type}</h3>
-                <p className="text-lg mb-4 whitespace-pre-wrap">{currentQ.question}</p>
-                
-                {/* Assuming imageUrl is used for figural questions/images */}
-                {currentQ.imageUrl && <img src={currentQ.imageUrl} alt="Soal Figural" className="mx-auto my-4 max-h-60 sm:max-h-80 object-contain" />}
-                
-                {/* Assuming matrixData is used for specific question types */}
-                {currentQ.matrixData && (
-                    <table className="w-full border-collapse border border-white my-4">
-                        <tbody>
-                            {currentQ.matrixData.map((row, rowIndex) => (
-                                <tr key={rowIndex}>
-                                    {row.map((cell, cellIndex) => (
-                                        <td key={cellIndex} className="border border-white p-2 text-center">{cell}</td>
-                                    ))}
-                                </tr>
+  
+  // Helper untuk menampilkan tipe kuis
+  const getQuizTypeDisplay = () => {
+    const typeMap: Record<string, string> = {
+      logika: "Fundamental - Logic",
+      verbal: "Fundamental - Verbal",
+      figural: "Fundamental - Figural",
+      numerik: "Fundamental - Numeric",
+      digitsymbol: "Fundamental - Digit Symbol",
+      grammar: "English - Grammar",
+      reading: "English - Reading",
+      vocab: "English - Vocabulary",
+      ekonomi: "Ekonomi - General",
+      bank: "Perbankan",
+      akuntansi: "Akuntansi",
+      campuran: "TPD - Latihan Campuran",
+      tpd_simulasi: "TPD - Simulasi",
+      english_simulasi: "English - Simulasi",
+      ekonomi_simulasi: "Ekonomi - Simulasi",
+      akuntansi_simulasi: "Akuntansi - Simulasi",
+      bank_simulasi: "Bank - Simulasi",
+    };
+    return typeMap[currentQuizType] || "Quiz";
+  };
+  
+  // Helper untuk merender visual (Image/Matrix)
+  const renderVisuals = (q: typeof currentQ) => {
+    if (q.imageUrl) {
+        return <img src={q.imageUrl} alt="Soal Visual" className="mx-auto my-4 max-h-60 sm:max-h-80 object-contain rounded-lg border border-white/10 p-2 bg-white/5" />;
+    }
+    
+    if (q.matrixData) {
+        return (
+            <table className="w-full border-collapse border border-white my-4 text-center">
+                <tbody>
+                    {q.matrixData.map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                            {row.map((cell, cellIndex) => (
+                                <td key={cellIndex} className="border border-white p-2 text-sm sm:text-base">{cell}</td>
                             ))}
-                        </tbody>
-                    </table>
-                )}
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        );
+    }
 
-            </div>
+    return null;
+  };
+  
+  // Helper untuk merender opsi jawaban
+  const renderOptions = (q: typeof currentQ) => {
+      const optionsKeys = Object.keys(q.options);
+      
+      return optionsKeys.map((key) => {
+          const displayKey = key.toUpperCase(); 
 
-            {/* Opsi Jawaban */}
-            <div className="w-full flex flex-col">
-                {renderOptions()}
-            </div>
+          const isCorrect = showExplanation && key === q.correct;
+          const isIncorrect = showExplanation && key === selectedAnswer && key !== q.correct;
+          const isSelected = key === selectedAnswer;
 
-            {/* Penjelasan */}
-            {showExplanation && (
-                <div className="w-full p-4 sm:p-5 mt-4 rounded-xl bg-gray-800 bg-opacity-70 border border-green-500">
-                    <h4 className="text-lg font-bold mb-2 text-green-400">Penjelasan:</h4>
-                    {currentQ.explanationUrl ? (
-                         <img src={currentQ.explanationUrl} alt="Pembahasan Gambar" className="mx-auto my-4 max-h-60 sm:max-h-80 object-contain" />
-                    ) : (
-                         <p className="text-base whitespace-pre-wrap">{currentQ.explanation}</p>
-                    )}
-                </div>
-            )}
+          // Base classes for the button
+          let className = "w-full p-3 mb-3 rounded-xl text-left transition-all duration-300 border font-regular text-sm sm:text-base cursor-pointer";
+          let style: React.CSSProperties = {
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              borderColor: 'rgba(255, 255, 255, 0.3)',
+              color: 'white',
+          };
+          
+          if (showExplanation) {
+              if (isCorrect) {
+                  // Style untuk Jawaban Benar
+                  className += " bg-green-700 border-green-500 font-semibold";
+                  style = { backgroundColor: '#38A169', borderColor: '#38A169', color: 'white' }; 
+              } else if (isIncorrect) {
+                  // Style untuk Jawaban Salah Pilihan User
+                  className += " bg-red-700 border-red-500 font-semibold line-through opacity-70";
+                  style = { backgroundColor: '#E53E3E', borderColor: '#E53E3E', color: 'white' };
+              } else {
+                  // Style untuk Opsi Lain saat Penjelasan muncul
+                  className += " opacity-50";
+                  style = { backgroundColor: 'rgba(255, 255, 255, 0.05)', borderColor: 'rgba(255, 255, 255, 0.1)', color: 'white' };
+              }
+          } else {
+              // Style saat Quiz masih berjalan
+              className += isSelected 
+                ? " bg-white bg-opacity-20 border-white font-semibold" 
+                : " hover:bg-white hover:bg-opacity-10";
+              style = { 
+                  backgroundColor: isSelected ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.05)', 
+                  borderColor: isSelected ? 'white' : 'rgba(255, 255, 255, 0.3)', 
+                  color: 'white' 
+              };
+          }
+          
+          return (
+              <button
+                key={key}
+                onClick={() => handleAnswerSelect(key)}
+                className={className}
+                disabled={showExplanation}
+                style={style}
+              >
+                <span className="font-bold mr-2">{displayKey}.</span> {q.options[key]}
+              </button>
+          );
+      });
+  };
 
-            {/* Tombol Aksi */}
-            <div className="w-full flex justify-center mt-6">
-                {!showExplanation ? (
-                    <button
-                        onClick={handleSubmitAnswer}
-                        disabled={!selectedAnswer}
-                        className={`py-3 px-12 rounded-full font-bold transition-colors duration-300 text-lg ${
-                            selectedAnswer
-                                ? 'bg-primary-brand hover:bg-blue-700 text-white'
-                                : 'bg-gray-500 text-gray-300 cursor-not-allowed'
-                        }`}
-                    >
-                        Submit Jawaban
-                    </button>
-                ) : (
-                    <button
-                        onClick={handleNextQuestion}
-                        className="py-3 px-12 rounded-full font-bold bg-secondary-accent hover:bg-yellow-400 text-primary-brand transition-colors duration-300 text-lg"
-                    >
-                        Soal Berikutnya
-                    </button>
-                )}
-            </div>
-            
+  // JSX structure as provided by the user
+  return (
+    <div
+      className="relative min-h-screen bg-cover bg-center text-white flex flex-col"
+      style={{ backgroundImage: "url('/assets/background1.jpeg')" }}
+    >
+      {/* Header Baru */}
+      <div className="w-full flex flex-col sm:flex-row justify-between items-center py-4 px-4 sm:py-6 sm:px-8 gap-2">
+        <div
+          className="px-4 py-2 sm:px-6 sm:py-3 rounded-xl text-white font-regular text-sm sm:text-base w-full sm:w-auto text-center"
+          style={{
+            background: "rgba(0, 0, 0, 0.1)",
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+          }}
+        >
+          {getQuizTypeDisplay()}
         </div>
+
+        <div className="flex gap-2 sm:gap-4 w-full sm:w-auto justify-end">
+          <button
+            onClick={() => {
+              setMode("home");
+              setActiveMenu("home");
+            }}
+            className="px-4 py-2 sm:px-6 sm:py-3 rounded-xl text-white font-regular transition-all duration-200 flex items-center justify-center gap-1 sm:gap-2 text-sm sm:text-base hover:bg-white/10"
+            style={{
+              background: "rgba(0, 0, 0, 0.1)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+            }}
+          >
+            <Home className="w-4 h-4" />
+            Home
+          </button>
+
+          <div
+            className={`px-4 py-2 sm:px-6 sm:py-3 rounded-xl text-white font-semibold flex items-center justify-center gap-1 sm:gap-2 text-sm sm:text-base ${
+                timeLimit !== null && timeRemaining !== null && timeRemaining <= 60 ? "text-red-400 animate-pulse" : ""
+            }`}
+            style={{
+              background: "rgba(0, 0, 0, 0.1)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+            }}
+          >
+            <Clock className="w-4 h-4" />
+            {/* Display time remaining if timed, otherwise elapsed time */}
+            {timeLimit ? formatTime(timeRemaining) : formatTime(elapsedTime)}
+          </div>
+        </div>
+      </div>
+
+      {/* Konten Utama Quiz */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full flex-grow pb-8">
+        <div
+          className="p-4 sm:p-8 rounded-2xl border border-white border-opacity-30 shadow-lg min-h-full"
+          style={{
+            background: "rgba(255, 255, 255, 0.1)",
+            backdropFilter: "blur(10px)",
+          }}
+        >
+          {/* Progress Bar */}
+          <div className="mb-6 sm:mb-8">
+            <div className="flex flex-col sm:flex-row justify-between items-center mb-2 sm:mb-4 text-white">
+              <span className="text-sm sm:text-lg font-regular text-center sm:text-left">
+                Soal {currentQuestion + 1} dari {questions.length}
+              </span>
+              {/* Menampilkan sub-tipe pertanyaan (misal: Silogisme, Persamaan Akuntansi) */}
+              <span className="text-sm sm:text-lg font-regular text-center sm:text-right">
+                {currentQ.type.includes(" - ") 
+                    ? currentQ.type.split(" - ").slice(1).join(" - ")
+                    : currentQ.type}
+              </span>
+            </div>
+            <div className="w-full bg-white bg-opacity-10 rounded-full h-2 sm:h-3">
+              <div
+                className="bg-[#be5369] h-2 sm:h-3 rounded-full transition-all duration-500"
+                style={{
+                  width: `${
+                    ((currentQuestion + 1) / questions.length) * 100
+                  }%`,
+                }}
+              ></div>
+            </div>
+          </div>
+
+          {/* Kotak Soal dan Opsi */}
+          <div
+            className="p-4 sm:p-6 rounded-2xl mb-6 sm:mb-8 border border-white border-opacity-5"
+            style={{
+              background: "#903749",
+              backdropFilter: "blur(15px)",
+            }}
+          >
+            <h2 className="font-regular mb-4 text-white text-md sm:text-lg whitespace-pre-wrap">
+              {currentQ.question}
+            </h2>
+            {renderVisuals(currentQ)}
+            <div className="mb-4 sm:mb-6 flex flex-col">{renderOptions(currentQ)}</div>
+          </div>
+
+          {/* Tombol Aksi */}
+          {!showExplanation ? (
+            <button
+              onClick={handleSubmitAnswer}
+              disabled={!selectedAnswer}
+              className={`w-full py-3 sm:py-4 px-6 sm:px-8 rounded-xl font-regular text-md sm:text-lg transition-all duration-200 text-white ${
+                selectedAnswer
+                  ? "bg-[#6f826a] hover:scale-[1.02]"
+                  : "bg-gray-700 cursor-not-allowed"
+              }`}
+              style={{
+                background: selectedAnswer
+                  ? "#903749"
+                  : "rgba(255, 255, 255, 0.1)",
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+              }}
+            >
+              Submit Jawaban (ENTER)
+            </button>
+          ) : (
+            <div>
+              {/* Pembahasan */}
+              <div
+                className="p-4 sm:p-6 mb-4 sm:mb-6 rounded-xl text-white"
+                style={{
+                  background: "rgba(0, 0, 0, 0.3)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <h3 className="font-semibold text-white mb-2 sm:mb-3 text-md sm:text-lg">
+                  💡 Pembahasan:
+                </h3>
+                {currentQ.explanationUrl ? (
+                  <img
+                    src={currentQ.explanationUrl}
+                    alt="Pembahasan soal"
+                    className="max-w-full h-auto rounded-lg shadow-md mx-auto"
+                  />
+                ) : (
+                  <p className="font-regular italic text-white opacity-90 leading-relaxed text-sm sm:text-base whitespace-pre-wrap">
+                    {currentQ.explanation}
+                  </p>
+                )}
+              </div>
+              {/* Tombol Next */}
+              <button
+                onClick={handleNextQuestion}
+                className="w-full py-3 sm:py-4 px-6 sm:px-8 rounded-xl font-regular text-md sm:text-lg transition-all duration-200 text-white hover:scale-[1.02]"
+                style={{
+                  background: "#903749",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(255, 255, 255, 0.3)",
+                }}
+              >
+                {currentQuestion < questions.length - 1
+                  ? "Soal Berikutnya (ENTER)"
+                  : "Lihat Hasil Akhir (ENTER)"}
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
