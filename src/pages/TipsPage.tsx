@@ -53,20 +53,18 @@ const TipsPage: FC<TipsPageProps> = ({ activeMenu, setMode, setActiveMenu }) => 
     let transformX = diff * 280; // Jarak default antar kartu
 
     // Logika agar kartu di ujung tetap terlihat dan berputar
-    if (diff > 2) { // Kartu di jauh kanan (misal index 7, current 0)
+    if (diff > 2) { // Kartu di jauh kanan
         transformX = (diff - totalCards) * 280;
-    } else if (diff < -2) { // Kartu di jauh kiri (misal index 0, current 7)
+    } else if (diff < -2) { // Kartu di jauh kiri
         transformX = (diff + totalCards) * 280;
     }
-
-    const absIndex = Math.abs(index - currentIndex);
-    const distanceFactor = absIndex === 0 ? 0 : 1 / (absIndex + 0.5);
+    
+    // Variabel 'distanceFactor' yang menyebabkan error telah dihapus.
 
     return {
-      // FIX: Gunakan transformX yang sudah disesuaikan
       transform: `translateX(${transformX}px) scale(${1 - absDiff * 0.15})`,
       zIndex: 10 - absDiff, // Kartu tengah paling depan
-      opacity: 1 - absDiff * 0.2, // Kartu samping lebih transparan
+      opacity: 1 - absDiff * 0.2, 
       // Batasi opacity agar tidak hilang total, tetap 0.1 di kartu terjauh
       ...(absDiff > 2 && { opacity: 0.1 }), 
     };
@@ -191,7 +189,7 @@ const TipsPage: FC<TipsPageProps> = ({ activeMenu, setMode, setActiveMenu }) => 
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-200 ${
                   index === currentIndex
-                    ? "bg-primary-brand" // FIX: Gunakan warna yang lebih mencolok
+                    ? "bg-primary-brand" 
                     : "bg-white bg-opacity-30 hover:bg-opacity-50"
                 }`}
                 aria-label={`Go to tip ${index + 1}`}
