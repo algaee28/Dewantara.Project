@@ -27,7 +27,9 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
   showExplanation,
   timeLimit,
   timeRemaining,
-  elapsedTime,
+  // @ts-ignore
+  elapsedTime, 
+  // @ts-ignore
   currentQuizType,
   handleSubmitAnswer,
   handleNextQuestion,

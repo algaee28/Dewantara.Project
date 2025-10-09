@@ -1,9 +1,9 @@
 // src/pages/QuizSelectPage.tsx
 import { FC } from 'react';
 import { Info } from 'lucide-react';
-import NavMenu from '../../components/UI/NavMenu';
-import QuizCard from '../../components/UI/QuizCard';
-import { Mode, ActiveTest } from '../../App';
+import NavMenu from '../components/UI/NavMenu';
+import QuizCard from '../components/UI/QuizCard';
+import { Mode, ActiveTest } from '../App';
 
 // Definisikan komponen yang relevan di sini jika belum diimpor
 const ComingSoonAlert: FC<{ onClose: () => void }> = ({ onClose }) => (

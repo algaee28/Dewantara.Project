@@ -1,6 +1,5 @@
 // src/pages/SimulationPage.tsx
-
-import React, { FC } from 'react';
+import { FC } from 'react';
 import NavMenu from '../components/UI/NavMenu';
 import { Mode } from '../App';
 
