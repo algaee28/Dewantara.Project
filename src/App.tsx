@@ -15,7 +15,7 @@ export interface Question {
 }
 
 export type Mode = "home" | "quiz" | "simulasi" | "tips" | "quizInProgress" | "quizResults";
-export type ActiveTest = "fundamental" | "ekonomi" | "english" | "perbankan";
+export type ActiveTest = "fundamental" | "ekonomi" | "english" | "perbankan"; // DITAMBAH 'perbankan'
 
 // Dynamic Imports untuk Code-Splitting
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -82,15 +82,21 @@ const App: FC = () => {
             ...questionBank.numerik, ...questionBank.digitsymbol
         ],
         english_simulasi: [
-            ...(questionBank.grammar || []), ...questionBank.reading, ...questionBank.vocab
-        ],
-        central_bank: [
-            ...(questionBank.Modul1 || []), ...(questionBank.Modul2 || []), ...(questionBank.Modul3 || []),
-            ...(questionBank.Modul4 || []), ...(questionBank.Modul5 || []), ...(questionBank.Modul6 || []), ...(questionBank.Modul7 || []), 
+            ...(questionBank.grammar || []), ...questionBank.reading, ...questionBank.vocab,
+            ...(questionBank.expression || []), ...(questionBank.structure || [])
         ],
         ekonomi_simulasi: questionBank.ekonomi,
         akuntansi_simulasi: questionBank.akuntansi,
         bank_simulasi: questionBank.bank,
+        central_bank: [ 
+            ...(questionBank.Modul1 || []), 
+            ...(questionBank.Modul2 || []), 
+            ...(questionBank.Modul3 || []), 
+            ...(questionBank.Modul4 || []), 
+            ...(questionBank.Modul5 || []), 
+            ...(questionBank.Modul6 || []), 
+            ...(questionBank.Modul7 || []), 
+        ],
       };
       const source = questionMap[quizType] || [];
       const shuffled = [...source].sort(() => 0.5 - Math.random());
@@ -136,7 +142,6 @@ const App: FC = () => {
             userAnswers[index] === q.correct ? acc + 1 : acc, 0);
     };
     
-    // FIX: Tambahkan fungsi ini untuk memenuhi QuizResultsPageProps
     const getScoreCategory = (score: number, total: number) => {
       const percentage = total > 0 ? (score / total) : 0;
       if (percentage >= 0.85) {
@@ -161,14 +166,12 @@ const App: FC = () => {
         case "quiz":
           return <QuizSelectPage {...pageProps} activeSubMenu={activeSubMenu} setActiveSubMenu={setActiveSubMenu} startQuiz={startQuiz} showAlert={showAlert} setShowAlert={setShowAlert} />;
         case "simulasi":
-          // FIX: Hapus props showAlert dan setShowAlert yang tidak didefinisikan di SimulationPage
           return <SimulationPage {...pageProps} startQuiz={startQuiz} />;
         case "tips":
           return <TipsPage {...pageProps} />;
         case "quizInProgress":
           return <QuizInProgressPage questions={questions} currentQuestion={currentQuestion} selectedAnswer={selectedAnswer} showExplanation={showExplanation} timeLimit={timeLimit} timeRemaining={timeRemaining} elapsedTime={elapsedTime} currentQuizType={currentQuizType} handleSubmitAnswer={handleSubmitAnswer} handleNextQuestion={handleNextQuestion} handleAnswerSelect={handleAnswerSelect} setMode={setMode} setActiveMenu={setActiveMenu} />;
         case "quizResults":
-          // FIX: Kirim fungsi getScoreCategory
           return <QuizResultsPage 
               questions={questions} 
               timeLimit={timeLimit} 
@@ -178,10 +181,9 @@ const App: FC = () => {
               startQuiz={startQuiz} 
               setMode={setMode} 
               setActiveMenu={setActiveMenu} 
-              // Kirim fungsi dan state mentah
               calculateScore={calculateScore} 
               startTime={startTime}
-              getScoreCategory={getScoreCategory} // <-- ADDED
+              getScoreCategory={getScoreCategory}
           />;
         default:
           return <HomePage {...pageProps} randomQuote={randomQuote} />;

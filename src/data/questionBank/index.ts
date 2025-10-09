@@ -19,7 +19,7 @@ import Modul5 from "./Modul5";
 import Modul6 from "./Modul6";
 import Modul7 from "./Modul7";
 import expression from "./Expression";
-import struture from "./Structure"
+import structure from "./Structure";
 
 const questionBank = {
   verbal,
@@ -41,7 +41,7 @@ const questionBank = {
   Modul6,
   Modul7,
   expression,
-  struture
+  structure,
 };
 
 export default questionBank;

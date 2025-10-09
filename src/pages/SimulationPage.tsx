@@ -24,7 +24,7 @@ const SimulationPage: FC<SimulationPageProps> = ({
         return `${minutes} Menit`;
     };
 
-    // Data Simulasi dengan properti gradient
+    // Data Simulasi
     const simulations = [
         {
             title: "TPD - Fundamental",
@@ -61,9 +61,10 @@ const SimulationPage: FC<SimulationPageProps> = ({
             timeLimit: 30 * 60, // 30 menit
             gradient: "linear-gradient(145deg, #F59E0B 0%, #92400E 100%)", // Warm Gold/Amber
         },
+        // SIMULASI BARU: Central Bank
         {
-            title: "centralbank",
-            quiztype: "central_bank",
+            title: "Central Bank", // Diubah menjadi Title Case
+            quizType: "central_bank", // FIX: Menggunakan quizType (camelCase)
             questionCount: 40,
             timeLimit: 30 * 60,
             gradient: "radial-gradient(circle at 70% 50%, rgba(50,200,150,0.6), transparent 70%), linear-gradient(135deg, #0a1a0a, #1c2e20)",
@@ -78,7 +79,6 @@ const SimulationPage: FC<SimulationPageProps> = ({
             aria-label={`Mulai Simulasi ${sim.title}`}
         >
             <div 
-                // PERUBAHAN UTAMA: w-44 h-58 menjadi w-56 h-72
                 className="w-56 h-72 rounded-3xl overflow-hidden relative shadow-2xl border border-white border-opacity-30 p-6 flex flex-col justify-between"
                 style={{ background: sim.gradient }}
             >
