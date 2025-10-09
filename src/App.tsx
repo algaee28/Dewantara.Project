@@ -21,7 +21,7 @@ export type ActiveTest = "fundamental" | "ekonomi" | "english";
 const HomePage = lazy(() => import('./pages/HomePage'));
 const QuizSelectPage = lazy(() => import('./pages/QuizSelectPage'));
 const SimulationPage = lazy(() => import('./pages/SimulationPage'));
-const TipsPage = lazy(() => import('./pages/tipsPage'));
+const TipsPage = lazy(() => import('./pages/TipsPage'));
 const QuizInProgressPage = lazy(() => import('./pages/QuizInProgressPage'));
 const QuizResultsPage = lazy(() => import('./pages/QuizResultsPage'));
 
