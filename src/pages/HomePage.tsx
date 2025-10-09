@@ -1,7 +1,7 @@
 // src/pages/HomePage.tsx
 import { FC } from 'react';
-import NavMenu from '../../components/UI/NavMenu';
-import { Mode } from '../../App';
+import NavMenu from '../components/UI/NavMenu';
+import { Mode } from '../App';
 
 interface Quote {
   header: string;
