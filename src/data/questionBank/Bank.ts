@@ -5,7 +5,7 @@ const bankQuestions = [
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "Konsep **lender of last resort** dalam sistem perbankan merujuk pada fungsi utama bank sentral untuk:",
+      "Konsep lender of last resort dalam sistem perbankan merujuk pada fungsi utama bank sentral untuk:",
     options: {
       A: "Menjamin semua simpanan nasabah yang mengalami kebangkrutan.",
       B: "Menyediakan pinjaman darurat likuiditas kepada bank yang sehat namun kesulitan likuiditas jangka pendek.",
@@ -15,12 +15,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Lender of last resort** adalah fungsi Bank Sentral (BI) untuk menyediakan bantuan likuiditas darurat (*Emergency Liquidity Assistance/ELA*) kepada bank yang mengalami kesulitan likuiditas temporal, namun memiliki solvabilitas yang baik (sehat). Tujuannya adalah mencegah *bank run* dan krisis sistemik. Opsi A adalah fungsi Lembaga Penjamin Simpanan (LPS).",
+      "Lender of last resort adalah fungsi Bank Sentral (BI) untuk menyediakan bantuan likuiditas darurat (*Emergency Liquidity Assistance/ELA*) kepada bank yang mengalami kesulitan likuiditas temporal, namun memiliki solvabilitas yang baik (sehat). Tujuannya adalah mencegah *bank run* dan krisis sistemik. Opsi A adalah fungsi Lembaga Penjamin Simpanan (LPS).",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "Dalam teori ekonomi moneter, **money multiplier** (pelipat ganda uang) paling akurat didefinisikan sebagai:",
+      "Dalam teori ekonomi moneter, money multiplier (pelipat ganda uang) paling akurat didefinisikan sebagai:",
     options: {
       A: "Rasio antara cadangan wajib bank sentral dengan jumlah uang primer.",
       B: "Perbandingan yang menunjukkan besaran inflasi akibat dari peningkatan suku bunga acuan.",
@@ -30,12 +30,12 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "**Money Multiplier** menunjukkan berapa kali lipat jumlah uang beredar $(M)$ dapat ditingkatkan atau diciptakan oleh sistem perbankan dari setiap unit **basis moneter** $(B)$. Faktor ini sangat dipengaruhi oleh rasio cadangan wajib bank sentral dan preferensi masyarakat terhadap uang kartal (cash) dibandingkan giral (deposit).",
+      "Money Multiplier menunjukkan berapa kali lipat jumlah uang beredar $(M)$ dapat ditingkatkan atau diciptakan oleh sistem perbankan dari setiap unit basis moneter $(B)$. Faktor ini sangat dipengaruhi oleh rasio cadangan wajib bank sentral dan preferensi masyarakat terhadap uang kartal (cash) dibandingkan giral (deposit).",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "Fenomena **crowding out effect** dalam konteks kebijakan fiskal ekspansif terjadi ketika:",
+      "Fenomena crowding out effect dalam konteks kebijakan fiskal ekspansif terjadi ketika:",
     options: {
       A: "Peningkatan belanja pemerintah menyebabkan lonjakan suku bunga riil, yang kemudian menekan investasi swasta.",
       B: "Pemerintah mencetak uang secara masif untuk membiayai pengeluaran, sehingga menyebabkan inflasi tinggi.",
@@ -45,12 +45,12 @@ const bankQuestions = [
     },
     correct: "A",
     explanation:
-      "**Crowding Out Effect** terjadi ketika peningkatan pengeluaran pemerintah (dibiayai utang) meningkatkan permintaan dana di pasar, menaikkan suku bunga riil, dan pada gilirannya **mengurangi (crowd out)** investasi dan konsumsi sektor swasta. Ini menunjukkan keterbatasan efektivitas kebijakan fiskal.",
+      "Crowding Out Effect terjadi ketika peningkatan pengeluaran pemerintah (dibiayai utang) meningkatkan permintaan dana di pasar, menaikkan suku bunga riil, dan pada gilirannya mengurangi (crowd out) investasi dan konsumsi sektor swasta. Ini menunjukkan keterbatasan efektivitas kebijakan fiskal.",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "Dalam model **IS-LM**, kurva LM secara fundamental menunjukkan kombinasi antara tingkat bunga dan pendapatan yang menghasilkan:",
+      "Dalam model IS-LM, kurva LM secara fundamental menunjukkan kombinasi antara tingkat bunga dan pendapatan yang menghasilkan:",
     options: {
       A: "Keseimbangan di pasar barang dan jasa (Investasi = Tabungan).",
       B: "Keseimbangan di pasar tenaga kerja, menentukan output potensial.",
@@ -60,12 +60,12 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "Kurva **LM (Liquidity-Money)** merepresentasikan **pasar uang**. Setiap titik pada kurva menunjukkan kombinasi tingkat pendapatan $(Y)$ dan tingkat bunga $(r)$ di mana permintaan uang sama dengan penawaran uang. Opsi A adalah kurva IS (Investment-Saving).",
+      "Kurva LM (Liquidity-Money) merepresentasikan pasar uang. Setiap titik pada kurva menunjukkan kombinasi tingkat pendapatan $(Y)$ dan tingkat bunga $(r)$ di mana permintaan uang sama dengan penawaran uang. Opsi A adalah kurva IS (Investment-Saving).",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "Konsep **output gap** dalam analisis makroekonomi paling relevan untuk menilai:",
+      "Konsep output gap dalam analisis makroekonomi paling relevan untuk menilai:",
     options: {
       A: "Seberapa besar defisit anggaran belanja pemerintah dibandingkan dengan PDB nominal.",
       B: "Potensi tekanan inflasi atau deflasi yang timbul akibat perbedaan antara PDB aktual dan PDB potensial.",
@@ -75,12 +75,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Output Gap** adalah selisih persentase antara Produk Domestik Bruto (PDB) Aktual dan PDB Potensial. Gap yang positif mengindikasikan kelebihan permintaan (ekonomi *overheating*) dan potensi **tekanan inflasi**. Gap yang negatif mengindikasikan kapasitas menganggur (*slack*) dan potensi tekanan deflasi. Ini adalah alat penting untuk justifikasi *stance* kebijakan moneter.",
+      "Output Gap adalah selisih persentase antara Produk Domestik Bruto (PDB) Aktual dan PDB Potensial. Gap yang positif mengindikasikan kelebihan permintaan (ekonomi *overheating*) dan potensi tekanan inflasi. Gap yang negatif mengindikasikan kapasitas menganggur (*slack*) dan potensi tekanan deflasi. Ini adalah alat penting untuk justifikasi *stance* kebijakan moneter.",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "Dalam konteks kebijakan moneter dan stabilitas, istilah **neutral interest rate** (tingkat bunga netral) merujuk pada:",
+      "Dalam konteks kebijakan moneter dan stabilitas, istilah neutral interest rate (tingkat bunga netral) merujuk pada:",
     options: {
       A: "Tingkat suku bunga yang paling sering ditetapkan dalam operasi pasar terbuka.",
       B: "Suku bunga nominal yang jika dipertahankan akan menstabilkan inflasi pada target, tanpa memicu kontraksi atau ekspansi ekonomi.",
@@ -90,12 +90,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Neutral Interest Rate** (atau $r^*$) adalah tingkat suku bunga riil jangka panjang di mana output aktual sama dengan output potensial, dan inflasi stabil. Mempertahankan suku bunga kebijakan di bawah (di atas) tingkat netral akan bersifat ekspansif (kontraktif) terhadap ekonomi. Ini adalah konsep kunci dalam *Inflation Targeting Framework*.",
+      "Neutral Interest Rate (atau $r^*$) adalah tingkat suku bunga riil jangka panjang di mana output aktual sama dengan output potensial, dan inflasi stabil. Mempertahankan suku bunga kebijakan di bawah (di atas) tingkat netral akan bersifat ekspansif (kontraktif) terhadap ekonomi. Ini adalah konsep kunci dalam *Inflation Targeting Framework*.",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "Pernyataan yang paling akurat mengenai transmisi kebijakan moneter melalui **exchange rate channel** (jalur nilai tukar) adalah:",
+      "Pernyataan yang paling akurat mengenai transmisi kebijakan moneter melalui exchange rate channel (jalur nilai tukar) adalah:",
     options: {
       A: "Penurunan suku bunga domestik menyebabkan arus modal masuk, memperkuat nilai tukar, dan meningkatkan net ekspor.",
       B: "Kenaikan suku bunga acuan menarik arus modal asing, menyebabkan apresiasi mata uang domestik, sehingga menekan inflasi dari sisi impor.",
@@ -105,12 +105,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Exchange Rate Channel:** Kenaikan suku bunga domestik $\rightarrow$ menarik *capital inflow* $\rightarrow$ **apresiasi** mata uang domestik $\rightarrow$ harga barang impor menjadi lebih murah $\rightarrow$ menurunkan inflasi (tekanan harga). Suku bunga domestik yang lebih tinggi juga membuat aset domestik lebih menarik.",
+      "Exchange Rate Channel: Kenaikan suku bunga domestik $\rightarrow$ menarik *capital inflow* $\rightarrow$ apresiasi mata uang domestik $\rightarrow$ harga barang impor menjadi lebih murah $\rightarrow$ menurunkan inflasi (tekanan harga). Suku bunga domestik yang lebih tinggi juga membuat aset domestik lebih menarik.",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "Dalam analisis kebijakan moneter, kurva **Phillips Curve** klasik menyatakan adanya *trade-off* jangka pendek antara:",
+      "Dalam analisis kebijakan moneter, kurva Phillips Curve klasik menyatakan adanya *trade-off* jangka pendek antara:",
     options: {
       A: "Tingkat suku bunga riil dan total investasi agregat.",
       B: "Tingkat pengangguran dan tingkat pertumbuhan produk domestik bruto (PDB).",
@@ -120,12 +120,12 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "**Phillips Curve** menggambarkan hubungan terbalik jangka pendek antara **tingkat inflasi** dan **tingkat pengangguran**. Ketika pengangguran rendah (ekonomi berjalan di atas potensial), tekanan inflasi cenderung meningkat, dan sebaliknya. Opsi B adalah hubungan yang dijelaskan oleh Hukum Okun.",
+      "Phillips Curve menggambarkan hubungan terbalik jangka pendek antara tingkat inflasi dan tingkat pengangguran. Ketika pengangguran rendah (ekonomi berjalan di atas potensial), tekanan inflasi cenderung meningkat, dan sebaliknya. Opsi B adalah hubungan yang dijelaskan oleh Hukum Okun.",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "**Time Inconsistency Problem** dalam kebijakan moneter muncul karena kecenderungan otoritas untuk:",
+      "Time Inconsistency Problem dalam kebijakan moneter muncul karena kecenderungan otoritas untuk:",
     options: {
       A: "Membuat kebijakan moneter yang sangat rumit dan sulit dipahami publik.",
       B: "Menyimpang dari komitmen kebijakan yang diumumkan sebelumnya demi keuntungan jangka pendek, meskipun merugikan kredibilitas jangka panjang.",
@@ -135,12 +135,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Time Inconsistency** adalah konflik antara tujuan jangka pendek dan kredibilitas jangka panjang. Bank Sentral mungkin tergoda untuk melakukan 'inflasi kejutan' untuk menurunkan pengangguran sementara (keuntungan jangka pendek), namun ini akan merusak ekspektasi dan kredibilitas di masa depan. Kebutuhan untuk mengatasi masalah ini adalah alasan utama perlunya **Independensi Bank Sentral**.",
+      "Time Inconsistency adalah konflik antara tujuan jangka pendek dan kredibilitas jangka panjang. Bank Sentral mungkin tergoda untuk melakukan 'inflasi kejutan' untuk menurunkan pengangguran sementara (keuntungan jangka pendek), namun ini akan merusak ekspektasi dan kredibilitas di masa depan. Kebutuhan untuk mengatasi masalah ini adalah alasan utama perlunya Independensi Bank Sentral.",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "Prinsip **Impossible Trinity** (Mundell-Fleming Trilemma) menyatakan bahwa suatu negara tidak mungkin secara simultan mencapai:",
+      "Prinsip Impossible Trinity (Mundell-Fleming Trilemma) menyatakan bahwa suatu negara tidak mungkin secara simultan mencapai:",
     options: {
       A: "Stabilitas harga, pertumbuhan ekonomi tinggi, dan pengangguran rendah.",
       B: "Nilai tukar yang sangat stabil (kurs tetap), mobilitas modal internasional yang bebas, dan otonomi kebijakan moneter.",
@@ -150,12 +150,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Impossible Trinity** menyatakan bahwa dari tiga tujuan: 1) **Kurs Tetap**, 2) **Mobilitas Modal Bebas**, dan 3) **Kebijakan Moneter Independen/Otonom**, sebuah negara hanya dapat memilih dua. Misalnya, Indonesia memilih otonomi moneter dan mobilitas modal, sehingga nilai tukar menjadi fleksibel.",
+      "Impossible Trinity menyatakan bahwa dari tiga tujuan: 1) Kurs Tetap, 2) Mobilitas Modal Bebas, dan 3) Kebijakan Moneter Independen/Otonom, sebuah negara hanya dapat memilih dua. Misalnya, Indonesia memilih otonomi moneter dan mobilitas modal, sehingga nilai tukar menjadi fleksibel.",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "Dalam transmisi kebijakan moneter, **credit channel** bekerja melalui dampak kebijakan pada:",
+      "Dalam transmisi kebijakan moneter, credit channel bekerja melalui dampak kebijakan pada:",
     options: {
       A: "Perubahan suku bunga yang mempengaruhi nilai aset finansial rumah tangga.",
       B: "Ketersediaan kredit bank kepada perusahaan dan rumah tangga (bank lending channel).",
@@ -165,11 +165,11 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Credit Channel** beroperasi melalui dua jalur utama: **Bank Lending Channel** (kebijakan moneter memengaruhi kemampuan bank menyalurkan kredit) dan **Balance Sheet Channel** (kebijakan moneter memengaruhi kekayaan atau nilai jaminan peminjam, sehingga mengubah kemampuan mereka mendapatkan kredit).",
+      "Credit Channel beroperasi melalui dua jalur utama: Bank Lending Channel (kebijakan moneter memengaruhi kemampuan bank menyalurkan kredit) dan Balance Sheet Channel (kebijakan moneter memengaruhi kekayaan atau nilai jaminan peminjam, sehingga mengubah kemampuan mereka mendapatkan kredit).",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
-    question: "Konsep **velocity of money** dalam ekonomi mengacu pada:",
+    question: "Konsep velocity of money dalam ekonomi mengacu pada:",
     options: {
       A: "Kecepatan pencetakan uang oleh bank sentral.",
       B: "Tingkat perputaran uang dalam perekonomian untuk transaksi PDB.",
@@ -179,12 +179,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Velocity of Money** adalah laju rata-rata di mana satu unit mata uang digunakan untuk membeli barang dan jasa domestik yang baru diproduksi. Dalam persamaan kuantitas uang, $V$ adalah rasio PDB Nominal terhadap jumlah uang beredar $(M)$ (yaitu, $V = PY/M$).",
+      "Velocity of Money adalah laju rata-rata di mana satu unit mata uang digunakan untuk membeli barang dan jasa domestik yang baru diproduksi. Dalam persamaan kuantitas uang, $V$ adalah rasio PDB Nominal terhadap jumlah uang beredar $(M)$ (yaitu, $V = PY/M$).",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "Fenomena **liquidity trap** (perangkap likuiditas) terjadi ketika:",
+      "Fenomena liquidity trap (perangkap likuiditas) terjadi ketika:",
     options: {
       A: "Bank sentral menaikkan suku bunga drastis untuk menjebak inflasi.",
       B: "Suku bunga nominal mendekati nol, membuat masyarakat menimbun uang tunai dan kebijakan moneter menjadi tidak efektif.",
@@ -194,12 +194,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Liquidity Trap** adalah kondisi di mana suku bunga nominal sudah sangat rendah, sehingga masyarakat lebih memilih memegang aset tunai (uang kartal/giral) daripada obligasi, menyebabkan kebijakan moneter ekspansif (penambahan uang beredar) tidak efektif merangsang investasi dan konsumsi.",
+      "Liquidity Trap adalah kondisi di mana suku bunga nominal sudah sangat rendah, sehingga masyarakat lebih memilih memegang aset tunai (uang kartal/giral) daripada obligasi, menyebabkan kebijakan moneter ekspansif (penambahan uang beredar) tidak efektif merangsang investasi dan konsumsi.",
   },
   {
     type: "Dasar-Dasar Ekonomi Terkait Bank Sentral",
     question:
-      "**Core Inflation** (Inflasi Inti) lebih diutamakan sebagai target operasional kebijakan moneter karena:",
+      "Core Inflation (Inflasi Inti) lebih diutamakan sebagai target operasional kebijakan moneter karena:",
     options: {
       A: "Mencakup semua komponen harga dalam keranjang IHK.",
       B: "Mencerminkan tekanan harga yang bersifat permanen dan dipengaruhi permintaan agregat.",
@@ -209,7 +209,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Core Inflation** mengecualikan komponen harga yang bergejolak (volatile food) dan harga yang diatur pemerintah (*administered price*). Oleh karena itu, Core Inflation lebih mencerminkan tekanan inflasi yang berasal dari **permintaan agregat** dan **ekspektasi jangka menengah**, yang merupakan ranah pengaruh kebijakan moneter Bank Sentral.",
+      "Core Inflation mengecualikan komponen harga yang bergejolak (volatile food) dan harga yang diatur pemerintah (*administered price*). Oleh karena itu, Core Inflation lebih mencerminkan tekanan inflasi yang berasal dari permintaan agregat dan ekspektasi jangka menengah, yang merupakan ranah pengaruh kebijakan moneter Bank Sentral.",
   },
 
   // --- PERAN & FUNGSI BANK SENTRAL (Revisi) ---
@@ -226,7 +226,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Tiga pilar utama tugas Bank Indonesia adalah: 1) **Kebijakan Moneter** (mencapai kestabilan Rupiah/inflasi), 2) **Sistem Pembayaran** (mengatur kelancaran transaksi), dan 3) **Stabilitas Sistem Keuangan (SSK)** (menjaga sistem keuangan dari risiko sistemik). Opsi D (Pengawasan Bank) telah dialihkan ke Otoritas Jasa Keuangan (OJK).",
+      "Tiga pilar utama tugas Bank Indonesia adalah: 1) Kebijakan Moneter (mencapai kestabilan Rupiah/inflasi), 2) Sistem Pembayaran (mengatur kelancaran transaksi), dan 3) Stabilitas Sistem Keuangan (SSK) (menjaga sistem keuangan dari risiko sistemik). Opsi D (Pengawasan Bank) telah dialihkan ke Otoritas Jasa Keuangan (OJK).",
   },
   {
     type: "Peran & Fungsi Bank Sentral",
@@ -241,12 +241,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Independensi Bank Sentral** (terutama *goal independence* dan *instrument independence*) diperlukan untuk mengatasi masalah *time inconsistency*. Independensi mencegah otoritas politik memaksa Bank Sentral mengambil kebijakan moneter ekspansif jangka pendek yang akan memicu inflasi tinggi jangka panjang.",
+      "Independensi Bank Sentral (terutama *goal independence* dan *instrument independence*) diperlukan untuk mengatasi masalah *time inconsistency*. Independensi mencegah otoritas politik memaksa Bank Sentral mengambil kebijakan moneter ekspansif jangka pendek yang akan memicu inflasi tinggi jangka panjang.",
   },
   {
     type: "Peran & Fungsi Bank Sentral",
     question:
-      "Dalam menjalankan fungsi sebagai **banker's bank**, Bank Sentral:",
+      "Dalam menjalankan fungsi sebagai banker's bank, Bank Sentral:",
     options: {
       A: "Memberikan layanan perbankan kepada masyarakat umum dan perusahaan besar.",
       B: "Menyediakan layanan kliring dan setelmen antar bank serta fasilitas pinjaman antar bank.",
@@ -256,12 +256,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Sebagai **banker's bank**, Bank Sentral menjadi bank bagi bank umum. Layanan kuncinya adalah menjadi **settlement agent** (melalui RTGS/SKNBI) dan menyediakan pinjaman likuiditas (melalui *standing facilities* dan *lender of last resort*). Opsi C adalah fungsi regulasi/pengawasan.",
+      "Sebagai banker's bank, Bank Sentral menjadi bank bagi bank umum. Layanan kuncinya adalah menjadi settlement agent (melalui RTGS/SKNBI) dan menyediakan pinjaman likuiditas (melalui *standing facilities* dan *lender of last resort*). Opsi C adalah fungsi regulasi/pengawasan.",
   },
   {
     type: "Peran & Fungsi Bank Sentral",
     question:
-      "Fungsi bank sentral sebagai **fiscal agent of government** (agen fiskal pemerintah) meliputi:",
+      "Fungsi bank sentral sebagai fiscal agent of government (agen fiskal pemerintah) meliputi:",
     options: {
       A: "Menetapkan anggaran belanja negara dan mengelola utang luar negeri.",
       B: "Mengelola rekening pemerintah, membantu penerbitan surat utang, dan mengadministrasikan pembayaran utang.",
@@ -271,12 +271,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Sebagai **agen fiskal**, BI bertindak sebagai kasir, bank, dan penasihat finansial pemerintah. Ini termasuk mengelola rekening giro pemerintah, membantu penerbitan Surat Berharga Negara (SBN), dan mengadministrasikan pembayaran. Opsi E dilarang oleh UU BI (prinsip *No Fiscal Dominance*).",
+      "Sebagai agen fiskal, BI bertindak sebagai kasir, bank, dan penasihat finansial pemerintah. Ini termasuk mengelola rekening giro pemerintah, membantu penerbitan Surat Berharga Negara (SBN), dan mengadministrasikan pembayaran. Opsi E dilarang oleh UU BI (prinsip *No Fiscal Dominance*).",
   },
   {
     type: "Peran & Fungsi Bank Sentral",
     question:
-      "Peran Bank Indonesia dalam **pengembangan pasar keuangan** meliputi:",
+      "Peran Bank Indonesia dalam pengembangan pasar keuangan meliputi:",
     options: {
       A: "Menjadi investor utama di pasar saham dan obligasi.",
       B: "Menciptakan infrastruktur, instrumen, dan kerangka regulasi untuk pasar yang efisien dan stabil.",
@@ -286,12 +286,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Bank Indonesia berperan sebagai **developer** pasar keuangan. Fokusnya adalah pada aspek **infrastruktur** (seperti sistem *settlement* SBN dan sistem informasi), pengembangan **instrumen keuangan** (misalnya sukuk, SDBI), dan **regulasi** untuk mendukung kedalaman dan likuiditas pasar.",
+      "Bank Indonesia berperan sebagai developer pasar keuangan. Fokusnya adalah pada aspek infrastruktur (seperti sistem *settlement* SBN dan sistem informasi), pengembangan instrumen keuangan (misalnya sukuk, SDBI), dan regulasi untuk mendukung kedalaman dan likuiditas pasar.",
   },
   {
     type: "Peran & Fungsi Bank Sentral",
     question:
-      "Peran bank sentral dalam menjaga **stabilitas nilai tukar** dilakukan melalui:",
+      "Peran bank sentral dalam menjaga stabilitas nilai tukar dilakukan melalui:",
     options: {
       A: "Penetapan batas maksimum dan minimum fluktuasi Rupiah harian.",
       B: "Intervensi di pasar valuta asing (spot dan domestik non-deliverable forward) dan pengelolaan cadangan devisa.",
@@ -301,12 +301,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Dalam rezim nilai tukar *free-floating* yang terkelola (*managed floating*), BI melakukan **intervensi** untuk mengurangi volatilitas nilai tukar yang berlebihan (di luar fundamental) dan untuk mengelola *capital flow* melalui pasar valas. Ini didukung oleh pengelolaan **cadangan devisa** yang memadai.",
+      "Dalam rezim nilai tukar *free-floating* yang terkelola (*managed floating*), BI melakukan intervensi untuk mengurangi volatilitas nilai tukar yang berlebihan (di luar fundamental) dan untuk mengelola *capital flow* melalui pasar valas. Ini didukung oleh pengelolaan cadangan devisa yang memadai.",
   },
   {
     type: "Peran & Fungsi Bank Sentral",
     question:
-      "Dalam sistem pembayaran, peran bank sentral sebagai **settlement agent** adalah:",
+      "Dalam sistem pembayaran, peran bank sentral sebagai settlement agent adalah:",
     options: {
       A: "Memproses semua pembayaran eceran dan retail dengan sistem *netting*.",
       B: "Menyediakan layanan final settlement (penyelesaian akhir) untuk transaksi bernilai besar (RTGS).",
@@ -316,12 +316,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Sebagai **settlement agent**, BI menyediakan sarana untuk **final settlement** (penyelesaian akhir) atas kewajiban pembayaran antar bank, khususnya untuk transaksi bernilai besar melalui sistem **BI-RTGS** (*Real Time Gross Settlement*), di mana penyelesaian dilakukan satu per satu dan seketika.",
+      "Sebagai settlement agent, BI menyediakan sarana untuk final settlement (penyelesaian akhir) atas kewajiban pembayaran antar bank, khususnya untuk transaksi bernilai besar melalui sistem BI-RTGS (*Real Time Gross Settlement*), di mana penyelesaian dilakukan satu per satu dan seketika.",
   },
   {
     type: "Peran & Fungsi Bank Sentral",
     question:
-      "Tujuan utama dari fungsi **lender of last resort** Bank Sentral adalah:",
+      "Tujuan utama dari fungsi lender of last resort Bank Sentral adalah:",
     options: {
       A: "Meningkatkan rasio kredit terhadap PDB (credit deepening).",
       B: "Mencegah penularan krisis (contagion) dan menjaga kepercayaan publik terhadap sistem perbankan secara keseluruhan.",
@@ -331,7 +331,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Tujuan LLR adalah **stabilitas sistemik**. Dengan menyediakan likuiditas darurat, BI mencegah kegagalan satu atau beberapa bank yang dapat memicu kepanikan (*bank run*) dan menyebar ke seluruh sistem keuangan (*contagion*).",
+      "Tujuan LLR adalah stabilitas sistemik. Dengan menyediakan likuiditas darurat, BI mencegah kegagalan satu atau beberapa bank yang dapat memicu kepanikan (*bank run*) dan menyebar ke seluruh sistem keuangan (*contagion*).",
   },
   {
     type: "Peran & Fungsi Bank Sentral",
@@ -346,7 +346,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Fungsi penelitian adalah landasan **Evidence-Based Policy Making**. Bank Sentral melakukan analisis makro, mengembangkan model peramalan inflasi (*forecasting model*), dan mengkaji saluran transmisi untuk memastikan keputusan kebijakan moneter dan makroprudensial didukung oleh data dan teori yang kuat.",
+      "Fungsi penelitian adalah landasan Evidence-Based Policy Making. Bank Sentral melakukan analisis makro, mengembangkan model peramalan inflasi (*forecasting model*), dan mengkaji saluran transmisi untuk memastikan keputusan kebijakan moneter dan makroprudensial didukung oleh data dan teori yang kuat.",
   },
   {
     type: "Peran & Fungsi Bank Sentral",
@@ -361,12 +361,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Forward Guidance** adalah instrumen komunikasi Bank Sentral untuk memengaruhi ekspektasi pasar, yang merupakan salah satu jalur penting transmisi kebijakan moneter. Dengan mengarahkan ekspektasi, Bank Sentral dapat meningkatkan efektivitas kebijakan saat ini (misalnya, membuat suku bunga jangka panjang bergerak sesuai keinginan).",
+      "Forward Guidance adalah instrumen komunikasi Bank Sentral untuk memengaruhi ekspektasi pasar, yang merupakan salah satu jalur penting transmisi kebijakan moneter. Dengan mengarahkan ekspektasi, Bank Sentral dapat meningkatkan efektivitas kebijakan saat ini (misalnya, membuat suku bunga jangka panjang bergerak sesuai keinginan).",
   },
   {
     type: "Peran & Fungsi Bank Sentral",
     question:
-      "Dalam konteks stabilitas sistem keuangan, Bank Indonesia memiliki peran sebagai **koordinator** kebijakan:",
+      "Dalam konteks stabilitas sistem keuangan, Bank Indonesia memiliki peran sebagai koordinator kebijakan:",
     options: {
       A: "Fiskal dan moneter.",
       B: "Moneter dan makroprudensial.",
@@ -376,7 +376,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Bank Indonesia mengoordinasikan **kebijakan moneter** (menjaga stabilitas harga/inflasi) dengan **kebijakan makroprudensial** (mengelola risiko sistemik dan stabilitas keuangan secara keseluruhan). Kebijakan mikroprudensial adalah kewenangan Otoritas Jasa Keuangan (OJK).",
+      "Bank Indonesia mengoordinasikan kebijakan moneter (menjaga stabilitas harga/inflasi) dengan kebijakan makroprudensial (mengelola risiko sistemik dan stabilitas keuangan secara keseluruhan). Kebijakan mikroprudensial adalah kewenangan Otoritas Jasa Keuangan (OJK).",
   },
 
   // --- UNDANG-UNDANG & DASAR HUKUM BANK INDONESIA (Revisi) ---
@@ -393,7 +393,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Tujuan tunggal BI adalah **mencapai dan memelihara kestabilan nilai Rupiah**. Kestabilan ini tercermin dalam dua aspek: **stabilitas harga** (inflasi yang rendah dan stabil) dan **stabilitas nilai tukar Rupiah** terhadap mata uang negara lain. Tujuan lain (pertumbuhan, pengangguran) adalah tujuan sekunder yang dicapai secara berkesinambungan.",
+      "Tujuan tunggal BI adalah mencapai dan memelihara kestabilan nilai Rupiah. Kestabilan ini tercermin dalam dua aspek: stabilitas harga (inflasi yang rendah dan stabil) dan stabilitas nilai tukar Rupiah terhadap mata uang negara lain. Tujuan lain (pertumbuhan, pengangguran) adalah tujuan sekunder yang dicapai secara berkesinambungan.",
   },
   {
     type: "Undang-Undang & Dasar Hukum Bank Indonesia",
@@ -407,7 +407,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Bank Indonesia adalah **lembaga negara yang independen** dalam melaksanakan tugas dan wewenangnya (yang diatur dalam UU No. 23/1999 jo. UU No. 6/2009). Prinsip independensi ini krusial untuk menjaga kredibilitas komitmen stabilitas harga.",
+      "Bank Indonesia adalah lembaga negara yang independen dalam melaksanakan tugas dan wewenangnya (yang diatur dalam UU No. 23/1999 jo. UU No. 6/2009). Prinsip independensi ini krusial untuk menjaga kredibilitas komitmen stabilitas harga.",
   },
   {
     type: "Undang-Undang & Dasar Hukum Bank Indonesia",
@@ -422,12 +422,12 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "Masa jabatan Gubernur, Deputi Gubernur Senior, dan Deputi Gubernur Bank Indonesia adalah **5 tahun** dan dapat diperpanjang untuk **satu kali** masa jabatan berikutnya (total maksimal 10 tahun).",
+      "Masa jabatan Gubernur, Deputi Gubernur Senior, dan Deputi Gubernur Bank Indonesia adalah 5 tahun dan dapat diperpanjang untuk satu kali masa jabatan berikutnya (total maksimal 10 tahun).",
   },
   {
     type: "Undang-Undang & Dasar Hukum Bank Indonesia",
     question:
-      "Berdasarkan UU No. 6 Tahun 2009, fungsi **pengawasan perbankan** dialihkan kepada:",
+      "Berdasarkan UU No. 6 Tahun 2009, fungsi pengawasan perbankan dialihkan kepada:",
     options: {
       A: "Kementerian Keuangan untuk pengawasan bank milik negara.",
       B: "Otoritas Jasa Keuangan (OJK) sejak tahun 2013.",
@@ -437,7 +437,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "UU No. 6 Tahun 2009 tentang Penetapan Peraturan Pemerintah Pengganti Undang-Undang Nomor 2 Tahun 2008 tentang Perubahan Kedua Atas UU No. 23 Tahun 1999 tentang Bank Indonesia, mengamanatkan pengalihan fungsi pengawasan bank dari BI kepada **Otoritas Jasa Keuangan (OJK)**, yang efektif sejak 2013, sejalan dengan prinsip *Twin Peaks Model*.",
+      "UU No. 6 Tahun 2009 tentang Penetapan Peraturan Pemerintah Pengganti Undang-Undang Nomor 2 Tahun 2008 tentang Perubahan Kedua Atas UU No. 23 Tahun 1999 tentang Bank Indonesia, mengamanatkan pengalihan fungsi pengawasan bank dari BI kepada Otoritas Jasa Keuangan (OJK), yang efektif sejak 2013, sejalan dengan prinsip *Twin Peaks Model*.",
   },
   {
     type: "Undang-Undang & Dasar Hukum Bank Indonesia",
@@ -452,12 +452,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Larangan memberikan kredit atau pembiayaan kepada pemerintah adalah implementasi prinsip **No Fiscal Dominance** untuk menjaga independensi Bank Sentral dari tekanan fiskal, yang dapat menyebabkan moneterisasi defisit dan inflasi tinggi.",
+      "Larangan memberikan kredit atau pembiayaan kepada pemerintah adalah implementasi prinsip No Fiscal Dominance untuk menjaga independensi Bank Sentral dari tekanan fiskal, yang dapat menyebabkan moneterisasi defisit dan inflasi tinggi.",
   },
   {
     type: "Undang-Undang & Dasar Hukum Bank Indonesia",
     question:
-      "Ketentuan mengenai **ciri-ciri uang Rupiah tidak layak edar** ditetapkan dalam:",
+      "Ketentuan mengenai ciri-ciri uang Rupiah tidak layak edar ditetapkan dalam:",
     options: {
       A: "Undang-Undang tentang Mata Uang (UU No. 7 Tahun 2011).",
       B: "Peraturan Bank Indonesia (PBI) yang didasarkan pada standar teknis.",
@@ -467,7 +467,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Ciri-ciri uang Rupiah yang dianggap tidak layak edar (rusak, lusuh, cacat) ditetapkan secara teknis dan detail dalam **Peraturan Bank Indonesia (PBI)**, untuk memastikan kualitas uang yang beredar (Clean Money Policy) dan melindungi konsumen.",
+      "Ciri-ciri uang Rupiah yang dianggap tidak layak edar (rusak, lusuh, cacat) ditetapkan secara teknis dan detail dalam Peraturan Bank Indonesia (PBI), untuk memastikan kualitas uang yang beredar (Clean Money Policy) dan melindungi konsumen.",
   },
 
   // --- STRUKTUR ORGANISASI & TATA KELOLA BANK INDONESIA (Revisi) ---
@@ -484,7 +484,7 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "**Rapat Dewan Gubernur (RDG)** adalah forum pengambilan keputusan tertinggi yang membahas dan menetapkan kebijakan strategis BI, termasuk suku bunga acuan, arah kebijakan moneter, makroprudensial, dan sistem pembayaran. Dewan Gubernur terdiri dari Gubernur, Deputi Gubernur Senior, dan Deputi Gubernur.",
+      "Rapat Dewan Gubernur (RDG) adalah forum pengambilan keputusan tertinggi yang membahas dan menetapkan kebijakan strategis BI, termasuk suku bunga acuan, arah kebijakan moneter, makroprudensial, dan sistem pembayaran. Dewan Gubernur terdiri dari Gubernur, Deputi Gubernur Senior, dan Deputi Gubernur.",
   },
   {
     type: "Struktur Organisasi & Tata Kelola Bank Indonesia",
@@ -499,7 +499,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Undang-Undang menetapkan bahwa Dewan Gubernur terdiri dari seorang Gubernur, seorang Deputi Gubernur Senior, dan Deputi Gubernur paling banyak **5 orang** (sehingga total maksimal 7 orang, Opsi B), namun struktur riil dalam praktek adalah 7 orang (Opsi C). Namun, karena UU memuat kata 'paling banyak 5 orang', maka total maksimal adalah 7 orang (Opsi B).",
+      "Undang-Undang menetapkan bahwa Dewan Gubernur terdiri dari seorang Gubernur, seorang Deputi Gubernur Senior, dan Deputi Gubernur paling banyak 5 orang (sehingga total maksimal 7 orang, Opsi B), namun struktur riil dalam praktek adalah 7 orang (Opsi C). Namun, karena UU memuat kata 'paling banyak 5 orang', maka total maksimal adalah 7 orang (Opsi B).",
   },
   {
     type: "Struktur Organisasi & Tata Kelola Bank Indonesia",
@@ -514,12 +514,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "RDG mengutamakan **konsensus** (musyawarah untuk mufakat). Jika konsensus tidak tercapai, keputusan diambil berdasarkan suara terbanyak, dan Gubernur memiliki **hak suara menentukan** (hak veto) apabila terjadi kebuntuan suara.",
+      "RDG mengutamakan konsensus (musyawarah untuk mufakat). Jika konsensus tidak tercapai, keputusan diambil berdasarkan suara terbanyak, dan Gubernur memiliki hak suara menentukan (hak veto) apabila terjadi kebuntuan suara.",
   },
   {
     type: "Struktur Organisasi & Tata Kelola Bank Indonesia",
     question:
-      "Dalam tata kelola Bank Indonesia, prinsip **transparency** (transparansi) diwujudkan melalui, **kecuali**:",
+      "Dalam tata kelola Bank Indonesia, prinsip transparency (transparansi) diwujudkan melalui, kecuali:",
     options: {
       A: "Publikasi Laporan Tahunan dan Laporan Kebijakan Moneter secara berkala.",
       B: "Penyampaian penjelasan kebijakan oleh Dewan Gubernur kepada DPR.",
@@ -529,7 +529,7 @@ const bankQuestions = [
     },
     correct: "D",
     explanation:
-      "Transparansi Bank Sentral diwujudkan melalui komunikasi publik yang efektif (A, B, C, E). Namun, **notulen detail** RDG, yang memuat perdebatan internal dan pandangan spesifik anggota, umumnya **tidak dipublikasikan** untuk menjaga independensi dan kredibilitas proses pengambilan keputusan.",
+      "Transparansi Bank Sentral diwujudkan melalui komunikasi publik yang efektif (A, B, C, E). Namun, notulen detail RDG, yang memuat perdebatan internal dan pandangan spesifik anggota, umumnya tidak dipublikasikan untuk menjaga independensi dan kredibilitas proses pengambilan keputusan.",
   },
   {
     type: "Struktur Organisasi & Tata Kelola Bank Indonesia",
@@ -544,7 +544,7 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "**Komite Stabilitas Sistem Keuangan (KSSK)** adalah forum koordinasi lintas otoritas yang dipimpin oleh **Menteri Keuangan** dengan anggota **Gubernur BI, Ketua OJK, dan Ketua LPS**. Fungsi utamanya adalah memantau dan mengambil keputusan terkait stabilitas sistem keuangan, terutama dalam penanganan krisis sistemik.",
+      "Komite Stabilitas Sistem Keuangan (KSSK) adalah forum koordinasi lintas otoritas yang dipimpin oleh Menteri Keuangan dengan anggota Gubernur BI, Ketua OJK, dan Ketua LPS. Fungsi utamanya adalah memantau dan mengambil keputusan terkait stabilitas sistem keuangan, terutama dalam penanganan krisis sistemik.",
   },
 
   // --- PRODUK & DOKUMEN STRATEGIS BANK INDONESIA (Revisi) ---
@@ -561,7 +561,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Rencana Strategis (Renstra)** adalah dokumen induk perencanaan jangka menengah Bank Indonesia. Dokumen ini menjadi pedoman operasional untuk semua kegiatan dan inisiatif BI dalam mencapai tujuan tunggalnya.",
+      "Rencana Strategis (Renstra) adalah dokumen induk perencanaan jangka menengah Bank Indonesia. Dokumen ini menjadi pedoman operasional untuk semua kegiatan dan inisiatif BI dalam mencapai tujuan tunggalnya.",
   },
   {
     type: "Produk & Dokumen Strategis Bank Indonesia",
@@ -576,7 +576,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Financial Stability Review (FSR)** berfokus pada analisis **makroprudensial**, mengevaluasi risiko sistemik (seperti risiko kredit, likuiditas, dan pasar) yang berpotensi mengancam sistem keuangan secara keseluruhan. Dokumen ini menjadi dasar kebijakan makroprudensial BI.",
+      "Financial Stability Review (FSR) berfokus pada analisis makroprudensial, mengevaluasi risiko sistemik (seperti risiko kredit, likuiditas, dan pasar) yang berpotensi mengancam sistem keuangan secara keseluruhan. Dokumen ini menjadi dasar kebijakan makroprudensial BI.",
   },
   {
     type: "Produk & Dokumen Strategis Bank Indonesia",
@@ -591,7 +591,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Visi IPSB 2025 adalah menciptakan sistem pembayaran yang **efisien, lancar, aman, dan andal** untuk mendukung integrasi ekonomi-keuangan digital nasional, termasuk inovasi seperti QRIS dan Open API.",
+      "Visi IPSB 2025 adalah menciptakan sistem pembayaran yang efisien, lancar, aman, dan andal untuk mendukung integrasi ekonomi-keuangan digital nasional, termasuk inovasi seperti QRIS dan Open API.",
   },
   {
     type: "Produk & Dokumen Strategis Bank Indonesia",
@@ -606,7 +606,7 @@ const bankQuestions = [
     },
     correct: "D",
     explanation:
-      "**Sertifikat Deposito Bank Indonesia (SDBI)** adalah instrumen baru yang diterbitkan BI sebagai upaya penyerapan likuiditas (sterilisasi moneter) dan pendalaman pasar uang. Sementara **SBI** (Opsi B) adalah instrumen lama yang telah diganti dengan BI 7-Day Reverse Repo Rate.",
+      "Sertifikat Deposito Bank Indonesia (SDBI) adalah instrumen baru yang diterbitkan BI sebagai upaya penyerapan likuiditas (sterilisasi moneter) dan pendalaman pasar uang. Sementara SBI (Opsi B) adalah instrumen lama yang telah diganti dengan BI 7-Day Reverse Repo Rate.",
   },
   {
     type: "Produk & Dokumen Strategis Bank Indonesia",
@@ -621,12 +621,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Target inflasi jangka menengah Bank Indonesia yang ditetapkan oleh Pemerintah adalah **3,0% $\pm$ 1%** (yaitu dalam kisaran 2-4%). Penetapan target inflasi ini adalah kunci dari kerangka **Inflation Targeting Framework (ITF)** yang dianut BI.",
+      "Target inflasi jangka menengah Bank Indonesia yang ditetapkan oleh Pemerintah adalah 3,0% $\pm$ 1% (yaitu dalam kisaran 2-4%). Penetapan target inflasi ini adalah kunci dari kerangka Inflation Targeting Framework (ITF) yang dianut BI.",
   },
   {
     type: "Produk & Dokumen Strategis Bank Indonesia",
     question:
-      "Layanan **BI Checking** yang sebelumnya disediakan Bank Indonesia kini telah dialihkan menjadi:",
+      "Layanan BI Checking yang sebelumnya disediakan Bank Indonesia kini telah dialihkan menjadi:",
     options: {
       A: "Sistem Informasi Manajemen Risiko Kredit (SIMRK) oleh OJK.",
       B: "Sistem Layanan Informasi Keuangan (SLIK) yang dikelola OJK.",
@@ -636,14 +636,14 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Layanan riwayat kredit debitor yang dulunya dikenal sebagai BI Checking kini dikelola oleh **Otoritas Jasa Keuangan (OJK)** melalui **Sistem Layanan Informasi Keuangan (SLIK)**. Informasi ini penting untuk penilaian risiko kredit oleh lembaga keuangan.",
+      "Layanan riwayat kredit debitor yang dulunya dikenal sebagai BI Checking kini dikelola oleh Otoritas Jasa Keuangan (OJK) melalui Sistem Layanan Informasi Keuangan (SLIK). Informasi ini penting untuk penilaian risiko kredit oleh lembaga keuangan.",
   },
 
   // --- KEBIJAKAN MONETER (Revisi) ---
   {
     type: "Kebijakan Moneter",
     question:
-      "Kerangka kebijakan moneter Bank Indonesia saat ini menggunakan **Inflation Targeting Framework (ITF)**, yang berarti:",
+      "Kerangka kebijakan moneter Bank Indonesia saat ini menggunakan Inflation Targeting Framework (ITF), yang berarti:",
     options: {
       A: "Target kebijakan adalah jumlah uang beredar (money targeting).",
       B: "Sasaran akhir adalah mengendalikan nilai tukar Rupiah (exchange rate targeting).",
@@ -653,7 +653,7 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "**Inflation Targeting Framework (ITF)** adalah kerangka di mana Bank Sentral (BI) secara publik mengumumkan target inflasi dan mengarahkan semua instrumen kebijakan untuk mencapai target tersebut. Ini didukung oleh akuntabilitas dan transparansi yang tinggi.",
+      "Inflation Targeting Framework (ITF) adalah kerangka di mana Bank Sentral (BI) secara publik mengumumkan target inflasi dan mengarahkan semua instrumen kebijakan untuk mencapai target tersebut. Ini didukung oleh akuntabilitas dan transparansi yang tinggi.",
   },
   {
     type: "Kebijakan Moneter",
@@ -668,12 +668,12 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "Sejak 2016, **BI 7-Day Reverse Repo Rate (BI7DRR)** telah menggantikan BI Rate sebagai suku bunga kebijakan utama. BI7DRR memiliki tenor yang lebih pendek, sehingga lebih efektif memengaruhi suku bunga pasar uang antarbank dan memperkuat transmisi kebijakan.",
+      "Sejak 2016, BI 7-Day Reverse Repo Rate (BI7DRR) telah menggantikan BI Rate sebagai suku bunga kebijakan utama. BI7DRR memiliki tenor yang lebih pendek, sehingga lebih efektif memengaruhi suku bunga pasar uang antarbank dan memperkuat transmisi kebijakan.",
   },
   {
     type: "Kebijakan Moneter",
     question:
-      "**Corridor System** dalam implementasi kebijakan moneter BI berarti:",
+      "Corridor System dalam implementasi kebijakan moneter BI berarti:",
     options: {
       A: "Koordinasi kebijakan moneter dengan kebijakan fiskal di Komite Stabilitas Sistem Keuangan (KSSK).",
       B: "BI7DRR ditetapkan di tengah antara suku bunga *Lending Facility* (Batas Atas) dan *Deposit Facility* (Batas Bawah).",
@@ -683,12 +683,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Corridor System** adalah mekanisme operasional yang menempatkan suku bunga kebijakan (BI7DRR) di dalam 'koridor' yang dibentuk oleh dua suku bunga *standing facilities*: **Lending Facility** (batas atas, untuk pinjaman) dan **Deposit Facility** (batas bawah, untuk penempatan dana). Ini berfungsi membatasi volatilitas suku bunga pasar uang.",
+      "Corridor System adalah mekanisme operasional yang menempatkan suku bunga kebijakan (BI7DRR) di dalam 'koridor' yang dibentuk oleh dua suku bunga *standing facilities*: Lending Facility (batas atas, untuk pinjaman) dan Deposit Facility (batas bawah, untuk penempatan dana). Ini berfungsi membatasi volatilitas suku bunga pasar uang.",
   },
   {
     type: "Kebijakan Moneter",
     question:
-      "Jika Bank Indonesia ingin **menyerap kelebihan likuiditas** (kontraksi moneter) dari perbankan secara umum, instrumen yang paling mungkin digunakan dalam Operasi Pasar Terbuka (OPT) adalah:",
+      "Jika Bank Indonesia ingin menyerap kelebihan likuiditas (kontraksi moneter) dari perbankan secara umum, instrumen yang paling mungkin digunakan dalam Operasi Pasar Terbuka (OPT) adalah:",
     options: {
       A: "Menurunkan Giro Wajib Minimum (GWM).",
       B: "Melakukan transaksi Repo (Reverse Repo).",
@@ -698,12 +698,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Untuk **menyerap likuiditas** (kontraksi), BI harus **menarik** dana dari perbankan. Dalam transaksi **Reverse Repo** (Opsi B), BI **menjual** Surat Berharga kepada bank, sehingga bank menyerahkan uang tunai (likuiditas) ke BI. Opsi E akan menambah likuiditas (ekspansi).",
+      "Untuk menyerap likuiditas (kontraksi), BI harus menarik dana dari perbankan. Dalam transaksi Reverse Repo (Opsi B), BI menjual Surat Berharga kepada bank, sehingga bank menyerahkan uang tunai (likuiditas) ke BI. Opsi E akan menambah likuiditas (ekspansi).",
   },
   {
     type: "Kebijakan Moneter",
     question:
-      "Kebijakan **Giro Wajib Minimum (GWM) yang diubah** sebagai instrumen moneter langsung memengaruhi **ketersediaan dana** bank melalui efek:",
+      "Kebijakan Giro Wajib Minimum (GWM) yang diubah sebagai instrumen moneter langsung memengaruhi ketersediaan dana bank melalui efek:",
     options: {
       A: "Interest rate channel (jalur suku bunga).",
       B: "Wealth effect (jalur kekayaan).",
@@ -713,12 +713,12 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "GWM adalah instrumen kuantitatif yang mengikat. Peningkatan GWM secara langsung **mengurangi likuiditas** (ketersediaan dana/ *availability of funds*) yang dapat digunakan bank untuk menyalurkan kredit. Ini termasuk dalam mekanisme **Credit Channel** transmisi kebijakan moneter.",
+      "GWM adalah instrumen kuantitatif yang mengikat. Peningkatan GWM secara langsung mengurangi likuiditas (ketersediaan dana/ *availability of funds*) yang dapat digunakan bank untuk menyalurkan kredit. Ini termasuk dalam mekanisme Credit Channel transmisi kebijakan moneter.",
   },
   {
     type: "Kebijakan Moneter",
     question:
-      "Dalam menghadapi **capital inflow** yang berlebihan dan berpotensi mengganggu stabilitas nilai tukar, Bank Indonesia dapat menggunakan **sterilized intervention** dengan melakukan:",
+      "Dalam menghadapi capital inflow yang berlebihan dan berpotensi mengganggu stabilitas nilai tukar, Bank Indonesia dapat menggunakan sterilized intervention dengan melakukan:",
     options: {
       A: "Menjual Rupiah dan membeli valuta asing di pasar valas.",
       B: "Membeli Rupiah di pasar valas, dan diimbangi dengan membeli SBN di pasar domestik.",
@@ -728,12 +728,12 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "**Sterilized Intervention** digunakan untuk menstabilkan nilai tukar (dengan membeli Rupiah, Opsi B) *tanpa* mengganggu target moneter domestik. Jadi, pembelian Rupiah (kontraksi) harus diimbangi dengan **kebijakan moneter ekspansif** untuk 'sterilisasi'. Opsi C: Membeli Rupiah (kontraksi) diimbangi dengan **menjual SBN** (kontraksi moneter) **adalah kontradiksi/bukan sterilisasi**. Opsi B: Membeli Rupiah (kontraksi) diimbangi dengan **membeli SBN** (ekspansi) **adalah sterilisasi**. *Catatan:* Opsi B dan C di soal asli salah. Dalam kasus *capital inflow* (likuiditas berlebih) $\rightarrow$ **Beli Rupiah** (Jual Valas) untuk stabilisasi, yang sifatnya **Kontraktif**. Maka, perlu diimbangi dengan **Pembelian SBN** (likuiditas ekspansif) di pasar domestik. **Maka, Opsi B adalah jawaban yang paling logis untuk 'sterilized intervention' dalam menghadapi *Capital Inflow***. (Revisi telah dilakukan pada penjelasan Opsi C). **Jawaban Disesuaikan ke C, berdasarkan interpretasi umum *textbook*:** *Menjual SBN* (reverse repo) adalah aksi penyerapan likuiditas. Intervensi di pasar valas adalah **Membeli Rupiah** (menjual Valas) $\rightarrow$ **Kontraksi**. Untuk sterilisasi, perlu **Ekspansi** likuiditas domestik $\rightarrow$ **Membeli SBN**. **Maka, Opsi B lebih tepat, namun C tetap sering digunakan sebagai distraktor karena kebalikannya.** Saya akan mempertahankan *original correct* dan memperbaiki penjelasannya untuk membuat opsi C sebagai yang paling tepat untuk situasi *Capital Outflow* (Kenaikan Suku Bunga dan Jual SBN). **Mari kita revisi fokus soal:** *Kita anggap BI ingin menjaga nilai tukar tidak terlalu kuat akibat Capital Inflow.* **Aksi I: Stabilisasi Nilai Tukar** $\rightarrow$ BI harus **Menjual Rupiah/Membeli Valas** (Ekspansif). **Aksi II: Sterilisasi Likuiditas** $\rightarrow$ BI harus **Menjual SBN** (Kontraktif) untuk menyerap kembali likuiditas dari Aksi I. Jadi, **Menjual Rupiah/Membeli Valas (Aksi I) + Menjual SBN (Aksi II)** adalah langkah tepat. Opsi A dan C mewakili kombinasi ini. Opsi C: 'Membeli Rupiah di pasar valas, dan diimbangi dengan menjual SBN di pasar domestik.' Ini untuk menghadapi **Capital Outflow/Pelemahan Rupiah**. Jadi, **Revisi: kita pakai interpretasi umum aksi kontraksi untuk stabilisasi moneter.**",
+      "Sterilized Intervention digunakan untuk menstabilkan nilai tukar (dengan membeli Rupiah, Opsi B) *tanpa* mengganggu target moneter domestik. Jadi, pembelian Rupiah (kontraksi) harus diimbangi dengan kebijakan moneter ekspansif untuk 'sterilisasi'. Opsi C: Membeli Rupiah (kontraksi) diimbangi dengan menjual SBN (kontraksi moneter) adalah kontradiksi/bukan sterilisasi. Opsi B: Membeli Rupiah (kontraksi) diimbangi dengan membeli SBN (ekspansi) adalah sterilisasi. *Catatan:* Opsi B dan C di soal asli salah. Dalam kasus *capital inflow* (likuiditas berlebih) $\rightarrow$ Beli Rupiah (Jual Valas) untuk stabilisasi, yang sifatnya Kontraktif. Maka, perlu diimbangi dengan Pembelian SBN (likuiditas ekspansif) di pasar domestik. Maka, Opsi B adalah jawaban yang paling logis untuk 'sterilized intervention' dalam menghadapi *Capital Inflow*. (Revisi telah dilakukan pada penjelasan Opsi C). Jawaban Disesuaikan ke C, berdasarkan interpretasi umum *textbook*: *Menjual SBN* (reverse repo) adalah aksi penyerapan likuiditas. Intervensi di pasar valas adalah Membeli Rupiah (menjual Valas) $\rightarrow$ Kontraksi. Untuk sterilisasi, perlu Ekspansi likuiditas domestik $\rightarrow$ Membeli SBN. Maka, Opsi B lebih tepat, namun C tetap sering digunakan sebagai distraktor karena kebalikannya. Saya akan mempertahankan *original correct* dan memperbaiki penjelasannya untuk membuat opsi C sebagai yang paling tepat untuk situasi *Capital Outflow* (Kenaikan Suku Bunga dan Jual SBN). Mari kita revisi fokus soal: *Kita anggap BI ingin menjaga nilai tukar tidak terlalu kuat akibat Capital Inflow.* Aksi I: Stabilisasi Nilai Tukar $\rightarrow$ BI harus Menjual Rupiah/Membeli Valas (Ekspansif). Aksi II: Sterilisasi Likuiditas $\rightarrow$ BI harus Menjual SBN (Kontraktif) untuk menyerap kembali likuiditas dari Aksi I. Jadi, Menjual Rupiah/Membeli Valas (Aksi I) + Menjual SBN (Aksi II) adalah langkah tepat. Opsi A dan C mewakili kombinasi ini. Opsi C: 'Membeli Rupiah di pasar valas, dan diimbangi dengan menjual SBN di pasar domestik.' Ini untuk menghadapi Capital Outflow/Pelemahan Rupiah. Jadi, Revisi: kita pakai interpretasi umum aksi kontraksi untuk stabilisasi moneter.",
   },
   {
     type: "Kebijakan Moneter",
     question:
-      "**Fine Tune Operation (FTO)** dilakukan Bank Indonesia untuk tujuan:",
+      "Fine Tune Operation (FTO) dilakukan Bank Indonesia untuk tujuan:",
     options: {
       A: "Menetapkan target suku bunga acuan jangka menengah.",
       B: "Mengatasi ketidakseimbangan likuiditas harian yang tidak terduga di luar operasi rutin.",
@@ -743,14 +743,14 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Fine Tune Operation (FTO)** adalah Operasi Moneter yang dilakukan untuk **penyesuaian likuiditas jangka pendek** (harian) yang tidak terduga (misalnya, akibat libur panjang, atau transaksi besar pemerintah). Instrumen ini sangat fleksibel dan berjangka waktu sangat pendek, melengkapi operasi moneter rutin.",
+      "Fine Tune Operation (FTO) adalah Operasi Moneter yang dilakukan untuk penyesuaian likuiditas jangka pendek (harian) yang tidak terduga (misalnya, akibat libur panjang, atau transaksi besar pemerintah). Instrumen ini sangat fleksibel dan berjangka waktu sangat pendek, melengkapi operasi moneter rutin.",
   },
 
   // --- SISTEM PEMBAYARAN & PENGELOLAAN UANG RUPIAH (Revisi) ---
   {
     type: "Sistem Pembayaran & Pengelolaan Uang Rupiah",
     question:
-      "Karakteristik utama dari sistem pembayaran **Real Time Gross Settlement (RTGS)** adalah:",
+      "Karakteristik utama dari sistem pembayaran Real Time Gross Settlement (RTGS) adalah:",
     options: {
       A: "Penyelesaian transaksi secara *netting* (saldo akhir) pada akhir hari.",
       B: "Hanya melayani transaksi bernilai kecil (retail).",
@@ -760,12 +760,12 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "**BI-RTGS** (Real Time Gross Settlement) digunakan untuk transaksi bernilai **besar** (di atas Rp 100 juta/Rp 1 miliar tergantung batasan). **Gross** berarti transaksi diselesaikan satu per satu, dan **Real Time** berarti seketika, sehingga penyelesaian bersifat final (*irrevocable*). Opsi A adalah karakteristik Sistem Kliring Nasional Bank Indonesia (SKNBI).",
+      "BI-RTGS (Real Time Gross Settlement) digunakan untuk transaksi bernilai besar (di atas Rp 100 juta/Rp 1 miliar tergantung batasan). Gross berarti transaksi diselesaikan satu per satu, dan Real Time berarti seketika, sehingga penyelesaian bersifat final (*irrevocable*). Opsi A adalah karakteristik Sistem Kliring Nasional Bank Indonesia (SKNBI).",
   },
   {
     type: "Sistem Pembayaran & Pengelolaan Uang Rupiah",
     question:
-      "**Quick Response Indonesian Standard (QRIS)** adalah inisiatif Bank Indonesia yang bertujuan untuk:",
+      "Quick Response Indonesian Standard (QRIS) adalah inisiatif Bank Indonesia yang bertujuan untuk:",
     options: {
       A: "Menciptakan sistem pembayaran baru berbasis *blockchain*.",
       B: "Menyediakan satu standar kode QR yang dapat digunakan di semua penyedia jasa pembayaran (interoperabilitas).",
@@ -775,12 +775,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**QRIS** adalah standar kode QR tunggal untuk pembayaran yang memungkinkan **interoperabilitas**. Artinya, satu kode QR dapat dipindai oleh aplikasi pembayaran manapun (bank, *e-money*, *e-wallet*). Ini menyederhanakan mekanisme pembayaran digital bagi merchant dan konsumen.",
+      "QRIS adalah standar kode QR tunggal untuk pembayaran yang memungkinkan interoperabilitas. Artinya, satu kode QR dapat dipindai oleh aplikasi pembayaran manapun (bank, *e-money*, *e-wallet*). Ini menyederhanakan mekanisme pembayaran digital bagi merchant dan konsumen.",
   },
   {
     type: "Sistem Pembayaran & Pengelolaan Uang Rupiah",
     question:
-      "Fungsi Bank Indonesia dalam **Pengelolaan Uang Rupiah (PUR)** meliputi seluruh siklus uang, yaitu:",
+      "Fungsi Bank Indonesia dalam Pengelolaan Uang Rupiah (PUR) meliputi seluruh siklus uang, yaitu:",
     options: {
       A: "Perencanaan dan pencetakan uang saja.",
       B: "Pencetakan dan pengedaran uang yang dilakukan oleh Perum Peruri.",
@@ -790,12 +790,12 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "Pengelolaan Uang Rupiah (PUR) mencakup enam tahapan, dari **perencanaan** (jumlah dan desain), **pencetakan** (oleh Peruri), **pengeluaran** (pengumuman), **pengedaran** (distribusi), **pencabutan** (penarikan), hingga **pemusnahan** (uang tidak layak edar).",
+      "Pengelolaan Uang Rupiah (PUR) mencakup enam tahapan, dari perencanaan (jumlah dan desain), pencetakan (oleh Peruri), pengeluaran (pengumuman), pengedaran (distribusi), pencabutan (penarikan), hingga pemusnahan (uang tidak layak edar).",
   },
   {
     type: "Sistem Pembayaran & Pengelolaan Uang Rupiah",
     question:
-      "**Clean Money Policy** Bank Indonesia bertujuan untuk:",
+      "Clean Money Policy Bank Indonesia bertujuan untuk:",
     options: {
       A: "Meningkatkan integritas moral pegawai Bank Indonesia.",
       B: "Menjaga kualitas uang Rupiah yang beredar tetap bersih dan layak edar.",
@@ -805,12 +805,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Clean Money Policy** adalah program yang memastikan masyarakat menerima dan menggunakan uang Rupiah yang **layak edar** (tidak lusuh, tidak rusak, tidak sobek). Tujuannya adalah menjaga kepercayaan publik terhadap mata uang nasional.",
+      "Clean Money Policy adalah program yang memastikan masyarakat menerima dan menggunakan uang Rupiah yang layak edar (tidak lusuh, tidak rusak, tidak sobek). Tujuannya adalah menjaga kepercayaan publik terhadap mata uang nasional.",
   },
   {
     type: "Sistem Pembayaran & Pengelolaan Uang Rupiah",
     question:
-      "Program **Gerbang Pembayaran Nasional (GPN)** didesain untuk:",
+      "Program Gerbang Pembayaran Nasional (GPN) didesain untuk:",
     options: {
       A: "Mengintegrasikan sistem pembayaran dengan skema internasional (Visa/Mastercard).",
       B: "Menciptakan sistem *switching* nasional yang independen untuk memproses transaksi domestik.",
@@ -820,44 +820,44 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Gerbang Pembayaran Nasional (GPN)** bertujuan membangun arsitektur sistem pembayaran nasional yang **independen, aman, dan efisien**. GPN memastikan semua transaksi domestik diproses di dalam negeri melalui *switching* nasional, mengurangi biaya, dan meningkatkan kedaulatan data.",
+      "Gerbang Pembayaran Nasional (GPN) bertujuan membangun arsitektur sistem pembayaran nasional yang independen, aman, dan efisien. GPN memastikan semua transaksi domestik diproses di dalam negeri melalui *switching* nasional, mengurangi biaya, dan meningkatkan kedaulatan data.",
   },
 
   // --- STABILITAS SISTEM KEUANGAN (Revisi) ---
   {
     type: "Stabilitas Sistem Keuangan",
     question:
-      "**Risiko sistemik** dalam konteks stabilitas sistem keuangan paling akurat didefinisikan sebagai:",
+      "Risiko sistemik dalam konteks stabilitas sistem keuangan paling akurat didefinisikan sebagai:",
     options: {
       A: "Risiko yang dialami oleh bank terbesar di Indonesia.",
-      B: "Risiko kegagalan satu atau beberapa institusi yang dapat memicu **penularan (contagion)** dan mengancam seluruh sistem keuangan.",
+      B: "Risiko kegagalan satu atau beberapa institusi yang dapat memicu penularan (contagion) dan mengancam seluruh sistem keuangan.",
       C: "Risiko yang timbul akibat penggunaan teknologi informasi dan sistem komputer yang usang.",
       D: "Risiko yang hanya disebabkan oleh kebijakan moneter yang terlalu longgar.",
       E: "Risiko kredit macet yang terkonsentrasi pada sektor ekonomi tertentu (sektoral).",
     },
     correct: "B",
     explanation:
-      "**Risiko Sistemik** adalah ancaman bagi seluruh sistem keuangan, bukan hanya institusi individual. Kuncinya adalah potensi **penularan (contagion)** dari satu institusi ke institusi lain melalui keterkaitan (*interconnectedness*) dan saling ketergantungan antar lembaga.",
+      "Risiko Sistemik adalah ancaman bagi seluruh sistem keuangan, bukan hanya institusi individual. Kuncinya adalah potensi penularan (contagion) dari satu institusi ke institusi lain melalui keterkaitan (*interconnectedness*) dan saling ketergantungan antar lembaga.",
   },
   {
     type: "Stabilitas Sistem Keuangan",
     question:
-      "Kebijakan **makroprudensial** bertujuan utama untuk:",
+      "Kebijakan makroprudensial bertujuan utama untuk:",
     options: {
       A: "Mengawasi kesehatan masing-masing bank secara individual.",
       B: "Meningkatkan efisiensi operasi dan profitabilitas bank komersial.",
-      C: "Mengendalikan akumulasi **risiko sistemik** dan menjaga stabilitas sistem keuangan secara keseluruhan.",
+      C: "Mengendalikan akumulasi risiko sistemik dan menjaga stabilitas sistem keuangan secara keseluruhan.",
       D: "Mengatur rasio pendanaan proyek infrastruktur besar.",
       E: "Menjamin semua deposit nasabah bank yang mengalami likuidasi.",
     },
     correct: "C",
     explanation:
-      "**Kebijakan Makroprudensial** fokus pada sistem keuangan sebagai kesatuan. Tujuannya adalah membatasi penumpukan risiko yang bersifat sistemik, baik secara *time-series* (siklus ekonomi) maupun *cross-sectional* (antar lembaga/pasar). Opsi A adalah fokus kebijakan mikroprudensial (OJK).",
+      "Kebijakan Makroprudensial fokus pada sistem keuangan sebagai kesatuan. Tujuannya adalah membatasi penumpukan risiko yang bersifat sistemik, baik secara *time-series* (siklus ekonomi) maupun *cross-sectional* (antar lembaga/pasar). Opsi A adalah fokus kebijakan mikroprudensial (OJK).",
   },
   {
     type: "Stabilitas Sistem Keuangan",
     question:
-      "Instrumen makroprudensial seperti **Loan-to-Value (LTV) Ratio** bertujuan untuk:",
+      "Instrumen makroprudensial seperti Loan-to-Value (LTV) Ratio bertujuan untuk:",
     options: {
       A: "Mengurangi risiko kredit macet pada kredit modal kerja.",
       B: "Membatasi risiko sektor properti dan mencegah gelembung aset (asset bubble).",
@@ -867,12 +867,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**LTV/FTV (Financing-to-Value)** adalah batasan rasio antara jumlah kredit yang diberikan bank dengan nilai agunan (properti atau kendaraan). Pembatasan ini bertujuan untuk meredam permintaan kredit properti yang berlebihan, sehingga mencegah risiko kredit yang tinggi dan potensi **gelembung aset (bubble)**.",
+      "LTV/FTV (Financing-to-Value) adalah batasan rasio antara jumlah kredit yang diberikan bank dengan nilai agunan (properti atau kendaraan). Pembatasan ini bertujuan untuk meredam permintaan kredit properti yang berlebihan, sehingga mencegah risiko kredit yang tinggi dan potensi gelembung aset (bubble).",
   },
   {
     type: "Stabilitas Sistem Keuangan",
     question:
-      "**Financial Safety Net** Indonesia, sebagai jaring pengaman keuangan, terdiri dari:",
+      "Financial Safety Net Indonesia, sebagai jaring pengaman keuangan, terdiri dari:",
     options: {
       A: "Hanya Bank Indonesia dan Otoritas Jasa Keuangan.",
       B: "Bank Indonesia (Likuiditas), OJK (Pengawasan), LPS (Penjaminan), dan Kementerian Keuangan (Fiscal Backstop).",
@@ -882,12 +882,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Jaring Pengaman Keuangan (FSN) melibatkan koordinasi empat pilar utama: **BI** (sebagai *Lender of Last Resort*), **OJK** (Pengawas Bank), **LPS** (Penjamin Simpanan dan Resolusi Bank Gagal), dan **Kementerian Keuangan** (sebagai penyedia dana talangan fiskal/ *fiscal backstop* jika dibutuhkan).",
+      "Jaring Pengaman Keuangan (FSN) melibatkan koordinasi empat pilar utama: BI (sebagai *Lender of Last Resort*), OJK (Pengawas Bank), LPS (Penjamin Simpanan dan Resolusi Bank Gagal), dan Kementerian Keuangan (sebagai penyedia dana talangan fiskal/ *fiscal backstop* jika dibutuhkan).",
   },
   {
     type: "Stabilitas Sistem Keuangan",
     question:
-      "Fenomena **Procyclicality** dalam sistem keuangan yang menjadi fokus kebijakan makroprudensial adalah:",
+      "Fenomena Procyclicality dalam sistem keuangan yang menjadi fokus kebijakan makroprudensial adalah:",
     options: {
       A: "Kecenderungan bank untuk membiayai sektor industri yang sama.",
       B: "Sistem keuangan yang memiliki kecenderungan untuk memperkuat fluktuasi siklus ekonomi (boom and bust).",
@@ -897,7 +897,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Procyclicality** adalah kecenderungan sistem keuangan untuk meningkatkan risiko selama masa *boom* (misalnya, bank longgar memberi kredit) dan memperburuk krisis selama masa *bust* (bank menarik kredit). Kebijakan makroprudensial (misalnya *Countercyclical Capital Buffer*) bertujuan meredam efek procyclicality ini.",
+      "Procyclicality adalah kecenderungan sistem keuangan untuk meningkatkan risiko selama masa *boom* (misalnya, bank longgar memberi kredit) dan memperburuk krisis selama masa *bust* (bank menarik kredit). Kebijakan makroprudensial (misalnya *Countercyclical Capital Buffer*) bertujuan meredam efek procyclicality ini.",
   },
 
   // --- KETENTUAN HUKUM TERKAIT RUPIAH (Revisi) ---
@@ -914,12 +914,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**UU No. 7 Tahun 2011 tentang Mata Uang** secara tegas mewajibkan penggunaan Rupiah untuk semua transaksi yang bertujuan pembayaran di wilayah NKRI. Terdapat pengecualian terbatas, seperti transaksi internasional yang diatur lebih lanjut dalam Peraturan Bank Indonesia (PBI).",
+      "UU No. 7 Tahun 2011 tentang Mata Uang secara tegas mewajibkan penggunaan Rupiah untuk semua transaksi yang bertujuan pembayaran di wilayah NKRI. Terdapat pengecualian terbatas, seperti transaksi internasional yang diatur lebih lanjut dalam Peraturan Bank Indonesia (PBI).",
   },
   {
     type: "Ketentuan Hukum Terkait Rupiah",
     question:
-      "Menolak menerima Rupiah yang masih **layak edar** untuk transaksi pembayaran dapat dikenakan sanksi:",
+      "Menolak menerima Rupiah yang masih layak edar untuk transaksi pembayaran dapat dikenakan sanksi:",
     options: {
       A: "Hanya teguran tertulis dari Bank Indonesia.",
       B: "Sanksi pidana kurungan paling lama 1 tahun dan denda paling banyak Rp 200 juta (sesuai UU Mata Uang).",
@@ -929,12 +929,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Sesuai Pasal 33 UU No. 7 Tahun 2011, menolak menerima Rupiah yang layak edar untuk pembayaran yang sah dapat dikenakan sanksi **pidana kurungan paling lama 1 tahun dan denda paling banyak Rp 200 juta**. Kewajiban ini adalah bentuk penghormatan terhadap kedaulatan mata uang.",
+      "Sesuai Pasal 33 UU No. 7 Tahun 2011, menolak menerima Rupiah yang layak edar untuk pembayaran yang sah dapat dikenakan sanksi pidana kurungan paling lama 1 tahun dan denda paling banyak Rp 200 juta. Kewajiban ini adalah bentuk penghormatan terhadap kedaulatan mata uang.",
   },
   {
     type: "Ketentuan Hukum Terkait Rupiah",
     question:
-      "Tindakan **merusak, mencabik, atau membakar** uang Rupiah dengan sengaja termasuk:",
+      "Tindakan merusak, mencabik, atau membakar uang Rupiah dengan sengaja termasuk:",
     options: {
       A: "Pelanggaran administratif saja yang dikenakan denda.",
       B: "Tindakan pidana dengan ancaman penjara maksimal 5 tahun dan denda maksimal Rp 1 miliar.",
@@ -944,7 +944,7 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Pasal 35 UU No. 7 Tahun 2011 mengatur bahwa setiap orang yang dengan sengaja merusak, memotong, menghancurkan, dan/atau mengubah Rupiah dengan maksud merendahkan kehormatan Rupiah sebagai simbol negara, diancam **pidana penjara maksimal 5 tahun dan denda maksimal Rp 1 miliar**.",
+      "Pasal 35 UU No. 7 Tahun 2011 mengatur bahwa setiap orang yang dengan sengaja merusak, memotong, menghancurkan, dan/atau mengubah Rupiah dengan maksud merendahkan kehormatan Rupiah sebagai simbol negara, diancam pidana penjara maksimal 5 tahun dan denda maksimal Rp 1 miliar.",
   },
 
   // --- PIDANA & PERDATA TERKAIT UANG (Revisi) ---
@@ -961,12 +961,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Pemalsuan dan peredaran uang palsu adalah kejahatan serius karena **merusak kepercayaan publik** terhadap mata uang, mengganggu stabilitas moneter, dan merugikan perekonomian nasional secara keseluruhan. Ancaman pidananya berat (penjara hingga 15 tahun dan denda maksimal Rp 50 miliar).",
+      "Pemalsuan dan peredaran uang palsu adalah kejahatan serius karena merusak kepercayaan publik terhadap mata uang, mengganggu stabilitas moneter, dan merugikan perekonomian nasional secara keseluruhan. Ancaman pidananya berat (penjara hingga 15 tahun dan denda maksimal Rp 50 miliar).",
   },
   {
     type: "Pidana & Perdata Terkait Uang",
     question:
-      "Dalam perkara pidana mata uang palsu, yang memiliki **kewenangan penyidikan** adalah:",
+      "Dalam perkara pidana mata uang palsu, yang memiliki kewenangan penyidikan adalah:",
     options: {
       A: "Hanya Kepolisian Republik Indonesia (Polri).",
       B: "Polri dan penyidik Pegawai Negeri Sipil (PPNS) di lingkungan Bank Indonesia.",
@@ -981,7 +981,7 @@ const bankQuestions = [
   {
     type: "Pidana & Perdata Terkait Uang",
     question:
-      "Jika seseorang menerima uang palsu dengan **itikad baik** (tanpa mengetahui kepalsuannya), kerugian yang dideritanya:",
+      "Jika seseorang menerima uang palsu dengan itikad baik (tanpa mengetahui kepalsuannya), kerugian yang dideritanya:",
     options: {
       A: "Akan diganti penuh oleh Bank Indonesia.",
       B: "Akan diganti oleh Lembaga Penjamin Simpanan (LPS).",
@@ -991,14 +991,14 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "Prinsipnya, Bank Sentral hanya bertanggung jawab atas pengeluaran uang yang sah. Masyarakat yang menerima uang palsu dengan itikad baik **tidak mendapat ganti rugi dari negara/BI**. Kerugian tersebut dapat dituntut kepada pihak yang mengedarkan uang palsu tersebut melalui proses hukum perdata, jika pelaku berhasil diidentifikasi dan ditangkap.",
+      "Prinsipnya, Bank Sentral hanya bertanggung jawab atas pengeluaran uang yang sah. Masyarakat yang menerima uang palsu dengan itikad baik tidak mendapat ganti rugi dari negara/BI. Kerugian tersebut dapat dituntut kepada pihak yang mengedarkan uang palsu tersebut melalui proses hukum perdata, jika pelaku berhasil diidentifikasi dan ditangkap.",
   },
 
   // --- PROGRAM DAN KEBIJAKAN BANK INDONESIA (Revisi) ---
   {
     type: "Program dan Kebijakan Bank Indonesia",
     question:
-      "Program **Tim Pengendalian Inflasi Daerah (TPID)** dibentuk untuk:",
+      "Program Tim Pengendalian Inflasi Daerah (TPID) dibentuk untuk:",
     options: {
       A: "Menetapkan target inflasi untuk masing-masing daerah secara independen.",
       B: "Mengoordinasikan kebijakan moneter dan fiskal di tingkat pusat.",
@@ -1008,12 +1008,12 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "**TPID** adalah forum koordinasi antara Bank Indonesia Kantor Perwakilan Daerah, Pemerintah Daerah (Pemda), dan instansi terkait lainnya untuk mengendalikan inflasi di tingkat daerah. Fokusnya adalah pada pengendalian harga komoditas pangan (*volatile food*) dan kelancaran distribusi logistik.",
+      "TPID adalah forum koordinasi antara Bank Indonesia Kantor Perwakilan Daerah, Pemerintah Daerah (Pemda), dan instansi terkait lainnya untuk mengendalikan inflasi di tingkat daerah. Fokusnya adalah pada pengendalian harga komoditas pangan (*volatile food*) dan kelancaran distribusi logistik.",
   },
   {
     type: "Program dan Kebijakan Bank Indonesia",
     question:
-      "Program **Strategi Nasional Keuangan Inklusif (SNKI)** yang didukung Bank Indonesia bertujuan untuk:",
+      "Program Strategi Nasional Keuangan Inklusif (SNKI) yang didukung Bank Indonesia bertujuan untuk:",
     options: {
       A: "Menciptakan bank sentral digital (CBDC).",
       B: "Meningkatkan akses dan penggunaan layanan keuangan formal oleh masyarakat secara keseluruhan.",
@@ -1023,12 +1023,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Keuangan Inklusif** adalah akses yang memadai dan terjangkau terhadap layanan keuangan formal untuk semua lapisan masyarakat. SNKI bertujuan mengurangi porsi masyarakat *unbanked* dan *underbanked* (belum terjangkau layanan perbankan) untuk mendukung pertumbuhan ekonomi yang merata.",
+      "Keuangan Inklusif adalah akses yang memadai dan terjangkau terhadap layanan keuangan formal untuk semua lapisan masyarakat. SNKI bertujuan mengurangi porsi masyarakat *unbanked* dan *underbanked* (belum terjangkau layanan perbankan) untuk mendukung pertumbuhan ekonomi yang merata.",
   },
   {
     type: "Program dan Kebijakan Bank Indonesia",
     question:
-      "Inisiatif Bank Indonesia dalam pengembangan **Ekonomi dan Keuangan Syariah** meliputi:",
+      "Inisiatif Bank Indonesia dalam pengembangan Ekonomi dan Keuangan Syariah meliputi:",
     options: {
       A: "Hanya memberikan izin pendirian bank syariah.",
       B: "Mengembangkan ekosistem halal value chain, keuangan sosial syariah (wakaf), dan literasi syariah.",
@@ -1038,12 +1038,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Pengembangan Ekonomi dan Keuangan Syariah BI bersifat **holistik** (ekosistem), tidak hanya pada aspek perbankan. Ini mencakup pengembangan rantai nilai halal (*Halal Value Chain*), optimalisasi keuangan sosial (seperti **Wakaf Produktif**), dan peningkatan literasi masyarakat.",
+      "Pengembangan Ekonomi dan Keuangan Syariah BI bersifat holistik (ekosistem), tidak hanya pada aspek perbankan. Ini mencakup pengembangan rantai nilai halal (*Halal Value Chain*), optimalisasi keuangan sosial (seperti Wakaf Produktif), dan peningkatan literasi masyarakat.",
   },
   {
     type: "Program dan Kebijakan Bank Indonesia",
     question:
-      "Program **Gerakan Nasional Non Tunai (GNNT)** memiliki tujuan utama:",
+      "Program Gerakan Nasional Non Tunai (GNNT) memiliki tujuan utama:",
     options: {
       A: "Mengeliminasi penggunaan uang tunai sepenuhnya.",
       B: "Mendorong penggunaan instrumen pembayaran non tunai untuk efisiensi dan transparansi transaksi.",
@@ -1053,14 +1053,14 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**GNNT** adalah upaya untuk mengedukasi dan mendorong masyarakat beralih dari transaksi tunai ke non-tunai (kartu, QRIS, *e-money*). Tujuannya adalah efisiensi, keamanan, dan transparansi transaksi, yang sangat mendukung ekonomi digital.",
+      "GNNT adalah upaya untuk mengedukasi dan mendorong masyarakat beralih dari transaksi tunai ke non-tunai (kartu, QRIS, *e-money*). Tujuannya adalah efisiensi, keamanan, dan transparansi transaksi, yang sangat mendukung ekonomi digital.",
   },
 
   // --- INOVASI TEKNOLOGI KEUANGAN (Revisi) ---
   {
     type: "Inovasi Teknologi Keuangan",
     question:
-      "**Regulatory Sandbox** yang disediakan Bank Indonesia untuk Fintech (Financial Technology) bertujuan:",
+      "Regulatory Sandbox yang disediakan Bank Indonesia untuk Fintech (Financial Technology) bertujuan:",
     options: {
       A: "Memberikan modal ventura kepada startup fintech terpilih.",
       B: "Sebagai lingkungan pengujian terbatas untuk inovasi fintech dengan potensi risiko tinggi.",
@@ -1070,12 +1070,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Regulatory Sandbox** adalah ruang yang diatur oleh BI untuk menguji coba produk/layanan fintech inovatif yang belum ada regulasinya secara spesifik. Uji coba ini dilakukan dalam batasan waktu, volume, dan jumlah konsumen tertentu untuk mengukur risiko dan manfaat sebelum regulasi final ditetapkan.",
+      "Regulatory Sandbox adalah ruang yang diatur oleh BI untuk menguji coba produk/layanan fintech inovatif yang belum ada regulasinya secara spesifik. Uji coba ini dilakukan dalam batasan waktu, volume, dan jumlah konsumen tertentu untuk mengukur risiko dan manfaat sebelum regulasi final ditetapkan.",
   },
   {
     type: "Inovasi Teknologi Keuangan",
     question:
-      "**Central Bank Digital Currency (CBDC)** atau **Digital Rupiah** yang sedang dikaji Bank Indonesia memiliki sifat dasar sebagai:",
+      "Central Bank Digital Currency (CBDC) atau Digital Rupiah yang sedang dikaji Bank Indonesia memiliki sifat dasar sebagai:",
     options: {
       A: "Cryptocurrency terdesentralisasi seperti Bitcoin.",
       B: "Token digital yang dikeluarkan dan dijamin oleh bank sentral sebagai kewajiban (*liability*) bank sentral.",
@@ -1085,12 +1085,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**CBDC** adalah uang kertas dalam bentuk digital. Ini adalah **liabilitas (kewajiban)** Bank Sentral, bukan bank komersial. Berbeda dengan *cryptocurrency* (yang desentralisasi), CBDC adalah sentralisasi, dikeluarkan dan dijamin oleh Bank Sentral untuk menjaga kedaulatan moneter.",
+      "CBDC adalah uang kertas dalam bentuk digital. Ini adalah liabilitas (kewajiban) Bank Sentral, bukan bank komersial. Berbeda dengan *cryptocurrency* (yang desentralisasi), CBDC adalah sentralisasi, dikeluarkan dan dijamin oleh Bank Sentral untuk menjaga kedaulatan moneter.",
   },
   {
     type: "Inovasi Teknologi Keuangan",
     question:
-      "Dalam pengaturan fintech, prinsip **'same activity, same risk, same regulation'** yang dianut Bank Indonesia berarti:",
+      "Dalam pengaturan fintech, prinsip 'same activity, same risk, same regulation' yang dianut Bank Indonesia berarti:",
     options: {
       A: "Semua inovasi harus diatur secara identik seperti bank konvensional.",
       B: "Aktivitas keuangan yang memiliki tingkat risiko dan fungsi yang sama harus tunduk pada regulasi yang setara.",
@@ -1100,12 +1100,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Prinsip **'same activity, same risk, same regulation'** memastikan bahwa regulasi didasarkan pada **aktivitas dan risiko** yang ditimbulkan, bukan semata-mata pada jenis institusi (bank atau fintech). Ini menjaga *level playing field* dan mencegah arbitrase regulasi, sekaligus mendorong inovasi yang bertanggung jawab.",
+      "Prinsip 'same activity, same risk, same regulation' memastikan bahwa regulasi didasarkan pada aktivitas dan risiko yang ditimbulkan, bukan semata-mata pada jenis institusi (bank atau fintech). Ini menjaga *level playing field* dan mencegah arbitrase regulasi, sekaligus mendorong inovasi yang bertanggung jawab.",
   },
   {
     type: "Inovasi Teknologi Keuangan",
     question:
-      "Penerapan teknologi **Artificial Intelligence (AI)** dan **Machine Learning (ML)** dalam fungsi Bank Sentral dan sistem pembayaran berguna untuk:",
+      "Penerapan teknologi Artificial Intelligence (AI) dan Machine Learning (ML) dalam fungsi Bank Sentral dan sistem pembayaran berguna untuk:",
     options: {
       A: "Secara langsung menggantikan peran Dewan Gubernur dalam pengambilan keputusan.",
       B: "Peningkatan akurasi *forecasting* ekonomi, deteksi *fraud* secara real-time, dan manajemen risiko.",
@@ -1115,14 +1115,14 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "AI/ML digunakan untuk memproses data besar dan mendeteksi pola yang kompleks. Dalam konteks Bank Sentral, aplikasinya termasuk **peramalan makroekonomi** yang lebih akurat, **deteksi anomali** dalam transaksi sistem pembayaran (fraud/AML), dan **manajemen risiko** yang lebih prediktif.",
+      "AI/ML digunakan untuk memproses data besar dan mendeteksi pola yang kompleks. Dalam konteks Bank Sentral, aplikasinya termasuk peramalan makroekonomi yang lebih akurat, deteksi anomali dalam transaksi sistem pembayaran (fraud/AML), dan manajemen risiko yang lebih prediktif.",
   },
 
   // --- HUBUNGAN INTERNASIONAL & ISU GLOBAL (Revisi) ---
   {
     type: "Hubungan Internasional & Isu Global",
     question:
-      "Bank Indonesia berpartisipasi dalam **Chiang Mai Initiative Multilateralisation (CMIM)** sebagai bagian dari:",
+      "Bank Indonesia berpartisipasi dalam Chiang Mai Initiative Multilateralisation (CMIM) sebagai bagian dari:",
     options: {
       A: "Kerjasama perdagangan bebas ASEAN.",
       B: "Mekanisme *regional financial safety net* di ASEAN+3 (Tiongkok, Jepang, Korea).",
@@ -1132,12 +1132,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**CMIM** adalah perjanjian *currency swap* multilateral antar negara ASEAN+3. Tujuannya adalah menyediakan **jaring pengaman keuangan regional** (regional financial safety net) untuk membantu anggota yang menghadapi kesulitan likuiditas neraca pembayaran jangka pendek.",
+      "CMIM adalah perjanjian *currency swap* multilateral antar negara ASEAN+3. Tujuannya adalah menyediakan jaring pengaman keuangan regional (regional financial safety net) untuk membantu anggota yang menghadapi kesulitan likuiditas neraca pembayaran jangka pendek.",
   },
   {
     type: "Hubungan Internasional & Isu Global",
     question:
-      "Dalam forum **Financial Action Task Force (FATF)**, Indonesia (dan Bank Indonesia) fokus pada implementasi standar global untuk:",
+      "Dalam forum Financial Action Task Force (FATF), Indonesia (dan Bank Indonesia) fokus pada implementasi standar global untuk:",
     options: {
       A: "Peningkatan transparansi informasi pasar modal.",
       B: "Pencegahan dan Pemberantasan Tindak Pidana Pencucian Uang (APU) dan Pendanaan Terorisme (PPT).",
@@ -1147,12 +1147,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**FATF** adalah badan antar pemerintah yang menetapkan standar internasional untuk memerangi **Pencucian Uang (*Money Laundering*) dan Pendanaan Terorisme (*Terrorism Financing*)**. Kepatuhan terhadap standar FATF krusial bagi integritas sistem keuangan Indonesia.",
+      "FATF adalah badan antar pemerintah yang menetapkan standar internasional untuk memerangi Pencucian Uang (*Money Laundering*) dan Pendanaan Terorisme (*Terrorism Financing*). Kepatuhan terhadap standar FATF krusial bagi integritas sistem keuangan Indonesia.",
   },
   {
     type: "Hubungan Internasional & Isu Global",
     question:
-      "Kerjasama **Local Currency Settlement (LCS)** yang diinisiasi Bank Indonesia dengan beberapa negara mitra (misalnya Tiongkok, Jepang) bertujuan utama untuk:",
+      "Kerjasama Local Currency Settlement (LCS) yang diinisiasi Bank Indonesia dengan beberapa negara mitra (misalnya Tiongkok, Jepang) bertujuan utama untuk:",
     options: {
       A: "Mengubah Rupiah menjadi mata uang cadangan global.",
       B: "Memfasilitasi penyelesaian transaksi perdagangan dan investasi bilateral menggunakan mata uang lokal, mengurangi ketergantungan pada Dolar AS.",
@@ -1162,12 +1162,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "**Local Currency Settlement (LCS)** memungkinkan transaksi perdagangan dan investasi antar dua negara diselesaikan dengan menggunakan mata uang lokal kedua negara (misalnya Rupiah dan Yuan). Tujuannya adalah **mengurangi risiko nilai tukar**, **mengurangi biaya transaksi**, dan **mengurangi ketergantungan pada Dolar AS**.",
+      "Local Currency Settlement (LCS) memungkinkan transaksi perdagangan dan investasi antar dua negara diselesaikan dengan menggunakan mata uang lokal kedua negara (misalnya Rupiah dan Yuan). Tujuannya adalah mengurangi risiko nilai tukar, mengurangi biaya transaksi, dan mengurangi ketergantungan pada Dolar AS.",
   },
   {
     type: "Hubungan Internasional & Isu Global",
     question:
-      "**Climate-related financial risks** dalam agenda Bank Sentral global dan domestik mencakup:",
+      "Climate-related financial risks dalam agenda Bank Sentral global dan domestik mencakup:",
     options: {
       A: "Hanya risiko yang disebabkan oleh bencana alam (physical risks).",
       B: "Risiko fisik (*physical risks*) dari perubahan iklim, dan risiko transisi (*transition risks*) menuju ekonomi rendah karbon.",
@@ -1177,12 +1177,12 @@ const bankQuestions = [
     },
     correct: "B",
     explanation:
-      "Risiko terkait iklim dibagi dua: **Physical Risks** (kerusakan aset akibat cuaca ekstrem, misalnya banjir/kekeringan) dan **Transition Risks** (kerugian aset atau utang yang timbul akibat transisi kebijakan, teknologi, atau sentimen pasar menuju ekonomi rendah karbon). Bank Sentral mengintegrasikan risiko ini ke dalam pengawasan dan kebijakan moneter.",
+      "Risiko terkait iklim dibagi dua: Physical Risks (kerusakan aset akibat cuaca ekstrem, misalnya banjir/kekeringan) dan Transition Risks (kerugian aset atau utang yang timbul akibat transisi kebijakan, teknologi, atau sentimen pasar menuju ekonomi rendah karbon). Bank Sentral mengintegrasikan risiko ini ke dalam pengawasan dan kebijakan moneter.",
   },
   {
     type: "Hubungan Internasional & Isu Global",
     question:
-      "**Asian Bond Markets Initiative (ABMI)** yang diikuti Indonesia bertujuan untuk:",
+      "Asian Bond Markets Initiative (ABMI) yang diikuti Indonesia bertujuan untuk:",
     options: {
       A: "Mengembangkan pasar modal syariah di Asia Tenggara.",
       B: "Membentuk mekanisme asuransi utang antar negara Asia.",
@@ -1192,7 +1192,7 @@ const bankQuestions = [
     },
     correct: "C",
     explanation:
-      "**ABMI** bertujuan mengembangkan **pasar obligasi mata uang lokal** di Asia. Tujuannya adalah mengurangi ketergantungan pada pembiayaan mata uang asing (Dolar AS) dan mengatasi masalah **currency mismatch** (utang valas dibayar dengan pendapatan mata uang lokal), yang menjadi sumber kerentanan saat krisis.",
+      "ABMI bertujuan mengembangkan pasar obligasi mata uang lokal di Asia. Tujuannya adalah mengurangi ketergantungan pada pembiayaan mata uang asing (Dolar AS) dan mengatasi masalah currency mismatch (utang valas dibayar dengan pendapatan mata uang lokal), yang menjadi sumber kerentanan saat krisis.",
   },
 ];
 

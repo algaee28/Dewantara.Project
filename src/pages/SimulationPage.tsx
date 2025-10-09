@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import NavMenu from '../components/UI/NavMenu'; 
 import { Mode } from '../App'; 
-import { Clock, BookOpen } from 'lucide-react'; // Import ikon untuk elemen kartu
+import { Clock, BookOpen } from 'lucide-react'; 
 
 // Interface Props yang disederhanakan
 interface SimulationPageProps {
@@ -24,7 +24,7 @@ const SimulationPage: FC<SimulationPageProps> = ({
         return `${minutes} Menit`;
     };
 
-    // Data Simulasi dengan properti gradient baru
+    // Data Simulasi dengan properti gradient
     const simulations = [
         {
             title: "TPD - Fundamental",
@@ -71,24 +71,25 @@ const SimulationPage: FC<SimulationPageProps> = ({
             aria-label={`Mulai Simulasi ${sim.title}`}
         >
             <div 
-                className="w-44 h-58 rounded-3xl overflow-hidden relative shadow-2xl border border-white border-opacity-30 p-5 flex flex-col justify-between"
-                style={{ background: sim.gradient }} // Gunakan gradient sebagai background
+                // PERUBAHAN UTAMA: w-44 h-58 menjadi w-56 h-72
+                className="w-56 h-72 rounded-3xl overflow-hidden relative shadow-2xl border border-white border-opacity-30 p-6 flex flex-col justify-between"
+                style={{ background: sim.gradient }}
             >
                 {/* Judul dan Soal */}
                 <div className='relative z-10'>
-                    <h3 className="text-xl font-bold mb-2 text-white leading-tight">
+                    <h3 className="text-2xl font-bold mb-2 text-white leading-snug">
                         {sim.title}
                     </h3>
-                    <div className="flex items-center text-white/90 text-sm">
-                         <BookOpen className='w-4 h-4 mr-1'/>
+                    <div className="flex items-center text-white/90 text-base">
+                         <BookOpen className='w-5 h-5 mr-1'/>
                          {sim.questionCount} Soal
                     </div>
                 </div>
                 
                 {/* Waktu */}
                 <div className='relative z-10 mt-auto pt-3 border-t border-white/30'>
-                    <div className="flex items-center font-semibold text-lg text-white">
-                        <Clock className='w-5 h-5 mr-2'/>
+                    <div className="flex items-center font-semibold text-xl text-white">
+                        <Clock className='w-6 h-6 mr-2'/>
                         {formatTimeLimit(sim.timeLimit)}
                     </div>
                 </div>
