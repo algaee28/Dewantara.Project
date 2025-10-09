@@ -141,7 +141,7 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
             <NavMenu activeMenu={"quiz"} setMode={setMode} setActiveMenu={setActiveMenu} />
         </div>
         
-        <div className="p-4 sm:p-8 rounded-3xl border border-white border-opacity-30 shadow-lg w-full max-w-4xl mx-auto my-6 flex flex-col items-center" style={{ background: "rgba(255, 255, 255, 0.15)", backdropFilter: "blur(10px)" }}>
+        <div className="p-4 sm:p-8 rounded-3xl border border-white border-opacity-30 shadow-lg w-full max-w-4xl mx-auto my-6 flex flex-col items-center" style={{ background: "rgba(208, 6, 137, 0.53)", backdropFilter: "blur(10px)" }}>
             
             {/* Header / Progress Bar */}
             <div className="w-full mb-6">
@@ -215,14 +215,14 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
                                 : 'bg-gray-500 text-gray-300 cursor-not-allowed'
                         }`}
                     >
-                        Submit Jawaban (ENTER)
+                        Submit Jawaban
                     </button>
                 ) : (
                     <button
                         onClick={handleNextQuestion}
                         className="py-3 px-12 rounded-full font-bold bg-secondary-accent hover:bg-yellow-400 text-primary-brand transition-colors duration-300 text-lg"
                     >
-                        Soal Berikutnya (ENTER)
+                        Soal Berikutnya
                     </button>
                 )}
             </div>
