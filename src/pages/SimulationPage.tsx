@@ -1,7 +1,93 @@
-import { FC } from 'react';
+// src/pages/SimulationPage.tsx
+import { FC, useState } from 'react'; // Tambahkan useState
 import NavMenu from '../components/UI/NavMenu'; 
 import { Mode } from '../App'; 
 import { Clock, BookOpen } from 'lucide-react'; 
+
+// --- START: KOMPONEN MODAL KUSTOMISASI SIMULASI ---
+interface QuizSettingsModalProps {
+    quizToStart: { type: string; title: string } | null;
+    onClose: () => void;
+    startQuiz: (count: number, type: string, time: number | null) => void;
+}
+
+const QuizSettingsModal: FC<QuizSettingsModalProps> = ({ quizToStart, onClose, startQuiz }) => {
+    // State default untuk simulasi
+    const [selectedCount, setSelectedCount] = useState(40); 
+    const [selectedTime, setSelectedTime] = useState(60); // Default 60 menit
+    
+    if (!quizToStart) return null;
+
+    // Opsi yang lebih cocok untuk simulasi penuh
+    const questionOptions = [40, 50, 60, 80, 100];
+    const timeOptions = [30, 45, 60, 90, 120]; 
+
+    const handleStart = () => {
+        const timeInSeconds = selectedTime * 60; // Simulasi umumnya memiliki batas waktu
+        startQuiz(selectedCount, quizToStart.type, timeInSeconds);
+        onClose();
+    };
+
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" onClick={onClose}>
+            <div 
+                className="bg-white bg-opacity-10 p-6 sm:p-10 rounded-3xl shadow-2xl w-full max-w-md backdrop-blur-lg border border-white border-opacity-30 text-white transform transition-all duration-300 scale-100" 
+                onClick={(e) => e.stopPropagation()}
+            >
+                <h3 className="text-2xl font-bold mb-4 text-center border-b border-white/20 pb-3">
+                    Atur Simulasi: {quizToStart.title}
+                </h3>
+                
+                <div className="flex flex-col gap-6 mt-4">
+                    {/* Input Jumlah Soal */}
+                    <div className="flex flex-col">
+                        <label className="text-sm mb-2 text-gray-300 font-semibold">Jumlah Soal</label>
+                        <select 
+                            value={selectedCount} 
+                            onChange={(e) => setSelectedCount(Number(e.target.value))}
+                            className="px-4 py-2 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-150 text-base appearance-none"
+                        >
+                            {questionOptions.map(count => (
+                                <option key={count} value={count} className="bg-[#100c28] text-white">{count} Soal</option>
+                            ))}
+                        </select>
+                    </div>
+
+                    {/* Input Batas Waktu */}
+                    <div className="flex flex-col">
+                        <label className="text-sm mb-2 text-gray-300 font-semibold">Batas Waktu (Menit)</label>
+                        <select 
+                            value={selectedTime} 
+                            onChange={(e) => setSelectedTime(Number(e.target.value))}
+                            className="px-4 py-2 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-150 text-base appearance-none"
+                        >
+                            {timeOptions.map(time => (
+                                <option key={time} value={time} className="bg-[#100c28] text-white">{time} Menit</option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+
+                <div className="flex justify-between gap-4 mt-8">
+                    <button 
+                        onClick={onClose} 
+                        className="flex-1 py-3 rounded-xl bg-red-600 hover:bg-red-700 transition duration-150 font-bold"
+                    >
+                        Batal
+                    </button>
+                    <button 
+                        onClick={handleStart} 
+                        className="flex-1 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 transition duration-150 font-bold"
+                    >
+                        Mulai Simulasi
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+// --- END: KOMPONEN MODAL KUSTOMISASI SIMULASI ---
+
 
 // Interface Props yang disederhanakan
 interface SimulationPageProps {
@@ -18,6 +104,15 @@ const SimulationPage: FC<SimulationPageProps> = ({
     startQuiz,
 }) => {
     
+    // STATE UNTUK MENGONTROL MODAL
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [quizToStart, setQuizToStart] = useState<{ type: string; title: string } | null>(null);
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setQuizToStart(null);
+    };
+
     // Helper untuk memformat waktu
     const formatTimeLimit = (seconds: number) => {
         const minutes = seconds / 60;
@@ -61,10 +156,9 @@ const SimulationPage: FC<SimulationPageProps> = ({
             timeLimit: 30 * 60, // 30 menit
             gradient: "linear-gradient(145deg, #F59E0B 0%, #92400E 100%)", // Warm Gold/Amber
         },
-        // SIMULASI BARU: Central Bank
         {
-            title: "Central Bank", // Diubah menjadi Title Case
-            quizType: "central_bank", // FIX: Menggunakan quizType (camelCase)
+            title: "Central Bank",
+            quizType: "central_bank", 
             questionCount: 40,
             timeLimit: 30 * 60,
             gradient: "radial-gradient(circle at 70% 50%, rgba(50,200,150,0.6), transparent 70%), linear-gradient(135deg, #0a1a0a, #1c2e20)",
@@ -74,7 +168,11 @@ const SimulationPage: FC<SimulationPageProps> = ({
     const renderCard = (sim: typeof simulations[0]) => (
         <button
             key={sim.quizType}
-            onClick={() => startQuiz(sim.questionCount, sim.quizType, sim.timeLimit)}
+            // ONCLICK BARU: Membuka Modal
+            onClick={() => {
+                setQuizToStart({ type: sim.quizType, title: sim.title });
+                setIsModalOpen(true);
+            }} 
             className="transition-transform hover:scale-105"
             aria-label={`Mulai Simulasi ${sim.title}`}
         >
@@ -89,7 +187,7 @@ const SimulationPage: FC<SimulationPageProps> = ({
                     </h3>
                     <div className="flex items-center text-white/90 text-base">
                          <BookOpen className='w-5 h-5 mr-1'/>
-                         {sim.questionCount} Soal
+                         {sim.questionCount} Soal (Default)
                     </div>
                 </div>
                 
@@ -97,7 +195,7 @@ const SimulationPage: FC<SimulationPageProps> = ({
                 <div className='relative z-10 mt-auto pt-3 border-t border-white/30'>
                     <div className="flex items-center font-semibold text-xl text-white">
                         <Clock className='w-6 h-6 mr-2'/>
-                        {formatTimeLimit(sim.timeLimit)}
+                        {formatTimeLimit(sim.timeLimit)} (Default)
                     </div>
                 </div>
             </div>
@@ -135,6 +233,15 @@ const SimulationPage: FC<SimulationPageProps> = ({
                     </div>
                 </div>
             </div>
+
+            {/* RENDER MODAL SIMULASI */}
+            {isModalOpen && (
+                <QuizSettingsModal 
+                    quizToStart={quizToStart} 
+                    onClose={closeModal} 
+                    startQuiz={startQuiz}
+                />
+            )}
         </div>
     );
 };

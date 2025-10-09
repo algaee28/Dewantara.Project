@@ -1,11 +1,99 @@
 // src/pages/QuizSelectPage.tsx
-import { FC, useState } from 'react'; // IMPORT 'useState' telah ditambahkan
+import { FC, useState } from 'react';
 import { Info } from 'lucide-react';
 import NavMenu from '../components/UI/NavMenu';
 import QuizCard from '../components/UI/QuizCard';
 import { Mode, ActiveTest } from '../App'; 
 
-// Definisikan komponen yang relevan di sini jika belum diimpor
+// --- START: KOMPONEN MODAL KUSTOMISASI KUIS ---
+interface QuizSettingsModalProps {
+    quizToStart: { type: string; title: string } | null;
+    onClose: () => void;
+    startQuiz: (count: number, type: string, time: number | null) => void;
+}
+
+const QuizSettingsModal: FC<QuizSettingsModalProps> = ({ quizToStart, onClose, startQuiz }) => {
+    // State default untuk kuis modul
+    const [selectedCount, setSelectedCount] = useState(20);
+    const [selectedTime, setSelectedTime] = useState(15); // dalam menit
+    
+    if (!quizToStart) return null;
+
+    const questionOptions = [10, 20, 30, 50, 100];
+    const timeOptions = [0, 10, 15, 30, 45, 60]; // 0 untuk Tanpa Batas Waktu
+
+    const handleStart = () => {
+        const timeInSeconds = selectedTime > 0 ? selectedTime * 60 : null;
+        startQuiz(selectedCount, quizToStart.type, timeInSeconds);
+        onClose();
+    };
+
+    return (
+        // Latar belakang dan penutup modal saat klik luar
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" onClick={onClose}>
+            <div 
+                // Kontainer Modal dengan efek glassmorphism
+                className="bg-white bg-opacity-10 p-6 sm:p-10 rounded-3xl shadow-2xl w-full max-w-md backdrop-blur-lg border border-white border-opacity-30 text-white transform transition-all duration-300 scale-100" 
+                onClick={(e) => e.stopPropagation()}
+            >
+                <h3 className="text-2xl font-bold mb-4 text-center border-b border-white/20 pb-3">
+                    Atur Kuis: {quizToStart.title}
+                </h3>
+                
+                <div className="flex flex-col gap-6 mt-4">
+                    {/* Input Jumlah Soal */}
+                    <div className="flex flex-col">
+                        <label className="text-sm mb-2 text-gray-300 font-semibold">Jumlah Soal</label>
+                        <select 
+                            value={selectedCount} 
+                            onChange={(e) => setSelectedCount(Number(e.target.value))}
+                            className="px-4 py-2 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-150 text-base appearance-none"
+                        >
+                            {questionOptions.map(count => (
+                                <option key={count} value={count} className="bg-[#100c28] text-white">{count} Soal</option>
+                            ))}
+                        </select>
+                    </div>
+
+                    {/* Input Batas Waktu */}
+                    <div className="flex flex-col">
+                        <label className="text-sm mb-2 text-gray-300 font-semibold">Batas Waktu</label>
+                        <select 
+                            value={selectedTime} 
+                            onChange={(e) => setSelectedTime(Number(e.target.value))}
+                            className="px-4 py-2 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-150 text-base appearance-none"
+                        >
+                            {timeOptions.map(time => (
+                                <option key={time} value={time} className="bg-[#100c28] text-white">
+                                    {time === 0 ? 'Tanpa Batas' : `${time} Menit`}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+
+                <div className="flex justify-between gap-4 mt-8">
+                    <button 
+                        onClick={onClose} 
+                        className="flex-1 py-3 rounded-xl bg-red-600 hover:bg-red-700 transition duration-150 font-bold"
+                    >
+                        Batal
+                    </button>
+                    <button 
+                        onClick={handleStart} 
+                        className="flex-1 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 transition duration-150 font-bold"
+                    >
+                        Mulai Kuis
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+// --- END: KOMPONEN MODAL KUSTOMISASI KUIS ---
+
+// ... (ComingSoonAlert dan QuizSubNav tetap sama)
+
 const ComingSoonAlert: FC<{ onClose: () => void }> = ({ onClose }) => (
   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={onClose}>
     <div className="bg-white bg-opacity-10 p-8 rounded-2xl text-center text-white" onClick={(e) => e.stopPropagation()}>
@@ -18,7 +106,6 @@ const ComingSoonAlert: FC<{ onClose: () => void }> = ({ onClose }) => (
 
 const QuizSubNav: FC<{ activeTest: ActiveTest, setActiveTest: (test: ActiveTest) => void }> = ({ activeTest, setActiveTest }) => (
     <div className="px-2 py-2 rounded-2xl border border-white border-opacity-30 shadow-lg text-white mb-8 flex flex-wrap justify-center gap-2" style={{ background: "rgba(0, 0, 0, 0.2)", backdropFilter: "blur(10px)" }}>
-        {/* DITAMBAHKAN 'perbankan' */}
         {(["fundamental", "ekonomi", "english", "perbankan"] as const).map((test) => (
             <button key={test} onClick={() => setActiveTest(test)} className={`px-4 py-2 text-sm sm:px-6 sm:py-3 mx-1 rounded-xl sm:text-lg transition-all duration-300 ${activeTest === test ? "font-bold" : "font-normal hover:bg-white hover:bg-opacity-5"}`}>
                 {test.charAt(0).toUpperCase() + test.slice(1)}
@@ -26,6 +113,7 @@ const QuizSubNav: FC<{ activeTest: ActiveTest, setActiveTest: (test: ActiveTest)
         ))}
     </div>
 );
+
 
 interface QuizSelectPageProps {
   activeMenu: Mode;
@@ -40,13 +128,15 @@ interface QuizSelectPageProps {
 
 const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiveMenu, activeSubMenu, setActiveSubMenu, startQuiz, showAlert, setShowAlert }) => {
     
-    // STATE BARU: Untuk menyimpan pilihan user
-    const [selectedCount, setSelectedCount] = useState(20);
-    const [selectedTime, setSelectedTime] = useState(15); // dalam menit (0 = Tanpa Batas)
+    // STATE UNTUK MENGONTROL MODAL
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [quizToStart, setQuizToStart] = useState<{ type: string; title: string } | null>(null);
 
-    // OPSI PILIHAN
-    const questionOptions = [10, 20, 30, 50, 100];
-    const timeOptions = [0, 10, 15, 30, 45, 60]; // 0 untuk Tanpa Batas Waktu
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setQuizToStart(null);
+    };
+
 
     // Gradient yang digunakan (contoh)
     const deepBlueGradient = "radial-gradient(circle at 70% 50%, rgba(29, 78, 216, 0.6), transparent 70%), linear-gradient(135deg, #0a0a1a, #201c2e)";
@@ -70,12 +160,11 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiv
         ],
         english: [
           { type: "grammar", title: "Grammar", desc: "Tenses & Struktur Kalimat", gradient: deepEnglishGradient },
-          { type: "structure", title: "Structure", desc: "Struktur Kalimat & Frasa", gradient: deepEnglishGradient }, // KUIS BARU
-          { type: "expression", title: "Expression", desc: "Idiom & Penggunaan Bahasa", gradient: lightEnglishGradient }, // KUIS BARU
+          { type: "structure", title: "Structure", desc: "Struktur Kalimat & Frasa", gradient: deepEnglishGradient },
+          { type: "expression", title: "Expression", desc: "Idiom & Penggunaan Bahasa", gradient: lightEnglishGradient },
           { type: "reading", title: "Reading", desc: "Pemahaman Teks & Inferensi", gradient: lightEnglishGradient }, 
           { type: "vocab", title: "Vocabulary", desc: "Kosakata & Idiom", gradient: lightEnglishGradient },
         ],
-        // KATEGORI PERBANKAN BARU
         perbankan: [
             { type: "Modul1", title: "Modul 1", desc: "Dasar & Kerangka Hukum BI", gradient: deepBlueGradient },
             { type: "Modul2", title: "Modul 2", desc: "Kebijakan Moneter, Inflasi, & Nilai Tukar", gradient: deepBlueGradient },
@@ -97,38 +186,7 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiv
                 
                 <QuizSubNav activeTest={activeSubMenu} setActiveTest={setActiveSubMenu} />
                 
-                {/* INPUT PILIHAN SOAL DAN WAKTU (INI ADALAH FITUR YANG DICARI) */}
-                <div className="flex flex-wrap justify-center gap-4 text-white w-full max-w-lg mx-auto mb-8">
-                    <div className="flex flex-col">
-                        <label className="text-sm mb-1 text-gray-300 font-semibold">Jumlah Soal</label>
-                        <select 
-                            value={selectedCount} 
-                            onChange={(e) => setSelectedCount(Number(e.target.value))}
-                            className="px-4 py-2 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-150 text-base appearance-none"
-                            style={{ minWidth: '150px' }}
-                        >
-                            {questionOptions.map(count => (
-                                <option key={count} value={count} className="bg-[#100c28] text-white">{count} Soal</option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm mb-1 text-gray-300 font-semibold">Batas Waktu</label>
-                        <select 
-                            value={selectedTime} 
-                            onChange={(e) => setSelectedTime(Number(e.target.value))}
-                            className="px-4 py-2 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-150 text-base appearance-none"
-                            style={{ minWidth: '150px' }}
-                        >
-                            {timeOptions.map(time => (
-                                <option key={time} value={time} className="bg-[#100c28] text-white">
-                                    {time === 0 ? 'Tanpa Batas' : `${time} Menit`}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                </div>
-                {/* AKHIR INPUT PILIHAN */}
+                {/* Bagian kustomisasi di sini Dihapus */}
 
                 <div className="flex flex-wrap gap-4 sm:gap-6 justify-center w-full">
                     {cardsToRender.map((card) => (
@@ -137,17 +195,25 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiv
                             title={card.title} 
                             gradient={card.gradient} 
                             desc={card.desc} 
-                            // LOGIKA BARU: Menggunakan state yang dipilih
-                            onClick={() => startQuiz(
-                                selectedCount, 
-                                card.type, 
-                                selectedTime > 0 ? selectedTime * 60 : null // Konversi menit ke detik, atau null
-                            )} 
+                            // ONCLICK BARU: Membuka Modal
+                            onClick={() => {
+                                setQuizToStart({ type: card.type, title: card.title });
+                                setIsModalOpen(true);
+                            }} 
                         />
                     ))}
                 </div>
             </div>
             {showAlert && <ComingSoonAlert onClose={() => setShowAlert(false)} />}
+            
+            {/* RENDER MODAL KUIS */}
+            {isModalOpen && (
+                <QuizSettingsModal 
+                    quizToStart={quizToStart} 
+                    onClose={closeModal} 
+                    startQuiz={startQuiz}
+                />
+            )}
         </div>
     );
 };
