@@ -18,6 +18,8 @@ import Modul4 from "./Modul4";
 import Modul5 from "./Modul5";
 import Modul6 from "./Modul6";
 import Modul7 from "./Modul7";
+import expression from "./Expression";
+import struture from "./Structure"
 
 const questionBank = {
   verbal,
@@ -38,6 +40,8 @@ const questionBank = {
   Modul5,
   Modul6,
   Modul7,
+  expression,
+  struture
 };
 
 export default questionBank;

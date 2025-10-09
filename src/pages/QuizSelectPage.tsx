@@ -62,6 +62,8 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiv
           { type: "grammar", title: "Grammar", desc: "Tenses & Struktur Kalimat", gradient: "radial-gradient(circle at 60% 30%, rgba(107,176,255,0.6), transparent 70%), linear-gradient(135deg, #0a0a1a, #1a2333)" },
           { type: "reading", title: "Reading", desc: "Pemahaman Teks & Inferensi", gradient: "radial-gradient(circle at 40% 70%, rgba(255,218,185,0.6), transparent 70%), linear-gradient(135deg, #0f0a0a, #2b1f1a)" },
           { type: "vocab", title: "Vocabulary", desc: "Kosakata & Idiom", gradient: "radial-gradient(circle at 70% 40%, rgba(255,107,107,0.6), transparent 65%), linear-gradient(135deg, #0a0a0f, #2a1a1a)" },
+          { type: "structure", title: "Structure", desc: "Tes Tepat Tata Bahasa", gradient: "radial-gradient(circle at 50% 50%, rgba(150,200,255,0.6), transparent 70%), linear-gradient(135deg, #1a0a1a, #2a1f2e)" },
+          { type: "expression", title: "Expression", desc: "Pemahaman Ekspresi Idiomatik", gradient: "radial-gradient(circle at 80% 60%, rgba(255,150,255,0.6), transparent 70%), linear-gradient(135deg, #1a0a1a, #2e1a2e)" },
         ],
         perbankan: [
             { type: "Modul1", title: "Modul 1", desc: "Dasar & Kerangka Hukum BI", gradient: deepBlueGradient },

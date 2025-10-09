@@ -61,6 +61,13 @@ const SimulationPage: FC<SimulationPageProps> = ({
             timeLimit: 30 * 60, // 30 menit
             gradient: "linear-gradient(145deg, #F59E0B 0%, #92400E 100%)", // Warm Gold/Amber
         },
+        {
+            title: "centralbank",
+            quiztype: "central_bank",
+            questionCount: 40,
+            timeLimit: 30 * 60,
+            gradient: "radial-gradient(circle at 70% 50%, rgba(50,200,150,0.6), transparent 70%), linear-gradient(135deg, #0a1a0a, #1c2e20)",
+        },
     ];
 
     const renderCard = (sim: typeof simulations[0]) => (

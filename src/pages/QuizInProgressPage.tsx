@@ -99,6 +99,8 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
       grammar: "English - Grammar",
       reading: "English - Reading",
       vocab: "English - Vocabulary",
+      expression: "English - Expression",
+      structure: "English - Structure",
       ekonomi: "Ekonomi - General",
       bank: "Perbankan",
       akuntansi: "Akuntansi",
@@ -108,6 +110,7 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
       ekonomi_simulasi: "Ekonomi - Simulasi",
       akuntansi_simulasi: "Akuntansi - Simulasi",
       bank_simulasi: "Bank - Simulasi",
+      central_bank: "Central Bank",
     };
     return typeMap[currentQuizType] || "Quiz";
   };
@@ -316,7 +319,7 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
                 border: "1px solid rgba(255, 255, 255, 0.3)",
               }}
             >
-              Submit Jawaban (ENTER)
+              Submit Jawaban
             </button>
           ) : (
             <div>

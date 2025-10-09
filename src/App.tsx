@@ -84,6 +84,10 @@ const App: FC = () => {
         english_simulasi: [
             ...(questionBank.grammar || []), ...questionBank.reading, ...questionBank.vocab
         ],
+        central_bank: [
+            ...(questionBank.Modul1 || []), ...(questionBank.Modul2 || []), ...(questionBank.Modul3 || []),
+            ...(questionBank.Modul4 || []), ...(questionBank.Modul5 || []), ...(questionBank.Modul6 || []), ...(questionBank.Modul7 || []), 
+        ],
         ekonomi_simulasi: questionBank.ekonomi,
         akuntansi_simulasi: questionBank.akuntansi,
         bank_simulasi: questionBank.bank,
@@ -146,10 +150,6 @@ const App: FC = () => {
       }
     };
 
-    // FIX: Hapus variabel yang tidak digunakan
-    // const totalScore = calculateScore();
-    // const totalTime = startTime ? Date.now() - startTime : 0;
-  
     const pageProps = {
         activeMenu, setMode, setActiveMenu,
     };
