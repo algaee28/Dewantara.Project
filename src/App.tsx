@@ -152,7 +152,7 @@ const App: FC = () => {
         case "quizInProgress":
           return <QuizInProgressPage questions={questions} currentQuestion={currentQuestion} selectedAnswer={selectedAnswer} showExplanation={showExplanation} timeLimit={timeLimit} timeRemaining={timeRemaining} elapsedTime={elapsedTime} currentQuizType={currentQuizType} handleSubmitAnswer={handleSubmitAnswer} handleNextQuestion={handleNextQuestion} handleAnswerSelect={handleAnswerSelect} setMode={setMode} setActiveMenu={setActiveMenu} />;
         case "quizResults":
-            return <QuizResultsPage score={totalScore} questions={questions} totalTime={totalTime} timeLimit={timeLimit} timeRemaining={timeRemaining} currentQuizType={currentQuizType} userAnswers={userAnswers} startQuiz={startQuiz} setMode={setMode} setActiveMenu={setActiveMenu} />;
+            return <QuizResultsPage questions={questions} timeLimit={timeLimit} timeRemaining={timeRemaining} currentQuizType={currentQuizType} userAnswers={userAnswers} startQuiz={startQuiz} setMode={setMode} setActiveMenu={setActiveMenu} />;
         default:
           return <HomePage {...pageProps} randomQuote={randomQuote} />;
       }

@@ -1,16 +1,14 @@
 import { FC } from 'react';
 import NavMenu from '../components/UI/NavMenu'; 
-import ComingSoonAlert from '../components/UI/ComingSoonAlert'; // Asumsi Anda memiliki komponen ini
 import { Mode } from '../App'; 
 
-// Interface Props
+// Interface Props yang disederhanakan
 interface SimulationPageProps {
   activeMenu: Mode;
   setMode: (mode: Mode) => void;
   setActiveMenu: (menu: Mode) => void;
   startQuiz: (questionCount: number, quizType: string, timeLimit: number | null) => void;
-  showAlert: boolean;
-  setShowAlert: (show: boolean) => void;
+  // Hapus showAlert dan setShowAlert dari props jika tidak diperlukan
 }
 
 const SimulationPage: FC<SimulationPageProps> = ({ 
@@ -18,11 +16,8 @@ const SimulationPage: FC<SimulationPageProps> = ({
     setMode, 
     setActiveMenu, 
     startQuiz,
-    showAlert,
-    setShowAlert
+    // Hapus showAlert, setShowAlert
 }) => {
-    
-    // Asumsi: 'ComingSoonAlert' dan 'NavMenu' sudah diimpor dan berfungsi.
     
     // Data Simulasi
     const simulations = [
@@ -68,7 +63,6 @@ const SimulationPage: FC<SimulationPageProps> = ({
         },
     ];
 
-    // Fungsi untuk merender kartu simulasi
     const renderCard = (sim: typeof simulations[0]) => (
         <button
             key={sim.quizType}
@@ -83,8 +77,6 @@ const SimulationPage: FC<SimulationPageProps> = ({
                     className="w-full h-full object-cover"
                 />
             </div>
-            {/* Opsional: Tambahkan overlay teks untuk judul di bawah gambar jika diinginkan */}
-             {/* <p className="text-center mt-2 font-semibold text-lg">{sim.title}</p> */}
         </button>
     );
 
@@ -114,14 +106,14 @@ const SimulationPage: FC<SimulationPageProps> = ({
                         backdropFilter: "blur(5px)",
                     }}
                 >
-                    {/* Menggunakan gap-4 atau gap-6 untuk jarak antar kartu, dan justify-center untuk menengahkan */}
                     <div className="flex flex-wrap gap-4 sm:gap-6 justify-center w-full">
                         {simulations.map(renderCard)}
                     </div>
                 </div>
             </div>
             
-            {showAlert && <ComingSoonAlert onClose={() => setShowAlert(false)} />}
+            {/* Hapus baris alert yang error */}
+            {/* {showAlert && <ComingSoonAlert onClose={() => setShowAlert(false)} />} */}
         </div>
     );
 };
