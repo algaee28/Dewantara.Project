@@ -1,7 +1,9 @@
 // src/data/tipsData.ts
 
+// Hati-hati: Pastikan key di tipsData (object) sesuai dengan contentKey di allTips (array)
+
 export const tipsData = {
-  "Panduan Umum": `
+  "Panduan & Strategi": `
     Manajemen Waktu: Selama tes, usahakan tidak terjebak pada satu soal. Alokasikan waktu per soal, dan jika terlalu sulit, lewati dulu dan kembali lagi nanti. Ini akan memaksimalkan jumlah soal yang bisa Anda jawab.
 
     Analisis Hasil: Setelah kuis, jangan hanya melihat skor. Periksa setiap soal yang salah. Pahami mengapa jawaban Anda salah dan apa konsep yang terlewat. Ini adalah kunci untuk perbaikan berkelanjutan.
@@ -23,87 +25,109 @@ export const tipsData = {
 
     Penambahan/Pengurangan Elemen: Perhatikan bagaimana elemen-elemen kecil dalam gambar berubah, bertambah, atau berkurang dari satu tahap ke tahap berikutnya.
   `,
+  "Tips Logic": `
+    Silogisme: Pecah pernyataan menjadi premis mayor, minor, dan kesimpulan. Periksa apakah kesimpulan logis berdasarkan premis yang diberikan.
+    
+    Inferensi: Latih kemampuan menarik kesimpulan yang valid dari informasi yang tersedia. Jangan menambahkan asumsi yang tidak tertulis.
+  `,
+  "Catatan & Panduan": `
+    Notion adalah tempat terbaik untuk menyimpan catatan terstruktur dan panduan belajar yang dapat diakses kapan saja. Gunakan template yang sudah disediakan untuk efisiensi maksimal.
+  `,
+  "Koleksi Buku": `
+    Google Drive berisi koleksi buku-buku referensi untuk persiapan tes. Unduh dan pelajari materi sesuai kebutuhan Anda.
+  `,
+  "AI Assistant": `
+    Gemini AI dapat membantu menjelaskan konsep yang sulit dipahami. Jangan ragu untuk bertanya tentang strategi atau penjelasan soal tertentu.
+  `,
 };
 
 export const allTips = [
   {
-    title: "Panduan Umum",
-    text: "Manajemen waktu & strategi belajar.",
-    contentKey: "Panduan Umum",
-    isLink: false,
+    title: "Panduan & Strategi",
+    text: "Tips umum untuk mengelola waktu dan pola pikir.",
+    contentKey: "Panduan & Strategi",
+    isExternal: false,
+    link: null, // Tambahkan link untuk konsistensi
     style: {
       background:
-        "linear-gradient(135deg, rgba(255,107,107,0.7), rgba(248,232,166,0.7))",
+        "linear-gradient(135deg, rgba(255,107,107,0.8), rgba(248,232,166,0.8))",
     },
   },
   {
     title: "Tips Verbal",
     text: "Asah kemampuan analogi dan sinonim.",
     contentKey: "Tips Verbal",
-    isLink: false,
+    isExternal: false,
+    link: null,
     style: {
       background:
-        "linear-gradient(135deg, rgba(178,240,231,0.7), rgba(107,176,255,0.7))",
+        "linear-gradient(135deg, rgba(178,240,231,0.8), rgba(107,176,255,0.8))",
     },
   },
   {
     title: "Tips Numerik",
     text: "Pahami deret angka dan pola matriks.",
     contentKey: "Tips Numerik",
-    isLink: false,
+    isExternal: false,
+    link: null,
     style: {
       background:
-        "linear-gradient(135deg, rgba(255,182,193,0.7), rgba(161,161,230,0.7))",
+        "linear-gradient(135deg, rgba(255,182,193,0.8), rgba(161,161,230,0.8))",
     },
   },
   {
     title: "Tips Figural",
     text: "Latih mata untuk rotasi dan cerminan.",
     contentKey: "Tips Figural",
-    isLink: false,
+    isExternal: false,
+    link: null,
     style: {
       background:
-        "linear-gradient(135deg, rgba(178,240,231,0.7), rgba(107,176,255,0.7))",
+        "linear-gradient(135deg, rgba(255,218,185,0.8), rgba(255,176,176,0.8))",
     },
   },
   {
-    title: "Ekonomi & Akuntansi",
-    text: "Memahami konsep dasar perbankan.",
-    contentKey: "Ekonomi & Akuntansi",
-    isLink: false,
+    title: "Tips Logic",
+    text: "Asah kemampuan penalaran dan silogisme.",
+    contentKey: "Tips Logic",
+    isExternal: false,
+    link: null,
     style: {
       background:
-        "linear-gradient(135deg, rgba(255,231,178,0.7), rgba(255,176,107,0.7))",
+        "linear-gradient(135deg, rgba(186,230,253,0.8), rgba(147,197,253,0.8))",
     },
   },
   {
-    title: "Catatan di Notion",
-    text: "Panduan terperinci di Notion.",
+    title: "Catatan & Panduan",
+    text: "Akses koleksi catatan di Notion.",
+    contentKey: "Catatan & Panduan",
+    isExternal: true,
     link: "LINK_KE_NOTION_ANDA",
-    isLink: true,
     style: {
       background:
-        "linear-gradient(135deg, rgba(107,255,107,0.7), rgba(166,248,166,0.7))",
+        "linear-gradient(135deg, rgba(196,181,253,0.8), rgba(167,139,250,0.8))",
     },
   },
   {
     title: "Koleksi Buku",
-    text: "Buku latihan di Google Drive.",
+    text: "Download buku referensi dari Drive.",
+    contentKey: "Koleksi Buku",
+    isExternal: true,
     link: "LINK_KE_GOOGLE_DRIVE_ANDA",
-    isLink: true,
     style: {
       background:
-        "linear-gradient(135deg, rgba(255,231,178,0.7), rgba(255,176,107,0.7))",
+        "linear-gradient(135deg, rgba(134,239,172,0.8), rgba(74,222,128,0.8))",
     },
   },
   {
-    title: "Tanya Gemini AI",
-    text: "Eksplorasi dengan AI.",
+    title: "AI Assistant",
+    text: "Tanya konsep sulit ke Gemini AI.",
+    contentKey: "AI Assistant",
+    isExternal: true,
     link: "https://gemini.google.com/",
-    isLink: true,
     style: {
       background:
-        "linear-gradient(135deg, rgba(193,182,255,0.7), rgba(178,231,255,0.7))",
+        "linear-gradient(135deg, rgba(254,215,170,0.8), rgba(251,191,36,0.8))",
     },
   },
 ];
