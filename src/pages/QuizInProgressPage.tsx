@@ -1,8 +1,9 @@
 import { FC, useEffect } from 'react';
 import { Question, Mode } from '../App';
 import NavMenu from '../components/UI/NavMenu';
-import { Loader2 } from 'lucide-react'; // Menggunakan Loader2 sebagai placeholder untuk loading
+import { Loader2 } from 'lucide-react'; // Import untuk spinner loading
 
+// Props harus sesuai dengan apa yang diteruskan dari App.tsx
 interface QuizInProgressPageProps {
   questions: Question[];
   currentQuestion: number;
@@ -37,24 +38,34 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
   const currentQ = questions[currentQuestion];
   if (!currentQ) return <div className="text-white text-center p-10">Soal tidak ditemukan.</div>;
   
+  // Dapatkan kunci opsi yang sebenarnya (misalnya: ['a', 'b', 'c', 'd', 'e'] atau ['A', 'B', 'C', 'D', 'E'])
   const optionsKeys = Object.keys(currentQ.options);
   const isAnswerSelected = !!selectedAnswer;
 
-  // --- LOGIKA KEYBOARD INPUT (FITUR BARU) ---
+  // --- LOGIKA KEYBOARD INPUT (REVISI UNTUK CASE SENSITIVITY) ---
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      // Pastikan tombol input adalah huruf opsi (A, B, C, D, E) atau Enter
-      const key = event.key.toUpperCase();
+      // Abaikan jika tombol ditekan terus-menerus
+      if (event.repeat) return;
       
+      const key = event.key; // Key asli (misalnya 'a' atau 'A' atau 'Enter')
+
+      // Mencari kunci opsi yang cocok (A/B/C/D/E atau a/b/c/d/e)
+      // Menggunakan toUpperCase() untuk membandingkan input keyboard dengan kunci opsi secara case-insensitive
+      const inputKey = optionsKeys.find(k => k.toUpperCase() === key.toUpperCase());
+
       // 1. Pilih Jawaban (Tombol A, B, C, D, E)
-      if (optionsKeys.includes(key) && !showExplanation) {
-        handleAnswerSelect(key);
-        return; // Hentikan proses lebih lanjut agar tidak submit
+      if (inputKey && !showExplanation) {
+        // Mencegah default action (misalnya scrolling)
+        event.preventDefault(); 
+        // Lakukan pemilihan jawaban menggunakan key yang sesuai case-nya (inputKey)
+        handleAnswerSelect(inputKey); 
+        return; 
       }
       
       // 2. Submit / Next (Tombol Enter)
-      if (key === 'ENTER') {
-        event.preventDefault(); // Mencegah Enter default (misalnya submit form HTML)
+      if (key === 'Enter') {
+        event.preventDefault(); 
         
         if (showExplanation) {
           // Jika penjelasan sudah tampil, maka pindah ke soal berikutnya
@@ -76,9 +87,12 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
   }, [optionsKeys, showExplanation, isAnswerSelected, handleAnswerSelect, handleSubmitAnswer, handleNextQuestion]);
   // --- AKHIR LOGIKA KEYBOARD INPUT ---
 
-  // Placeholder render function (perlu disesuaikan dengan kebutuhan styling Anda)
+  // Fungsi untuk merender opsi jawaban
   const renderOptions = () => {
     return optionsKeys.map((key) => {
+      // Pastikan huruf opsi untuk tampilan (misalnya A. B. C.) adalah huruf besar
+      const displayKey = key.toUpperCase(); 
+
       const isCorrect = showExplanation && key === currentQ.correct;
       const isIncorrect = showExplanation && key === selectedAnswer && key !== currentQ.correct;
       const isSelected = key === selectedAnswer;
@@ -106,7 +120,8 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
           className={className}
           disabled={showExplanation}
         >
-          <span className="font-bold mr-2">{key}.</span> {currentQ.options[key]}
+          {/* Menampilkan huruf opsi (A, B, C, D, E) */}
+          <span className="font-bold mr-2">{displayKey}.</span> {currentQ.options[key]}
         </button>
       );
     });
@@ -149,7 +164,24 @@ const QuizInProgressPage: FC<QuizInProgressPageProps> = ({
                 <h3 className="text-xl font-bold mb-4">{currentQ.type}</h3>
                 <p className="text-lg mb-4 whitespace-pre-wrap">{currentQ.question}</p>
                 
+                {/* Assuming imageUrl is used for figural questions/images */}
                 {currentQ.imageUrl && <img src={currentQ.imageUrl} alt="Soal Figural" className="mx-auto my-4 max-h-60 sm:max-h-80 object-contain" />}
+                
+                {/* Assuming matrixData is used for specific question types */}
+                {currentQ.matrixData && (
+                    <table className="w-full border-collapse border border-white my-4">
+                        <tbody>
+                            {currentQ.matrixData.map((row, rowIndex) => (
+                                <tr key={rowIndex}>
+                                    {row.map((cell, cellIndex) => (
+                                        <td key={cellIndex} className="border border-white p-2 text-center">{cell}</td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+
             </div>
 
             {/* Opsi Jawaban */}
