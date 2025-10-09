@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import NavMenu from '../components/UI/NavMenu'; // Perbaikan path: menggunakan '../components/UI/NavMenu'
-import { Mode } from '../App'; // Perbaikan path: menggunakan '../App'
-import tipsData from './tipsData'; // Import data tips
+import NavMenu from '../components/UI/NavMenu'; 
+import { Mode } from '../App'; 
+import tipsData from './tipsData'; 
 
 interface TipsPageProps {
   activeMenu: Mode;
