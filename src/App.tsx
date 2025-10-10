@@ -95,7 +95,8 @@ const App: FC = () => {
             ...(questionBank.Modul4 || []), 
             ...(questionBank.Modul5 || []), 
             ...(questionBank.Modul6 || []), 
-            ...(questionBank.Modul7 || []), 
+            ...(questionBank.Modul7 || []),
+            ...(questionBank.Modul8 || []), 
         ],
       };
       const source = questionMap[quizType] || [];

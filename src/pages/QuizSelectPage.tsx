@@ -173,6 +173,7 @@ const QuizSelectPage: FC<QuizSelectPageProps> = ({ activeMenu, setMode, setActiv
             { type: "Modul5", title: "Modul 5", desc: "Blueprint & Program Strategis BI", gradient: lightBlueGradient },
             { type: "Modul6", title: "Modul 6", desc: "Hubungan Internasional & Isu Global", gradient: lightBlueGradient },
             { type: "Modul7", title: "Modul 7", desc: "Studi Kasus & Aplikasi Strategis BI", gradient: lightBlueGradient },
+            { type: "Modul8", title: "Modul 8", desc: "Main Modul Bank Indonesia", gradient: lightBlueGradient },
         ]
     };
     const cardsToRender = allCards[activeSubMenu] || [];
